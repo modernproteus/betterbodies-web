@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BetterBodies TX Logo Concept Directions</title>
+  <style>
+    :root {
+      --bb-red:#d71920;
+      --bb-red-dark:#a90f15;
+      --bb-black:#0b0b0d;
+      --bb-charcoal:#1d1d22;
+      --bb-gray:#6f737b;
+      --bb-light:#f7f7f8;
+      --bb-white:#ffffff;
+      --bb-border:#dedee3;
+      --bb-radius:22px;
+      --bb-shadow:0 18px 55px rgba(0,0,0,.16);
+      --bb-max:1120px;
+    }
+
+    * { box-sizing:border-box; }
+
+    html { scroll-behavior:smooth; }
+
+    body {
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--bb-black);
+      background:
+        radial-gradient(circle at top left, rgba(215,25,32,.18), transparent 34rem),
+        linear-gradient(180deg, #fff 0%, #f5f5f6 100%);
+      line-height:1.5;
+    }
+
+    a { color:inherit; }
+
+    .wrap {
+      width:min(var(--bb-max), calc(100% - 32px));
+      margin-inline:auto;
+    }
+
+    .hero {
+      background:
+        linear-gradient(135deg, rgba(11,11,13,.96), rgba(29,29,34,.92)),
+        linear-gradient(90deg, var(--bb-red), transparent);
+      color:var(--bb-white);
+      padding:56px 0 44px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::after {
+      content:"BB";
+      position:absolute;
+      right:-38px;
+      bottom:-92px;
+      font-size:260px;
+      font-weight:900;
+      line-height:1;
+      color:rgba(255,255,255,.045);
+      letter-spacing:-24px;
+    }
+
+    .eyebrow {
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      font-weight:800;
+      color:#ffd7d9;
+      margin-bottom:18px;
+    }
+
+    .eyebrow::before {
+      content:"";
+      width:34px;
+      height:4px;
+      background:var(--bb-red);
+      border-radius:999px;
+    }
+
+    h1 {
+      margin:0;
+      max-width:780px;
+      font-size:clamp(34px, 6vw, 72px);
+      line-height:.95;
+      letter-spacing:-.055em;
+    }
+
+    .hero p {
+      max-width:720px;
+      margin:22px 0 0;
+      color:#f1f1f2;
+      font-size:clamp(17px, 2vw, 22px);
+    }
+
+    .hero-actions {
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:28px;
+    }
+
+    .btn {
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:48px;
+      padding:12px 18px;
+      border-radius:999px;
+      border:2px solid transparent;
+      text-decoration:none;
+      font-weight:800;
+      cursor:pointer;
+    }
+
+    .btn-primary { background:var(--bb-red); color:#fff; }
+    .btn-primary:hover { background:var(--bb-red-dark); }
+    .btn-secondary { border-color:rgba(255,255,255,.45); color:#fff; }
+    .btn-secondary:hover { background:rgba(255,255,255,.08); }
+
+    .intro {
+      padding:34px 0 12px;
+    }
+
+    .note {
+      background:#fff;
+      border:1px solid var(--bb-border);
+      border-left:7px solid var(--bb-red);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:0 10px 28px rgba(0,0,0,.06);
+    }
+
+    .note strong { display:block; margin-bottom:5px; }
+
+    .section-title {
+      margin:44px 0 18px;
+      display:flex;
+      gap:14px;
+      align-items:end;
+      justify-content:space-between;
+      flex-wrap:wrap;
+    }
+
+    .section-title h2 {
+      margin:0;
+      font-size:clamp(26px, 3.5vw, 42px);
+      letter-spacing:-.035em;
+      line-height:1;
+    }
+
+    .section-title p {
+      margin:0;
+      color:var(--bb-gray);
+      max-width:620px;
+    }
+
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:18px;
+      padding-bottom:18px;
+    }
+
+    .card {
+      background:var(--bb-white);
+      border:1px solid var(--bb-border);
+      border-radius:var(--bb-radius);
+      overflow:hidden;
+      box-shadow:0 12px 30px rgba(0,0,0,.06);
+    }
+
+    .concept-art {
+      min-height:240px;
+      background:#111;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:26px;
+      color:#fff;
+      position:relative;
+    }
+
+    .concept-art::after {
+      content:attr(data-label);
+      position:absolute;
+      top:16px;
+      left:16px;
+      padding:6px 10px;
+      border-radius:999px;
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+      font-size:12px;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.09em;
+    }
+
+    .mark {
+      width:200px;
+      height:200px;
+      display:grid;
+      place-items:center;
+    }
+
+    .mark svg { width:100%; height:100%; overflow:visible; }
+
+    .card-body { padding:22px; }
+
+    .card h3 {
+      margin:0 0 8px;
+      font-size:25px;
+      letter-spacing:-.025em;
+    }
+
+    .tagline {
+      color:var(--bb-red);
+      font-weight:900;
+      margin:0 0 12px;
+    }
+
+    .card p { margin:0 0 14px; color:#33343a; }
+
+    .card ul {
+      margin:0;
+      padding-left:20px;
+      color:#33343a;
+    }
+
+    .card li { margin:6px 0; }
+
+    .feedback {
+      margin:46px 0 64px;
+      background:#fff;
+      border:1px solid var(--bb-border);
+      border-radius:var(--bb-radius);
+      box-shadow:var(--bb-shadow);
+      overflow:hidden;
+    }
+
+    .feedback-head {
+      background:var(--bb-black);
+      color:#fff;
+      padding:24px;
+    }
+
+    .feedback-head h2 { margin:0; font-size:32px; letter-spacing:-.035em; }
+    .feedback-head p { margin:8px 0 0; color:#e4e4e7; }
+
+    form {
+      padding:24px;
+      display:grid;
+      gap:18px;
+    }
+
+    fieldset {
+      border:1px solid var(--bb-border);
+      border-radius:18px;
+      padding:18px;
+      margin:0;
+    }
+
+    legend {
+      padding:0 8px;
+      font-weight:900;
+    }
+
+    label {
+      display:block;
+      font-weight:800;
+      margin-bottom:8px;
+    }
+
+    input, select, textarea {
+      width:100%;
+      border:1px solid #cfd0d6;
+      border-radius:12px;
+      padding:12px 13px;
+      font:inherit;
+      background:#fff;
+    }
+
+    textarea { min-height:110px; resize:vertical; }
+
+    .choice-grid {
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:10px;
+    }
+
+    .choice {
+      display:flex;
+      gap:9px;
+      align-items:flex-start;
+      padding:11px;
+      border:1px solid var(--bb-border);
+      border-radius:12px;
+      font-weight:700;
+      background:#fafafa;
+    }
+
+    .choice input {
+      width:auto;
+      margin-top:3px;
+    }
+
+    .form-actions {
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .btn-dark {
+      background:var(--bb-black);
+      color:#fff;
+    }
+
+    .small {
+      color:var(--bb-gray);
+      font-size:14px;
+      margin:0;
+    }
+
+    .footer {
+      background:var(--bb-black);
+      color:#fff;
+      padding:28px 0;
+    }
+
+    .footer p { margin:0; color:#d5d5d8; }
+
+    /* Concept-specific art */
+    .signal { background:linear-gradient(135deg, #08080a, #2a0b0e); }
+    .crest { background:linear-gradient(135deg, #151515, #3b1115); }
+    .coach { background:linear-gradient(135deg, #08080a, #202027); }
+    .human { background:linear-gradient(135deg, #fff, #efeff2); color:#111; }
+
+    .street { background:linear-gradient(135deg, #0d0d10, #1d1d22); }
+    .responder { background:linear-gradient(135deg, #21080a, #111); }
+
+    @media (max-width: 780px) {
+      .grid { grid-template-columns:1fr; }
+      .choice-grid { grid-template-columns:1fr; }
+      .hero { padding:42px 0 34px; }
+      .concept-art { min-height:220px; }
+      .mark { width:178px; height:178px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">BetterBodies TX Rebrand</div>
+      <h1>Logo concept directions for a stronger, more local brand.</h1>
+      <p>
+        These are rough creative territories, not final artwork. The goal is to find the direction that feels most like BetterBodies: Austin-rooted, hands-on, practical, strong, and ready for CPR, BLS, crisis response, self-defense, and future training services.
+      </p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#concepts">Review concepts</a>
+        <a class="btn btn-secondary" href="#feedback">Leave feedback</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="wrap">
+        <div class="note">
+          <strong>How to review this page</strong>
+          Don’t worry about exact colors, fonts, or tiny details yet. Focus on the overall feeling: which direction feels most authentic, memorable, local, trustworthy, and flexible enough for all BetterBodies services?
+        </div>
+
+        <div class="section-title" id="concepts">
+          <h2>Creative directions</h2>
+          <p>Each option can be refined into a clean logo system with a primary mark, website header version, badge version, and service-specific variants.</p>
+        </div>
+
+        <div class="grid">
+          <article class="card">
+            <div class="concept-art signal" data-label="Concept A">
+              <div class="mark">
+                <svg viewBox="0 0 220 220" role="img" aria-label="Austin Signal concept">
+                  <circle cx="110" cy="110" r="92" fill="none" stroke="#fff" stroke-width="8"/>
+                  <path d="M35 126 H66 L78 90 L96 146 L113 104 L126 126 H185" fill="none" stroke="#d71920" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M56 116 V90 H74 V116 M86 116 V74 H105 V116 M117 116 V84 H137 V116 M149 116 V96 H166 V116" fill="none" stroke="#fff" stroke-width="7" stroke-linejoin="round"/>
+                  <text x="110" y="178" text-anchor="middle" fill="#fff" font-size="30" font-weight="900" font-family="Arial">BBTX</text>
+                  <polygon points="110,38 115,49 127,50 118,58 121,70 110,64 99,70 102,58 93,50 105,49" fill="#d71920"/>
+                </svg>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3>The Austin Signal</h3>
+              <p class="tagline">Stay Ready, Austin.</p>
+              <p>A heartbeat line meets a simplified Austin skyline/Texas signal. This is the most local-facing direction.</p>
+              <ul>
+                <li>Best for Austin pride and community connection</li>
+                <li>Strong fit for CPR/BLS without feeling too clinical</li>
+                <li>Can become a clean badge, shirt graphic, or homepage hero mark</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="concept-art crest" data-label="Concept B">
+              <div class="mark">
+                <svg viewBox="0 0 220 220" role="img" aria-label="Preparedness Crest concept">
+                  <path d="M110 20 L178 46 V103 C178 148 151 181 110 200 C69 181 42 148 42 103 V46 Z" fill="#111" stroke="#fff" stroke-width="8"/>
+                  <path d="M110 20 V199 M43 99 H177" stroke="#fff" stroke-width="5" opacity=".55"/>
+                  <path d="M70 72 H91 V51 H108 V72 H129 V89 H108 V110 H91 V89 H70 Z" fill="#d71920"/>
+                  <path d="M125 68 h13 l10-18 13 42 9-20 h10" fill="none" stroke="#d71920" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M65 135 L88 116 L111 135 L88 154 Z" fill="none" stroke="#fff" stroke-width="6"/>
+                  <path d="M133 122 L160 122 L146 154 Z" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
+                  <text x="110" y="182" text-anchor="middle" fill="#d71920" font-size="31" font-weight="900" font-family="Arial">BB</text>
+                </svg>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3>The Preparedness Crest</h3>
+              <p class="tagline">CPR • BLS • Crisis • Defense</p>
+              <p>A structured shield crest that represents BetterBodies as a complete preparedness training brand.</p>
+              <ul>
+                <li>Best for multi-service positioning</li>
+                <li>Feels official, strong, and certification-friendly</li>
+                <li>Great for patches, certificates, course materials, and apparel</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="concept-art coach" data-label="Concept C">
+              <div class="mark">
+                <svg viewBox="0 0 220 220" role="img" aria-label="Coach Mark concept">
+                  <circle cx="110" cy="62" r="24" fill="#fff"/>
+                  <path d="M78 103 C88 88 132 88 142 103 L154 166 H66 Z" fill="#fff"/>
+                  <path d="M82 117 H138" stroke="#d71920" stroke-width="8" stroke-linecap="round"/>
+                  <path d="M62 111 C42 119 31 135 28 155" fill="none" stroke="#d71920" stroke-width="10" stroke-linecap="round"/>
+                  <path d="M158 111 C180 112 194 124 201 143" fill="none" stroke="#d71920" stroke-width="10" stroke-linecap="round"/>
+                  <rect x="84" y="124" width="52" height="34" rx="8" fill="#111"/>
+                  <text x="110" y="149" text-anchor="middle" fill="#fff" font-size="21" font-weight="900" font-family="Arial">BB</text>
+                  <path d="M45 184 H175" stroke="#d71920" stroke-width="8" stroke-linecap="round"/>
+                </svg>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3>The Coach Mark</h3>
+              <p class="tagline">Train With the Man With the Plan.</p>
+              <p>A founder-led/instructor-led direction built around the idea that Sheldon’s presence is the trust signal.</p>
+              <ul>
+                <li>Best if Sheldon should be central to the brand</li>
+                <li>Feels personal, hands-on, and real</li>
+                <li>Works well with real photography and instructor storytelling</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="concept-art human" data-label="Concept D">
+              <div class="mark">
+                <svg viewBox="0 0 220 220" role="img" aria-label="Human Pulse concept">
+                  <path d="M110 23 C140 23 165 47 165 78 C165 118 110 153 110 153 C110 153 55 118 55 78 C55 47 80 23 110 23 Z" fill="#fff" stroke="#111" stroke-width="7"/>
+                  <circle cx="110" cy="74" r="18" fill="#111"/>
+                  <path d="M84 140 C88 115 99 100 110 100 C121 100 132 115 136 140" fill="none" stroke="#111" stroke-width="12" stroke-linecap="round"/>
+                  <path d="M33 119 H72 L83 101 L96 145 L111 80 L126 137 L137 119 H188" fill="none" stroke="#d71920" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <text x="110" y="190" text-anchor="middle" fill="#111" font-size="22" font-weight="900" font-family="Arial">HUMAN PULSE</text>
+                  <text x="110" y="209" text-anchor="middle" fill="#d71920" font-size="13" font-weight="900" font-family="Arial">CONFIDENCE THROUGH TRAINING</text>
+                </svg>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3>The Human Pulse</h3>
+              <p class="tagline">Confidence Through Training.</p>
+              <p>A modern, cleaner mark using a human shape and pulse line. This is the least aggressive and most professional option.</p>
+              <ul>
+                <li>Best for healthcare workers, schools, and businesses</li>
+                <li>Simple, calm, and flexible</li>
+                <li>Can support CPR, BLS, and wellness-adjacent services</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="concept-art street" data-label="Concept E">
+              <div class="mark">
+                <svg viewBox="0 0 220 220" role="img" aria-label="Street Safe Badge concept">
+                  <path d="M28 64 L110 26 L192 64 V156 L110 194 L28 156 Z" fill="#d71920" stroke="#fff" stroke-width="7"/>
+                  <path d="M47 77 L110 48 L173 77 V143 L110 172 L47 143 Z" fill="#111" stroke="#fff" stroke-width="4"/>
+                  <text x="110" y="115" text-anchor="middle" fill="#fff" font-size="67" font-weight="900" font-family="Arial" letter-spacing="-8">BB</text>
+                  <path d="M61 133 H91 L100 117 L112 148 L123 128 H160" fill="none" stroke="#d71920" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <text x="110" y="153" text-anchor="middle" fill="#fff" font-size="15" font-weight="900" font-family="Arial">STAY READY</text>
+                </svg>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3>The Street-Safe Badge</h3>
+              <p class="tagline">Stay Ready.</p>
+              <p>A tougher patch-style direction with community safety energy. More street-smart than clinical.</p>
+              <ul>
+                <li>Best for apparel, community events, and self-defense tie-ins</li>
+                <li>Bold, memorable, and easy to recognize</li>
+                <li>Could be softened for the main website logo</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="concept-art responder" data-label="Concept F">
+              <div class="mark">
+                <svg viewBox="0 0 220 220" role="img" aria-label="Responder Mark concept">
+                  <path d="M110 20 C151 39 178 72 178 111 C178 156 148 186 110 202 C72 186 42 156 42 111 C42 72 69 39 110 20 Z" fill="#111" stroke="#fff" stroke-width="7"/>
+                  <path d="M67 133 C58 118 60 99 74 86 C84 77 98 77 108 87 L110 89 L112 87 C122 77 136 77 146 86 C160 99 162 118 153 133 C141 153 110 166 110 166 C110 166 79 153 67 133 Z" fill="#fff"/>
+                  <path d="M43 116 H78 L88 99 L101 139 L114 80 L128 128 L138 116 H177" fill="none" stroke="#d71920" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M57 82 C69 61 88 50 110 50 C132 50 151 61 163 82" fill="none" stroke="#d71920" stroke-width="8" stroke-linecap="round"/>
+                  <path d="M75 71 C85 62 97 57 110 57 C123 57 135 62 145 71" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+                  <text x="110" y="190" text-anchor="middle" fill="#fff" font-size="25" font-weight="900" font-family="Arial">RESPONDER</text>
+                </svg>
+              </div>
+            </div>
+            <div class="card-body">
+              <h3>The Responder Mark</h3>
+              <p class="tagline">Ready Hands. Steady Hearts.</p>
+              <p>A human/protective symbol focused on action: being ready to help when something happens.</p>
+              <ul>
+                <li>Best for an emotional, mission-driven brand</li>
+                <li>Connects CPR, crisis response, and community care</li>
+                <li>Feels less like a class provider and more like a readiness movement</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <section class="feedback" id="feedback">
+          <div class="feedback-head">
+            <h2>Sheldon’s feedback</h2>
+            <p>Use this to pick the direction that feels most like BetterBodies before we refine the actual logo.</p>
+          </div>
+
+          <form id="logoFeedbackForm" method="post" action="">
+            <fieldset>
+              <legend>Top choice</legend>
+              <label for="favorite">Which concept feels closest to BetterBodies?</label>
+              <select id="favorite" name="favorite_concept" required>
+                <option value="">Choose one</option>
+                <option>The Austin Signal</option>
+                <option>The Preparedness Crest</option>
+                <option>The Coach Mark</option>
+                <option>The Human Pulse</option>
+                <option>The Street-Safe Badge</option>
+                <option>The Responder Mark</option>
+                <option>A mix of multiple concepts</option>
+                <option>None of these yet</option>
+              </select>
+            </fieldset>
+
+            <fieldset>
+              <legend>Service fit</legend>
+              <label>Which concepts feel flexible enough for CPR, BLS, crisis response, self-defense, and future services?</label>
+              <div class="choice-grid">
+                <label class="choice"><input type="checkbox" name="flexible_concepts" value="Austin Signal"> Austin Signal</label>
+                <label class="choice"><input type="checkbox" name="flexible_concepts" value="Preparedness Crest"> Preparedness Crest</label>
+                <label class="choice"><input type="checkbox" name="flexible_concepts" value="Coach Mark"> Coach Mark</label>
+                <label class="choice"><input type="checkbox" name="flexible_concepts" value="Human Pulse"> Human Pulse</label>
+                <label class="choice"><input type="checkbox" name="flexible_concepts" value="Street-Safe Badge"> Street-Safe Badge</label>
+                <label class="choice"><input type="checkbox" name="flexible_concepts" value="Responder Mark"> Responder Mark</label>
+              </div>
+            </fieldset>
+
+            <fieldset>
+              <legend>Brand feeling</legend>
+              <label for="feelsRight">What feels right?</label>
+              <textarea id="feelsRight" name="what_feels_right" placeholder="Example: I like the local Austin feel, the shield, the pulse line, or the idea of making the brand feel more personal."></textarea>
+
+              <label for="feelsOff">What feels off or should be avoided?</label>
+              <textarea id="feelsOff" name="what_feels_off" placeholder="Example: Too medical, too gym-like, too aggressive, too corporate, not local enough, not enough Sheldon."></textarea>
+            </fieldset>
+
+            <fieldset>
+              <legend>Direction</legend>
+              <label for="mix">Would you combine pieces from different concepts?</label>
+              <textarea id="mix" name="combine_ideas" placeholder="Example: Use the Austin Signal idea, but with the stronger shield from the Preparedness Crest."></textarea>
+
+              <label for="notes">Any other notes?</label>
+              <textarea id="notes" name="additional_notes"></textarea>
+            </fieldset>
+
+            <div class="form-actions">
+              <button class="btn btn-dark" type="submit">Save feedback draft</button>
+              <p class="small">This version is static. Hook the form action to your backend/GitHub issue endpoint when ready.</p>
+            </div>
+          </form>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <p>BetterBodies TX logo exploration — rough concept presentation page.</p>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById("logoFeedbackForm");
+
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+
+      const data = new FormData(form);
+      const lines = [];
+
+      for (const [key, value] of data.entries()) {
+        lines.push(`${key}: ${value}`);
+      }
+
+      const blob = new Blob([lines.join("\\n")], { type: "text/plain" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "betterbodies-logo-feedback.txt";
+      a.click();
+      URL.revokeObjectURL(url);
+    });
+  </script>
+</body>
+</html>
