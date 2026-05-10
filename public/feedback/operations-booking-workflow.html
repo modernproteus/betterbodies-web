@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>BetterBodies Operations + Booking Workflow Survey</title>
+<style>
+      :root {
+        --bb-red: #d71920;
+        --bb-red-dark: #a90f16;
+        --bb-black: #0d0d0f;
+        --bb-charcoal: #242428;
+        --bb-gray: #f4f4f5;
+        --bb-border: #dedee3;
+        --bb-white: #fff;
+        --bb-muted: #64646d;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          sans-serif;
+        background: var(--bb-gray);
+        color: var(--bb-black);
+        line-height: 1.5;
+      }
+      a {
+        color: inherit;
+      }
+      .topbar {
+        background: linear-gradient(
+          135deg,
+          var(--bb-black),
+          var(--bb-charcoal)
+        );
+        color: #fff;
+        padding: 34px 18px;
+      }
+      .wrap {
+        max-width: 920px;
+        margin: 0 auto;
+      }
+      .eyebrow {
+        color: #ffb5b8;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        line-height: 1;
+        margin: 0.4rem 0 1rem;
+      }
+      .lead {
+        font-size: 1.08rem;
+        max-width: 780px;
+        color: #f1f1f3;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 18px 0 0;
+        color: #fff;
+        font-weight: 800;
+        text-decoration: none;
+        border-bottom: 2px solid var(--bb-red);
+      }
+      .card {
+        background: #fff;
+        border: 1px solid var(--bb-border);
+        border-radius: 18px;
+        padding: 22px;
+        margin: 18px 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      }
+      h2 {
+        font-size: 1.45rem;
+        margin: 0 0 10px;
+        border-left: 6px solid var(--bb-red);
+        padding-left: 12px;
+      }
+      h3 {
+        font-size: 1.05rem;
+        margin: 22px 0 8px;
+      }
+      .note,
+      .assumption {
+        background: #fff5f5;
+        border: 1px solid #ffd5d7;
+        border-radius: 14px;
+        padding: 14px;
+        color: #4b1114;
+        margin: 14px 0;
+      }
+      .assumption {
+        background: #f9fafb;
+        border-color: #e5e7eb;
+        color: #374151;
+      }
+      label {
+        display: block;
+        font-weight: 750;
+        margin: 18px 0 8px;
+      }
+      .hint {
+        display: block;
+        font-weight: 500;
+        color: var(--bb-muted);
+        font-size: 0.92rem;
+        margin-top: 3px;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="url"],
+      textarea,
+      select {
+        width: 100%;
+        border: 1px solid #cfcfd5;
+        border-radius: 12px;
+        padding: 12px 13px;
+        font: inherit;
+        background: #fff;
+      }
+      textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+      .options {
+        display: grid;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .option {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        font-weight: 500;
+        margin: 0;
+        background: #fafafa;
+        border: 1px solid #e8e8ec;
+        border-radius: 12px;
+        padding: 10px;
+      }
+      input[type="checkbox"],
+      input[type="radio"] {
+        margin-top: 4px;
+        accent-color: var(--bb-red);
+      }
+      .grid {
+        display: grid;
+        gap: 14px;
+      }
+      .two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .actions {
+        position: sticky;
+        bottom: 0;
+        background: rgba(244, 244, 245, 0.94);
+        backdrop-filter: blur(8px);
+        border-top: 1px solid var(--bb-border);
+        padding: 14px 18px;
+        margin-top: 24px;
+      }
+      button {
+        border: 0;
+        border-radius: 999px;
+        padding: 13px 20px;
+        background: var(--bb-red);
+        color: #fff;
+        font-weight: 850;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      button:hover {
+        background: var(--bb-red-dark);
+      }
+      .fineprint {
+        color: var(--bb-muted);
+        font-size: 0.88rem;
+        margin: 0.5rem 0 0;
+      }
+      .reference-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .ref-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #e5e7eb;
+        border-radius: 999px;
+        padding: 10px 13px;
+        text-decoration: none;
+        font-weight: 800;
+        background: #fff;
+      }
+      .ref-link:hover {
+        border-color: var(--bb-red);
+        color: var(--bb-red);
+      }
+      @media (max-width: 700px) {
+        .two {
+          grid-template-columns: 1fr;
+        }
+        .actions {
+          position: static;
+        }
+      }
+    </style>
+</head>
+<body>
+<header class="topbar">
+<div class="wrap">
+<a class="back-link" href="/feedback/index.html">
+          ← Back to Feedback Hub
+        </a>
+<div class="eyebrow">BetterBodies TX</div>
+<h1>Operations + Booking Workflow Survey</h1>
+<p class="lead">
+          This survey focuses on how the website should support the business:
+          scheduled classes, booking requests, Google Sheet or Calendar
+          management, group training inquiries, follow-up, and ongoing website
+          update requests.
+        </p>
+</div>
+</header>
+<main class="wrap">
+<section class="card">
+<h2>Working Model</h2>
+<p>
+          Since there is not currently a full booking system, the first version
+          can be request-first: show upcoming public classes when available, and
+          route everything else into a request form for follow-up.
+        </p>
+<div class="note">
+<strong>Possible MVP:</strong>
+          Sheldon or Juana maintains a Google Sheet of public classes. The
+          website reads that list and displays “Upcoming Classes.” Visitors can
+          request a listed class or submit a general request.
+        </div>
+</section>
+<form data-form-type="operations_booking_workflow" data-google-sheet-form="" name="betterbodies-operations-booking-workflow"><input name="form_type" type="hidden" value="operations_booking_workflow"/><input name="form_title" type="hidden" value="Operations + Booking Workflow Survey"/><input name="project_key" type="hidden" value="betterbodies-feedback-2026"/>
+<section class="card">
+<h2>1. Booking Language + Main Actions</h2>
+<label>
+            Since there is not currently a full online booking system, what
+            should the main website action say?
+          </label>
+<div class="options">
+<label class="option">
+<input name="main_booking_action" type="radio" value="Book Your CPR Class"/>
+              Book Your CPR Class
+            </label>
+<label class="option">
+<input name="main_booking_action" type="radio" value="Request a CPR Class"/>
+              Request a CPR Class
+            </label>
+<label class="option">
+<input name="main_booking_action" type="radio" value="Request Class Info"/>
+              Request Class Info
+            </label>
+<label class="option">
+<input name="main_booking_action" type="radio" value="Ask About Upcoming Classes"/>
+              Ask About Upcoming Classes
+            </label>
+<label class="option">
+<input name="main_booking_action" type="radio" value="View Upcoming Classes"/>
+              View Upcoming Classes
+            </label>
+<label class="option">
+<input name="main_booking_action" type="radio" value="Contact Sheldon"/>
+              Contact Sheldon
+            </label>
+<label class="option">
+<input name="main_booking_action" type="radio" value="Not sure"/>
+              Not sure
+            </label>
+</div>
+<label>What should happen when someone wants a class?</label>
+<div class="options">
+<label class="option">
+<input name="request_flow" type="checkbox" value="Submit a request form and Sheldon/Juana follows up"/>
+              Submit a request form and Sheldon/Juana follows up
+            </label>
+<label class="option">
+<input name="request_flow" type="checkbox" value="Call or text directly"/>
+              Call or text directly
+            </label>
+<label class="option">
+<input name="request_flow" type="checkbox" value="Email directly"/>
+              Email directly
+            </label>
+<label class="option">
+<input name="request_flow" type="checkbox" value="Choose from upcoming classes listed on the site"/>
+              Choose from upcoming classes listed on the site
+            </label>
+<label class="option">
+<input name="request_flow" type="checkbox" value="Use a third-party booking tool later"/>
+              Use a third-party booking tool later
+            </label>
+<label class="option">
+<input name="request_flow" type="checkbox" value="Not sure"/>
+              Not sure
+            </label>
+</div>
+<label>
+            What should the site say if someone is not sure which class they
+            need?
+            <textarea name="not_sure_guidance"></textarea>
+</label>
+</section>
+<section class="card">
+<h2>2. Upcoming Classes</h2>
+<label>Should we display upcoming classes on the site?</label>
+<div class="options">
+<label class="option">
+<input name="show_upcoming_classes" type="radio" value="Yes, show upcoming classes from a simple list"/>
+              Yes, show upcoming classes from a simple list
+            </label>
+<label class="option">
+<input name="show_upcoming_classes" type="radio" value="Yes, but only show public scheduled classes"/>
+              Yes, but only show public scheduled classes
+            </label>
+<label class="option">
+<input name="show_upcoming_classes" type="radio" value="Maybe later"/>
+              Maybe later
+            </label>
+<label class="option">
+<input name="show_upcoming_classes" type="radio" value="No, keep it request-only for now"/>
+              No, keep it request-only for now
+            </label>
+<label class="option">
+<input name="show_upcoming_classes" type="radio" value="Not sure"/>
+              Not sure
+            </label>
+</div>
+<label>
+            What should the site say if no upcoming classes are listed?
+          </label>
+<div class="options">
+<label class="option">
+<input name="no_classes_message" type="radio" value="Upcoming classes are being scheduled — request class info"/>
+              Upcoming classes are being scheduled — request class info
+            </label>
+<label class="option">
+<input name="no_classes_message" type="radio" value="Contact Sheldon for upcoming availability"/>
+              Contact Sheldon for upcoming availability
+            </label>
+<label class="option">
+<input name="no_classes_message" type="radio" value="Request a class for your group or organization"/>
+              Request a class for your group or organization
+            </label>
+<label class="option">
+<input name="no_classes_message" type="radio" value="Hide the schedule section completely"/>
+              Hide the schedule section completely
+            </label>
+<label class="option">
+<input name="no_classes_message" type="radio" value="Not sure"/>
+              Not sure
+            </label>
+</div>
+<label>
+            What class details should show publicly?
+            <span class="hint">
+              Choose any that should appear on the website.
+            </span>
+</label>
+<div class="options">
+<label class="option">
+<input name="public_class_details" type="checkbox" value="Class title"/>
+              Class title
+            </label>
+<label class="option">
+<input name="public_class_details" type="checkbox" value="Class type"/>
+              Class type
+            </label>
+<label class="option">
+<input name="public_class_details" type="checkbox" value="Date"/>
+              Date
+            </label>
+<label class="option">
+<input name="public_class_details" type="checkbox" value="Start time"/>
+              Start time
+            </label>
+<label class="option">
+<input name="public_class_details" type="checkbox" value="End time"/>
+              End time
+            </label>
+<label class="option">
+<input name="public_class_details" type="checkbox" value="General location"/>
+              General location
+            </label>
+<label class="option">
+<input name="public_class_details" type="checkbox" value="Full address"/>
+              Full address
+            </label>
+<label class="option">
+<input name="public_class_details" type="checkbox" value="Price"/>
+              Price
+            </label>
+<label class="option">
+<input name="public_class_details" type="checkbox" value="Seats available"/>
+              Seats available
+            </label>
+<label class="option">
+<input name="public_class_details" type="checkbox" value="Registration/request button"/>
+              Registration/request button
+            </label>
+<label class="option">
+<input name="public_class_details" type="checkbox" value="Notes"/>
+              Notes
+            </label>
+<label class="option">
+<input name="public_class_details" type="checkbox" value="Instructor name"/>
+              Instructor name
+            </label>
+</div>
+<label>What should happen when someone clicks a listed class?</label>
+<div class="options">
+<label class="option">
+<input name="listed_class_click" type="radio" value="Open a request form with that class preselected"/>
+              Open a request form with that class preselected
+            </label>
+<label class="option">
+<input name="listed_class_click" type="radio" value="Open a phone/text link"/>
+              Open a phone/text link
+            </label>
+<label class="option">
+<input name="listed_class_click" type="radio" value="Open an email"/>
+              Open an email
+            </label>
+<label class="option">
+<input name="listed_class_click" type="radio" value="Open a payment/registration link if available"/>
+              Open a payment/registration link if available
+            </label>
+<label class="option">
+<input name="listed_class_click" type="radio" value="Show class details only"/>
+              Show class details only
+            </label>
+<label class="option">
+<input name="listed_class_click" type="radio" value="Not sure"/>
+              Not sure
+            </label>
+</div>
+</section>
+<section class="card">
+<h2>3. Google Sheet vs Calendar</h2>
+<label>Would a Google Sheet be a good temporary event manager?</label>
+<div class="assumption">
+<strong>Working assumption:</strong>
+            A Google Sheet may be easier than JSON or redeploying. Sheldon or
+            Juana could update rows, and the website could display published
+            rows.
+          </div>
+<div class="options">
+<label class="option">
+<input name="google_sheet_fit" type="radio" value="Yes, Google Sheet sounds easiest"/>
+              Yes, Google Sheet sounds easiest
+            </label>
+<label class="option">
+<input name="google_sheet_fit" type="radio" value="Maybe, but I prefer Google Calendar"/>
+              Maybe, but I prefer Google Calendar
+            </label>
+<label class="option">
+<input name="google_sheet_fit" type="radio" value="Maybe, but I prefer manual website updates for now"/>
+              Maybe, but I prefer manual website updates for now
+            </label>
+<label class="option">
+<input name="google_sheet_fit" type="radio" value="No, I want a real booking system"/>
+              No, I want a real booking system
+            </label>
+<label class="option">
+<input name="google_sheet_fit" type="radio" value="Not sure"/>
+              Not sure
+            </label>
+</div>
+<label>Who should manage the class list?</label>
+<div class="options">
+<label class="option">
+<input name="class_list_manager" type="checkbox" value="Sheldon"/>
+              Sheldon
+            </label>
+<label class="option">
+<input name="class_list_manager" type="checkbox" value="Juana"/>
+              Juana
+            </label>
+<label class="option">
+<input name="class_list_manager" type="checkbox" value="Nick"/>
+              Nick
+            </label>
+<label class="option">
+<input name="class_list_manager" type="checkbox" value="Sheldon or Juana through a Google Sheet"/>
+              Sheldon or Juana through a Google Sheet
+            </label>
+<label class="option">
+<input name="class_list_manager" type="checkbox" value="Someone else"/>
+              Someone else
+            </label>
+<label class="option">
+<input name="class_list_manager" type="checkbox" value="Not sure"/>
+              Not sure
+            </label>
+</div>
+<label>
+            If using a Google Sheet, what columns would be easiest to maintain?
+            <textarea name="sheet_columns" placeholder="Status, class title, date, time, location, price, seats, notes, registration link..."></textarea>
+</label>
+<label>
+            Any concerns about using a public Google Sheet or public class list?
+            <textarea name="sheet_concerns"></textarea>
+</label>
+</section>
+<section class="card">
+<h2>4. Contact + Follow-up Workflow</h2>
+<label>Who should receive class requests from the website?</label>
+<div class="options">
+<label class="option">
+<input name="request_recipients" type="checkbox" value="Sheldon"/>
+              Sheldon
+            </label>
+<label class="option">
+<input name="request_recipients" type="checkbox" value="Juana"/>
+              Juana
+            </label>
+<label class="option">
+<input name="request_recipients" type="checkbox" value="Nick"/>
+              Nick
+            </label>
+<label class="option">
+<input name="request_recipients" type="checkbox" value="Shared email inbox"/>
+              Shared email inbox
+            </label>
+<label class="option">
+<input name="request_recipients" type="checkbox" value="Not sure"/>
+              Not sure
+            </label>
+</div>
+<label>What contact info should the form collect?</label>
+<div class="options">
+<label class="option">
+<input name="contact_fields" type="checkbox" value="Name"/>
+              Name
+            </label>
+<label class="option">
+<input name="contact_fields" type="checkbox" value="Email"/>
+              Email
+            </label>
+<label class="option">
+<input name="contact_fields" type="checkbox" value="Phone"/>
+              Phone
+            </label>
+<label class="option">
+<input name="contact_fields" type="checkbox" value="Preferred contact method"/>
+              Preferred contact method
+            </label>
+<label class="option">
+<input name="contact_fields" type="checkbox" value="Service needed"/>
+              Service needed
+            </label>
+<label class="option">
+<input name="contact_fields" type="checkbox" value="Preferred timing"/>
+              Preferred timing
+            </label>
+<label class="option">
+<input name="contact_fields" type="checkbox" value="Group size"/>
+              Group size
+            </label>
+<label class="option">
+<input name="contact_fields" type="checkbox" value="Organization name"/>
+              Organization name
+            </label>
+<label class="option">
+<input name="contact_fields" type="checkbox" value="Message"/>
+              Message
+            </label>
+</div>
+<label>What should happen after a request is submitted?</label>
+<div class="options">
+<label class="option">
+<input name="post_submit_flow" type="radio" value="Email notification only"/>
+              Email notification only
+            </label>
+<label class="option">
+<input name="post_submit_flow" type="radio" value="Email plus text notification"/>
+              Email plus text notification
+            </label>
+<label class="option">
+<input name="post_submit_flow" type="radio" value="Create a GitHub issue/task"/>
+              Create a GitHub issue/task
+            </label>
+<label class="option">
+<input name="post_submit_flow" type="radio" value="Add to a Google Sheet or CRM later"/>
+              Add to a Google Sheet or CRM later
+            </label>
+<label class="option">
+<input name="post_submit_flow" type="radio" value="Not sure"/>
+              Not sure
+            </label>
+</div>
+<label>
+            What response time should the website promise, if any?
+            <input name="response_time_promise" placeholder="Example: We’ll follow up within 1 business day" type="text"/>
+</label>
+</section>
+<section class="card">
+<h2>5. Group / On-Site Training</h2>
+<label>How should group/on-site training be handled?</label>
+<div class="options">
+<label class="option">
+<input name="group_training_flow" type="radio" value="Separate request form"/>
+              Separate request form
+            </label>
+<label class="option">
+<input name="group_training_flow" type="radio" value="Same contact form with group training option"/>
+              Same contact form with group training option
+            </label>
+<label class="option">
+<input name="group_training_flow" type="radio" value="Phone/text only"/>
+              Phone/text only
+            </label>
+<label class="option">
+<input name="group_training_flow" type="radio" value="Email only"/>
+              Email only
+            </label>
+<label class="option">
+<input name="group_training_flow" type="radio" value="Not sure"/>
+              Not sure
+            </label>
+</div>
+<label>
+            What group training details should we collect?
+            <textarea name="group_training_fields" placeholder="Organization, location, number of participants, preferred dates, training type, special requirements..."></textarea>
+</label>
+<label>Should group training be a main CTA or secondary CTA?</label>
+<select name="group_training_cta_priority">
+<option value="">Select one</option>
+<option>Main CTA alongside CPR class requests</option>
+<option>Secondary CTA below individual class booking</option>
+<option>Dedicated section only</option>
+<option>Not sure</option>
+</select>
+</section>
+<section class="card">
+<h2>6. Website Update Requests</h2>
+<label>
+            Would it be useful to have a private/simple website request form for
+            future updates?
+          </label>
+<div class="options">
+<label class="option">
+<input name="site_update_form_useful" type="radio" value="Yes, that would be helpful"/>
+              Yes, that would be helpful
+            </label>
+<label class="option">
+<input name="site_update_form_useful" type="radio" value="Maybe later"/>
+              Maybe later
+            </label>
+<label class="option">
+<input name="site_update_form_useful" type="radio" value="No, text/email is enough"/>
+              No, text/email is enough
+            </label>
+<label class="option">
+<input name="site_update_form_useful" type="radio" value="Not sure"/>
+              Not sure
+            </label>
+</div>
+<label>What kinds of requests should that form support?</label>
+<div class="options">
+<label class="option">
+<input name="site_update_request_types" type="checkbox" value="Class schedule updates"/>
+              Class schedule updates
+            </label>
+<label class="option">
+<input name="site_update_request_types" type="checkbox" value="Photo/image changes"/>
+              Photo/image changes
+            </label>
+<label class="option">
+<input name="site_update_request_types" type="checkbox" value="Text/copy updates"/>
+              Text/copy updates
+            </label>
+<label class="option">
+<input name="site_update_request_types" type="checkbox" value="New testimonials"/>
+              New testimonials
+            </label>
+<label class="option">
+<input name="site_update_request_types" type="checkbox" value="Pricing updates"/>
+              Pricing updates
+            </label>
+<label class="option">
+<input name="site_update_request_types" type="checkbox" value="New pages"/>
+              New pages
+            </label>
+<label class="option">
+<input name="site_update_request_types" type="checkbox" value="Bug fixes"/>
+              Bug fixes
+            </label>
+<label class="option">
+<input name="site_update_request_types" type="checkbox" value="SEO/content ideas"/>
+              SEO/content ideas
+            </label>
+</div>
+<label>Would seeing status on submitted requests be useful?</label>
+<select name="status_dashboard_useful">
+<option value="">Select one</option>
+<option>Yes, show submitted / in review / done</option>
+<option>Maybe later</option>
+<option>No, not needed</option>
+<option>Not sure</option>
+</select>
+</section>
+<section class="card">
+<h2>7. Final Operations Notes</h2>
+<label>
+            Any notes about booking, scheduling, class capacity, payment,
+            follow-up, or operations?
+            <textarea name="operations_notes"></textarea>
+</label>
+<label>
+            What would make this workflow easy for Sheldon and Juana to
+            maintain?
+            <textarea name="easy_maintenance"></textarea>
+</label>
+</section>
+<div class="actions">
+<div class="wrap">
+<button type="submit">Submit Operations + Booking Feedback</button>
+<p class="fineprint">
+              After submitting, your responses will be saved for Nick to review.
+            </p>
+</div>
+</div><p aria-live="polite" class="fineprint" data-form-status="" role="status">After submitting, your responses will be saved for Nick to review.</p>
+</form>
+</main>
+<script defer="" src="/assets/js/google-sheet-submit.js"></script></body>
+</html>

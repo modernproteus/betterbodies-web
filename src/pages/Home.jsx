@@ -12,7 +12,7 @@ import FAQSection from "../components/homepage/FAQSection";
 import ContactForm from "../components/homepage/ContactForm";
 import FooterCTA from "../components/homepage/FooterCTA";
 import StickyBookingBar from "../components/homepage/StickyBookingBar";
-
+import CommunityResource from "../components/homepage/CommunityResource";
 const HERO_IMAGE = "/images/hero-cpr-training-austin.png";
 
 export default function Home() {
@@ -45,6 +45,8 @@ export default function Home() {
       <div id="faq">
         <FAQSection />
       </div>
+
+      <CommunityResource />
 
       <ContactForm />
 

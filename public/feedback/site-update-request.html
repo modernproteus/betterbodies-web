@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>BetterBodies Website Update Request</title>
+<style>
+      :root {
+        --bb-red: #d71920;
+        --bb-red-dark: #a90f16;
+        --bb-black: #0b0b0f;
+        --bb-charcoal: #1a1b22;
+        --bb-gray: #6b7280;
+        --bb-light: #f6f7f9;
+        --bb-white: #fff;
+        --bb-border: #e5e7eb;
+        --radius: 18px;
+        --shadow: 0 18px 45px rgba(11, 11, 15, 0.12);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background: var(--bb-light);
+        color: var(--bb-black);
+        line-height: 1.5;
+      }
+      .wrap {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0 18px;
+      }
+      .hero {
+        background: radial-gradient(
+            circle at top right,
+            rgba(215, 25, 32, 0.35),
+            transparent 32rem
+          ),
+          linear-gradient(135deg, var(--bb-black), var(--bb-charcoal));
+        color: #fff;
+        padding: 34px 0;
+      }
+      .back-link {
+        display: inline-flex;
+        margin-bottom: 18px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 800;
+        border-bottom: 2px solid var(--bb-red);
+      }
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 12px;
+        font-weight: 900;
+        color: #ffd6d8;
+      }
+      .hero h1 {
+        font-size: clamp(32px, 5vw, 56px);
+        line-height: 1;
+        margin: 12px 0;
+      }
+      .hero p {
+        max-width: 760px;
+        color: #eef0f4;
+        font-size: 18px;
+      }
+      .main {
+        padding: 24px 0 56px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid var(--bb-border);
+        border-radius: var(--radius);
+        padding: 22px;
+        margin: 18px 0;
+        box-shadow: 0 10px 28px rgba(11, 11, 15, 0.07);
+      }
+      h2 {
+        margin: 0 0 12px;
+        font-size: 25px;
+        border-left: 6px solid var(--bb-red);
+        padding-left: 12px;
+      }
+      label {
+        display: block;
+        font-weight: 850;
+        margin: 16px 0 6px;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      input,
+      textarea,
+      select {
+        width: 100%;
+        border: 1px solid var(--bb-border);
+        border-radius: 12px;
+        padding: 12px;
+        font: inherit;
+        background: #fff;
+      }
+      textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+      .note {
+        background: #fff5f5;
+        border: 1px solid #ffd5d7;
+        border-radius: 14px;
+        padding: 14px;
+        color: #3f4652;
+      }
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+      .btn {
+        border: 0;
+        border-radius: 999px;
+        padding: 13px 18px;
+        font-weight: 900;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+      }
+      .btn-primary {
+        background: var(--bb-red);
+        color: #fff;
+      }
+      .btn-primary:hover {
+        background: var(--bb-red-dark);
+      }
+      .btn-secondary {
+        background: var(--bb-black);
+        color: #fff;
+      }
+      .helper {
+        color: var(--bb-gray);
+        font-size: 14px;
+        margin: 4px 0 0;
+      }
+      .output {
+        white-space: pre-wrap;
+        background: #101116;
+        color: #f5f5f5;
+        border-radius: 14px;
+        padding: 16px;
+        overflow: auto;
+        margin-top: 14px;
+        display: none;
+      }
+      @media (max-width: 720px) {
+        .row {
+          grid-template-columns: 1fr;
+        }
+        .actions .btn {
+          width: 100%;
+        }
+      }
+    </style>
+</head>
+<body>
+<header class="hero">
+<div class="wrap">
+<a class="back-link" href="/feedback/index.html">
+          ← Back to Feedback Hub
+        </a>
+<div class="eyebrow">BetterBodies Ongoing Workflow</div>
+<h1>Website Update Request</h1>
+<p>
+          Use this form for content changes, schedule updates, photo swaps,
+          corrections, new page ideas, or other website requests. Later this can
+          submit directly into GitHub Issues.
+        </p>
+</div>
+</header>
+<main class="main">
+<form class="wrap" data-form-type="site_update_request" data-google-sheet-form="" id="requestForm"><input name="form_type" type="hidden" value="site_update_request"/><input name="form_title" type="hidden" value="Website Update Request"/><input name="project_key" type="hidden" value="betterbodies-feedback-2026"/>
+<section class="card">
+<h2>Request details</h2>
+<div class="note">
+<strong>Current mode:</strong>
+            this page creates a formatted request you can download or copy. Next
+            step: connect the submit button to a private GitHub Issue endpoint.
+          </div>
+<label for="title">Request title</label>
+<input id="title" name="title" placeholder="Update CPR class schedule" required=""/>
+<div class="row">
+<div>
+<label for="type">Request type</label>
+<select id="type" name="request_type" required="">
+<option value="">Choose one</option>
+<option>Content update</option>
+<option>Photo / image update</option>
+<option>Schedule / class update</option>
+<option>Pricing update</option>
+<option>New page request</option>
+<option>Bug / fix</option>
+<option>Design / layout request</option>
+<option>SEO / content idea</option>
+<option>Other</option>
+</select>
+</div>
+<div>
+<label for="priority">Priority</label>
+<select id="priority" name="priority">
+<option>Normal</option>
+<option>Low</option>
+<option>High</option>
+<option>Urgent</option>
+</select>
+</div>
+</div>
+<div class="row">
+<div>
+<label for="page">Page affected</label>
+<input id="page" name="page_affected" placeholder="Homepage, CPR page, footer, etc."/>
+</div>
+<div>
+<label for="deadline">Desired deadline</label>
+<input id="deadline" name="deadline" placeholder="No rush, Friday, before next class, etc."/>
+</div>
+</div>
+<label for="contact">Contact info</label>
+<input id="contact" name="contact" placeholder="Email, phone, or preferred contact method"/>
+</section>
+<section class="card">
+<h2>What needs to change?</h2>
+<label for="change">Describe the requested update</label>
+<textarea id="change" name="requested_change" placeholder="What should be added, changed, removed, or fixed?" required=""></textarea>
+<label for="content">Exact copy/content to use</label>
+<textarea id="content" name="exact_content" placeholder="Paste exact wording, dates, pricing, names, or text here."></textarea>
+<label for="links">Image or file links</label>
+<textarea id="links" name="file_links" placeholder="Google Drive, Dropbox, image URL, social post, etc."></textarea>
+<label for="notes">Additional notes</label>
+<textarea id="notes" name="notes"></textarea>
+<div class="actions">
+<button class="btn btn-primary" type="submit">Submit Website Update Request</button>
+<button class="btn btn-secondary" id="copyButton" type="button">
+              Copy Markdown
+            </button>
+<a class="btn btn-secondary" href="/feedback/">Back to Hub</a>
+</div><p aria-live="polite" class="helper" data-form-status="" role="status">After submitting, your responses will be saved for Nick to review.</p>
+<p class="helper">
+            Submit the request to save it, or use Copy Markdown if you also want a formatted version.
+          </p>
+<pre class="output" id="output"></pre>
+</section>
+</form>
+</main>
+<script>
+const form = document.getElementById("requestForm");
+const output = document.getElementById("output");
+let latest = "";
+
+function val(name) {
+  return new FormData(form).get(name) || "Not provided";
+}
+
+function makeMarkdown() {
+  return `## Website Update Request\n\n**Title:** ${val("title")}\n**Request type:** ${val("request_type")}\n**Priority:** ${val("priority")}\n**Page affected:** ${val("page_affected")}\n**Deadline:** ${val("deadline")}\n**Contact:** ${val("contact")}\n\n## Requested Change\n\n${val("requested_change")}\n\n## Exact Copy / Content\n\n${val("exact_content")}\n\n## Image or File Links\n\n${val("file_links")}\n\n## Notes\n\n${val("notes")}\n`;
+}
+
+const copyButton = document.getElementById("copyButton");
+if (copyButton) {
+  copyButton.addEventListener("click", async () => {
+    latest = makeMarkdown();
+    if (output) {
+      output.textContent = latest;
+      output.style.display = "block";
+    }
+    try {
+      await navigator.clipboard.writeText(latest);
+      alert("Request markdown copied.");
+    } catch (e) {
+      alert("Copy failed. You can select the text manually.");
+    }
+  });
+}
+</script><script defer="" src="/assets/js/google-sheet-submit.js"></script></body>
+</html>

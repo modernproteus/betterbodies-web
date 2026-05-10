@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BetterBodies Feedback Status</title>
+    <style>
+      :root {
+        --bb-red: #d71920;
+        --bb-black: #0b0b0f;
+        --bb-charcoal: #1a1b22;
+        --bb-gray: #6b7280;
+        --bb-light: #f6f7f9;
+        --bb-white: #fff;
+        --bb-border: #e5e7eb;
+        --green: #176b35;
+        --yellow: #805a00;
+        --blue: #2458a6;
+        --radius: 18px;
+        --shadow: 0 18px 45px rgba(11, 11, 15, 0.12);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+        background: var(--bb-light);
+        color: var(--bb-black);
+        line-height: 1.5;
+      }
+      .wrap {
+        max-width: 1060px;
+        margin: 0 auto;
+        padding: 0 18px;
+      }
+      .hero {
+        background: radial-gradient(
+            circle at top right,
+            rgba(215, 25, 32, 0.35),
+            transparent 32rem
+          ),
+          linear-gradient(135deg, var(--bb-black), var(--bb-charcoal));
+        color: #fff;
+        padding: 34px 0;
+      }
+      .back-link {
+        display: inline-flex;
+        margin-bottom: 18px;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 800;
+        border-bottom: 2px solid var(--bb-red);
+      }
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 12px;
+        font-weight: 900;
+        color: #ffd6d8;
+      }
+      .hero h1 {
+        font-size: clamp(32px, 5vw, 56px);
+        line-height: 1;
+        margin: 12px 0;
+      }
+      .hero p {
+        max-width: 760px;
+        color: #eef0f4;
+        font-size: 18px;
+      }
+      .main {
+        padding: 24px 0 56px;
+      }
+      .card {
+        background: #fff;
+        border: 1px solid var(--bb-border);
+        border-radius: var(--radius);
+        padding: 22px;
+        margin: 18px 0;
+        box-shadow: 0 10px 28px rgba(11, 11, 15, 0.07);
+      }
+      h2 {
+        margin: 0 0 12px;
+        font-size: 25px;
+        border-left: 6px solid var(--bb-red);
+        padding-left: 12px;
+      }
+      .summary {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+      }
+      .metric {
+        background: #f7f8fa;
+        border: 1px solid var(--bb-border);
+        border-radius: 16px;
+        padding: 16px;
+      }
+      .metric strong {
+        display: block;
+        font-size: 30px;
+        line-height: 1;
+      }
+      .metric span {
+        color: var(--bb-gray);
+        font-weight: 750;
+      }
+      .status {
+        display: inline-flex;
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .ready {
+        background: #eaf7ee;
+        color: var(--green);
+      }
+      .review {
+        background: #fff6d8;
+        color: var(--yellow);
+      }
+      .future {
+        background: #edf1f7;
+        color: #49566b;
+      }
+      .done {
+        background: #e8f0ff;
+        color: var(--blue);
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        overflow: hidden;
+        border-radius: 14px;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 14px;
+        border-bottom: 1px solid var(--bb-border);
+        vertical-align: top;
+      }
+      th {
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #4b5563;
+        background: #f7f8fa;
+      }
+      tr:last-child td {
+        border-bottom: 0;
+      }
+      .note {
+        background: #fff5f5;
+        border: 1px solid #ffd5d7;
+        border-radius: 14px;
+        padding: 14px;
+        color: #3f4652;
+      }
+      .btn {
+        border: 0;
+        border-radius: 999px;
+        padding: 11px 15px;
+        font-weight: 900;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 42px;
+        background: var(--bb-black);
+        color: #fff;
+      }
+      @media (max-width: 800px) {
+        .summary {
+          grid-template-columns: 1fr 1fr;
+        }
+        table,
+        thead,
+        tbody,
+        tr,
+        th,
+        td {
+          display: block;
+        }
+        thead {
+          display: none;
+        }
+        td {
+          border-bottom: 0;
+          padding: 10px 0;
+        }
+        tr {
+          border-bottom: 1px solid var(--bb-border);
+          padding: 12px 0;
+        }
+        td::before {
+          content: attr(data-label);
+          display: block;
+          font-size: 12px;
+          text-transform: uppercase;
+          letter-spacing: 0.08em;
+          color: var(--bb-gray);
+          font-weight: 900;
+          margin-bottom: 3px;
+        }
+      }
+      @media (max-width: 520px) {
+        .summary {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <a class="back-link" href="/feedback/index.html">
+          ← Back to Feedback Hub
+        </a>
+        <div class="eyebrow">BetterBodies Rebrand Review</div>
+        <h1>Feedback + Request Status</h1>
+        <p>
+          A simple visibility page for what has been requested, submitted,
+          reviewed, or still needs attention. This is static for now and can
+          later be GitHub-powered.
+        </p>
+      </div>
+    </header>
+    <main class="main">
+      <div class="wrap">
+        <section class="card">
+          <h2>Current status snapshot</h2>
+          <div class="summary">
+            <div class="metric">
+              <strong>2</strong>
+              <span>Ready review pages</span>
+            </div>
+            <div class="metric">
+              <strong>4</strong>
+              <span>New pages added</span>
+            </div>
+            <div class="metric">
+              <strong>6</strong>
+              <span>Google Sheet-connected forms</span>
+            </div>
+            <div class="metric">
+              <strong>Next</strong>
+              <span>Distill responses into brand profile</span>
+            </div>
+          </div>
+        </section>
+        <section class="card">
+          <h2>Feedback pages</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Status</th>
+                <th>Purpose</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td data-label="Item">Brand + Website Direction</td>
+                <td data-label="Status">
+                  <span class="status ready">Ready</span>
+                </td>
+                <td data-label="Purpose">
+                  Core brand, services, audience, community, homepage feedback, and resource placement.
+                </td>
+                <td data-label="Link">
+                  <a
+                    class="btn"
+                    href="/feedback/brand-website-direction.html"
+                  >
+                    Open
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td data-label="Item">Logo Concept Review</td>
+                <td data-label="Status">
+                  <span class="status ready">Ready</span>
+                </td>
+                <td data-label="Purpose">
+                  Review visual directions and choose what feels most like
+                  BetterBodies.
+                </td>
+                <td data-label="Link">
+                  <a
+                    class="btn"
+                    href="/feedback/betterbodies-logo-concepts.html"
+                  >
+                    Open
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td data-label="Item">Photo + Content Inventory</td>
+                <td data-label="Status">
+                  <span class="status ready">Ready</span>
+                </td>
+                <td data-label="Purpose">
+                  Collect real photos, proof, testimonials, organizations, and
+                  visual assets.
+                </td>
+                <td data-label="Link">
+                  <a class="btn" href="/feedback/photo-content-inventory.html">
+                    Open
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td data-label="Item">Voice + Messaging Review</td>
+                <td data-label="Status">
+                  <span class="status ready">Ready</span>
+                </td>
+                <td data-label="Purpose">
+                  Review taglines, tone, homepage headlines, and words to
+                  use/avoid.
+                </td>
+                <td data-label="Link">
+                  <a class="btn" href="/feedback/voice-messaging-review.html">
+                    Open
+                  </a>
+                </td>
+              </tr>
+              <tr>
+                <td data-label="Item">Website Update Request</td>
+                <td data-label="Status">
+                  <span class="status review">Manual mode</span>
+                </td>
+                <td data-label="Purpose">
+                  Generate structured website requests before GitHub issue
+                  automation is connected.
+                </td>
+                <td data-label="Link">
+                  <a class="btn" href="/feedback/site-update-request.html">
+                    Open
+                  </a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+        <section class="card">
+          <h2>Submitted requests</h2>
+          <div class="note">
+            <strong>Future enhancement:</strong>
+            once forms submit to GitHub Issues, this section can list submitted
+            requests, priorities, statuses, and links to issue details. For
+            private repos, this page can show simplified status without exposing
+            the repo directly.
+          </div>
+        </section>
+        <section class="card">
+          <h2>Suggested status labels for GitHub later</h2>
+          <p>
+            <span class="status future">client-request</span>
+            <span class="status future">brand-feedback</span>
+            <span class="status future">logo-feedback</span>
+            <span class="status future">content-update</span>
+            <span class="status future">priority-high</span>
+            <span class="status future">needs-review</span>
+            <span class="status done">done</span>
+          </p>
+          <a class="btn" href="/feedback/">Back to Feedback Hub</a>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

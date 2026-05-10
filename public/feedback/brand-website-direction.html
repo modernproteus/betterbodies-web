@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>BetterBodies Brand + Website Feedback Survey</title>
+    <title>BetterBodies Brand + Website Direction Survey</title>
     <style>
       :root {
         --bb-red: #d71920;
+        --bb-red-dark: #a90f16;
         --bb-black: #0d0d0f;
         --bb-charcoal: #242428;
         --bb-gray: #f4f4f5;
@@ -24,6 +25,9 @@
         background: var(--bb-gray);
         color: var(--bb-black);
         line-height: 1.5;
+      }
+      a {
+        color: inherit;
       }
       .topbar {
         background: linear-gradient(
@@ -52,8 +56,18 @@
       }
       .lead {
         font-size: 1.08rem;
-        max-width: 760px;
+        max-width: 780px;
         color: #f1f1f3;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 18px 0 0;
+        color: #fff;
+        font-weight: 800;
+        text-decoration: none;
+        border-bottom: 2px solid var(--bb-red);
       }
       .card {
         background: #fff;
@@ -73,12 +87,19 @@
         font-size: 1.05rem;
         margin: 22px 0 8px;
       }
-      .note {
+      .note,
+      .assumption {
         background: #fff5f5;
         border: 1px solid #ffd5d7;
         border-radius: 14px;
         padding: 14px;
         color: #4b1114;
+        margin: 14px 0;
+      }
+      .assumption {
+        background: #f9fafb;
+        border-color: #e5e7eb;
+        color: #374151;
       }
       label {
         display: block;
@@ -94,6 +115,8 @@
       }
       input[type="text"],
       input[type="email"],
+      input[type="tel"],
+      input[type="url"],
       textarea,
       select {
         width: 100%;
@@ -135,121 +158,134 @@
       .two {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
+      .actions {
+        position: sticky;
+        bottom: 0;
+        background: rgba(244, 244, 245, 0.94);
+        backdrop-filter: blur(8px);
+        border-top: 1px solid var(--bb-border);
+        padding: 14px 18px;
+        margin-top: 24px;
+      }
+      button {
+        border: 0;
+        border-radius: 999px;
+        padding: 13px 20px;
+        background: var(--bb-red);
+        color: #fff;
+        font-weight: 850;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      button:hover {
+        background: var(--bb-red-dark);
+      }
+      .fineprint {
+        color: var(--bb-muted);
+        font-size: 0.88rem;
+        margin: 0.5rem 0 0;
+      }
+      .reference-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .ref-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #e5e7eb;
+        border-radius: 999px;
+        padding: 10px 13px;
+        text-decoration: none;
+        font-weight: 800;
+        background: #fff;
+      }
+      .ref-link:hover {
+        border-color: var(--bb-red);
+        color: var(--bb-red);
+      }
       @media (max-width: 700px) {
         .two {
           grid-template-columns: 1fr;
         }
-        .card {
-          padding: 18px;
+        .actions {
+          position: static;
         }
-        .topbar {
-          padding-top: 24px;
-        }
-      }
-      .assumption {
-        border-left: 4px solid var(--bb-red);
-        background: #fafafa;
-        padding: 12px 14px;
-        border-radius: 10px;
-        margin: 12px 0;
-        color: #333;
-      }
-      .actions {
-        position: sticky;
-        bottom: 0;
-        background: rgba(244, 244, 245, 0.92);
-        backdrop-filter: blur(8px);
-        padding: 14px 0;
-        border-top: 1px solid var(--bb-border);
-      }
-      button {
-        width: 100%;
-        border: 0;
-        border-radius: 999px;
-        background: var(--bb-red);
-        color: #fff;
-        font-weight: 900;
-        font-size: 1.05rem;
-        padding: 15px 18px;
-        cursor: pointer;
-      }
-      .fineprint {
-        font-size: 0.88rem;
-        color: var(--bb-muted);
-        margin-top: 10px;
-        text-align: center;
-      }
-      .back-link {
-        display: inline-flex;
-        align-items: center;
-        width: fit-content;
-        margin-bottom: 18px;
-        color: #111111;
-        font-weight: 800;
-        text-decoration: none;
-        border-bottom: 2px solid #d71920;
-      }
-
-      .back-link:hover {
-        color: #d71920;
       }
     </style>
   </head>
   <body>
     <header class="topbar">
       <div class="wrap">
+        <a class="back-link" href="/feedback/index.html">
+          ← Back to Feedback Hub
+        </a>
         <div class="eyebrow">BetterBodies TX</div>
-        <h1>Brand + Website Feedback Survey</h1>
+        <h1>Brand + Website Direction Survey</h1>
         <p class="lead">
-          We’re shaping the next version of BetterBodies around Sheldon’s real
-          story, Austin community roots, practical training style, and the
-          services people need most: CPR, BLS, crisis readiness, self-defense,
-          and group training.
+          This survey focuses on how BetterBodies should look, sound, and
+          present itself — Sheldon’s story, Austin/community roots, services,
+          visual direction, homepage clarity, and overall brand personality.
         </p>
       </div>
     </header>
-
     <main class="wrap">
-      <a class="back-link" href="/feedback/index.html">
-        ← Back to Feedback Hub
-      </a>
       <section class="card">
         <h2>Before You Start</h2>
         <p>
           This is not meant to put words in your mouth. A few questions include
           <strong>working assumptions</strong>
-          based on the current website/rebrand direction. Please confirm,
-          correct, or rewrite anything that does not feel true to BetterBodies.
+          based on the current rebrand direction. Please confirm, correct, or
+          rewrite anything that does not feel true to BetterBodies.
         </p>
         <div class="note">
           <strong>Working direction:</strong>
           BetterBodies should feel local to Austin, community-rooted,
-          professional, strong, practical, hands-on, and easy to book.
+          professional, strong, practical, hands-on, and easy to understand.
+        </div>
+        <div class="reference-links">
+          <a
+            class="ref-link"
+            href="/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open homepage preview ↗
+          </a>
+          <a
+            class="ref-link"
+            href="/feedback/betterbodies-logo-concepts.html"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open logo concepts ↗
+          </a>
+          <a
+            class="ref-link"
+            href="https://www.betterbodiestx.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Open current website ↗
+          </a>
         </div>
       </section>
-
-      <!-- Replace action with your backend endpoint, Formspree endpoint, or serverless function URL. -->
-
-      <form data-google-sheet-form data-form-type="operations_booking_workflow">
-        <input
-          type="hidden"
-          name="form_type"
-          value="operations_booking_workflow"
-        />
+      <form data-google-sheet-form data-form-type="brand_website_direction">
+        <input type="hidden" name="form_type" value="brand_website_direction" />
 
         <input
           type="hidden"
           name="form_title"
-          value="Operations + Booking Workflow"
+          value="Brand + Website Direction Survey"
         />
 
         <input
           type="hidden"
-          name="_subject"
-          value="BetterBodies survey submitted"
+          name="project_key"
+          value="betterbodies-feedback-2026"
         />
-        <input type="hidden" name="_template" value="table" />
-        <input type="hidden" name="form_type" value="brand_website_direction" />
         <section class="card">
           <h2>1. BetterBodies Mission</h2>
           <label>
@@ -319,6 +355,18 @@
             <label class="option">
               <input type="checkbox" name="teaching_style" value="Supportive" />
               Supportive
+            </label>
+            <label class="option">
+              <input type="checkbox" name="teaching_style" value="Patient" />
+              Patient
+            </label>
+            <label class="option">
+              <input
+                type="checkbox"
+                name="teaching_style"
+                value="High-energy"
+              />
+              High-energy
             </label>
           </div>
           <label>
@@ -404,6 +452,14 @@
               <input
                 type="radio"
                 name="homepage_focus"
+                value="CPR, BLS + First Aid"
+              />
+              CPR, BLS + First Aid
+            </label>
+            <label class="option">
+              <input
+                type="radio"
+                name="homepage_focus"
                 value="Full safety/preparedness brand"
               />
               Full safety/preparedness brand
@@ -418,21 +474,9 @@
             <textarea name="ideal_customer"></textarea>
           </label>
           <label>
-            What questions do people usually ask before booking?
-            <textarea name="common_questions"></textarea>
+            What are the biggest reasons people should choose BetterBodies?
+            <textarea name="reasons_choose_betterbodies"></textarea>
           </label>
-          <label>
-            What should people do first when they land on the website?
-          </label>
-          <select name="primary_action">
-            <option value="">Select one</option>
-            <option>Book a class</option>
-            <option>View schedule</option>
-            <option>Call</option>
-            <option>Text</option>
-            <option>Request group training</option>
-            <option>Learn about services</option>
-          </select>
         </section>
 
         <section class="card">
@@ -462,29 +506,7 @@
         </section>
 
         <section class="card">
-          <h2>6. Photos, Video + Content</h2>
-          <label>
-            What real photos or videos do you already have that we can use?
-            <textarea name="existing_media"></textarea>
-          </label>
-          <label>
-            Are you comfortable being featured heavily on the website?
-          </label>
-          <select name="sheldon_visibility">
-            <option value="">Select one</option>
-            <option>Yes, feature me prominently</option>
-            <option>Yes, but balance me with service content</option>
-            <option>Somewhat, use a few photos</option>
-            <option>No, keep the brand less personal</option>
-          </select>
-          <label>
-            What types of new photos should we capture first?
-            <textarea name="photo_priorities"></textarea>
-          </label>
-        </section>
-
-        <section class="card">
-          <h2>7. Website Feedback</h2>
+          <h2>6. Website Direction</h2>
           <label>
             When you look at the current website/rebrand direction, what feels
             right?
@@ -509,7 +531,7 @@
             What information must be easy to find on the homepage?
             <textarea
               name="homepage_must_include"
-              placeholder="Schedule, pricing, certifications, group training, reviews, contact info..."
+              placeholder="Services, certifications, instructor credibility, group training, reviews, contact info..."
             ></textarea>
           </label>
           <label>
@@ -527,191 +549,157 @@
             What should the website absolutely avoid?
             <textarea name="site_avoid"></textarea>
           </label>
-          <label>
-            What would make you proud to send someone to the new website?
-            <textarea name="proud_website"></textarea>
-          </label>
         </section>
 
-        <section class="form-section">
-          <h2>Community Resource</h2>
-
-          <div class="question-block">
-            <label for="community_resource_feedback">
-              Sheldon shared a third-party debt relief / credit repair referral
-              link that he may want included on the website. How would you like
-              this represented?
-            </label>
-
-            <p class="question-helper">
-              Working assumption: this should be framed as a small “Community
-              Resource” near the lower part of the homepage, separate from
-              BetterBodies CPR, BLS, and safety training services.
-            </p>
-
-            <div class="option-group">
-              <label>
-                <input
-                  type="radio"
-                  name="community_resource_placement"
-                  value="homepage_resource_card"
-                />
-                Add a small Community Resource card near the bottom of the
-                homepage
-              </label>
-
-              <label>
-                <input
-                  type="radio"
-                  name="community_resource_placement"
-                  value="footer_only"
-                />
-                Add it as a simple footer link only
-              </label>
-
-              <label>
-                <input
-                  type="radio"
-                  name="community_resource_placement"
-                  value="resources_page"
-                />
-                Save it for a future Resources page
-              </label>
-
-              <label>
-                <input
-                  type="radio"
-                  name="community_resource_placement"
-                  value="do_not_include"
-                />
-                Do not include it on the website right now
-              </label>
-
-              <label>
-                <input
-                  type="radio"
-                  name="community_resource_placement"
-                  value="not_sure"
-                />
-                Not sure yet
-              </label>
-            </div>
+        <section class="card">
+          <h2>7. Community Resource</h2>
+          <p>
+            Sheldon shared a third-party debt relief / credit repair referral
+            link that may be included on the website.
+          </p>
+          <div class="assumption">
+            <strong>Working assumption:</strong>
+            This should be framed as a small “Community Resource” near the lower
+            part of the homepage, separate from BetterBodies CPR, BLS, and
+            safety training services.
           </div>
-
-          <div class="question-block">
-            <label for="community_resource_wording">
-              What wording feels most natural for this resource?
+          <label>How would you like this represented?</label>
+          <div class="options">
+            <label class="option">
+              <input
+                type="radio"
+                name="community_resource_placement"
+                value="Small Community Resource card near the bottom of the homepage"
+              />
+              Small Community Resource card near the bottom of the homepage
             </label>
-
-            <div class="option-group">
-              <label>
-                <input
-                  type="checkbox"
-                  name="community_resource_wording"
-                  value="community_resource"
-                />
-                Community Resource
-              </label>
-
-              <label>
-                <input
-                  type="checkbox"
-                  name="community_resource_wording"
-                  value="debt_relief_support"
-                />
-                Debt Relief Support
-              </label>
-
-              <label>
-                <input
-                  type="checkbox"
-                  name="community_resource_wording"
-                  value="credit_repair_resource"
-                />
-                Credit Repair Resource
-              </label>
-
-              <label>
-                <input
-                  type="checkbox"
-                  name="community_resource_wording"
-                  value="financial_wellness_resource"
-                />
-                Financial Wellness Resource
-              </label>
-
-              <label>
-                <input
-                  type="checkbox"
-                  name="community_resource_wording"
-                  value="fresh_start_resource"
-                />
-                Fresh Start Resource
-              </label>
-            </div>
+            <label class="option">
+              <input
+                type="radio"
+                name="community_resource_placement"
+                value="Simple footer link only"
+              />
+              Simple footer link only
+            </label>
+            <label class="option">
+              <input
+                type="radio"
+                name="community_resource_placement"
+                value="Future Resources page"
+              />
+              Future Resources page
+            </label>
+            <label class="option">
+              <input
+                type="radio"
+                name="community_resource_placement"
+                value="Do not include it right now"
+              />
+              Do not include it right now
+            </label>
+            <label class="option">
+              <input
+                type="radio"
+                name="community_resource_placement"
+                value="Not sure yet"
+              />
+              Not sure yet
+            </label>
           </div>
-
-          <div class="question-block">
-            <label for="community_resource_notes">
-              Any notes about how this should or should not be presented?
+          <label>What wording feels most natural?</label>
+          <div class="options">
+            <label class="option">
+              <input
+                type="checkbox"
+                name="community_resource_wording"
+                value="Community Resource"
+              />
+              Community Resource
             </label>
-
+            <label class="option">
+              <input
+                type="checkbox"
+                name="community_resource_wording"
+                value="Debt Relief Support"
+              />
+              Debt Relief Support
+            </label>
+            <label class="option">
+              <input
+                type="checkbox"
+                name="community_resource_wording"
+                value="Credit Repair Resource"
+              />
+              Credit Repair Resource
+            </label>
+            <label class="option">
+              <input
+                type="checkbox"
+                name="community_resource_wording"
+                value="Financial Wellness Resource"
+              />
+              Financial Wellness Resource
+            </label>
+            <label class="option">
+              <input
+                type="checkbox"
+                name="community_resource_wording"
+                value="Fresh Start Resource"
+              />
+              Fresh Start Resource
+            </label>
+          </div>
+          <label>What disclosure language feels appropriate?</label>
+          <div class="options">
+            <label class="option">
+              <input
+                type="radio"
+                name="community_resource_disclosure"
+                value="Say only that it is a third-party resource"
+              />
+              Say only that it is a third-party resource
+            </label>
+            <label class="option">
+              <input
+                type="radio"
+                name="community_resource_disclosure"
+                value="Say it is a third-party referral resource"
+              />
+              Say it is a third-party referral resource
+            </label>
+            <label class="option">
+              <input
+                type="radio"
+                name="community_resource_disclosure"
+                value="Say it is a third-party referral resource and Sheldon may receive a referral benefit"
+              />
+              Say it is a third-party referral resource and Sheldon may receive
+              a referral benefit
+            </label>
+            <label class="option">
+              <input
+                type="radio"
+                name="community_resource_disclosure"
+                value="Not sure yet"
+              />
+              Not sure yet
+            </label>
+          </div>
+          <label>
+            Any notes about how this should or should not be presented?
             <textarea
-              id="community_resource_notes"
               name="community_resource_notes"
-              rows="5"
-              placeholder="Example: Keep it separate from CPR services, mention it lightly, avoid making it look like BetterBodies offers financial advice, etc."
+              placeholder="Example: Keep it separate from CPR services, avoid making it look like BetterBodies offers financial advice, etc."
             ></textarea>
-          </div>
-
-          <div class="question-block">
-            <label for="community_resource_disclosure">
-              What disclosure language feels appropriate?
-            </label>
-
-            <div class="option-group">
-              <label>
-                <input
-                  type="radio"
-                  name="community_resource_disclosure"
-                  value="third_party_only"
-                />
-                Say only that it is a third-party resource
-              </label>
-
-              <label>
-                <input
-                  type="radio"
-                  name="community_resource_disclosure"
-                  value="third_party_referral"
-                />
-                Say it is a third-party referral resource
-              </label>
-
-              <label>
-                <input
-                  type="radio"
-                  name="community_resource_disclosure"
-                  value="referral_benefit"
-                />
-                Say it is a third-party referral resource and Sheldon may
-                receive a referral benefit
-              </label>
-
-              <label>
-                <input
-                  type="radio"
-                  name="community_resource_disclosure"
-                  value="not_sure"
-                />
-                Not sure yet
-              </label>
-            </div>
-          </div>
+          </label>
         </section>
 
         <section class="card">
           <h2>8. Final Thoughts</h2>
+          <label>
+            What would make you proud to send someone to the new website?
+            <textarea name="proud_website"></textarea>
+          </label>
           <label>
             What do you want people to remember about BetterBodies?
             <textarea name="remember"></textarea>
@@ -725,17 +713,17 @@
 
         <div class="actions">
           <div class="wrap">
-            <button type="submit">Submit Brand + Website Feedback</button>
-            <p class="fineprint">
-              After submitting, the responses will be emailed to Nick.
+            <button type="submit">Submit Brand + Website Direction</button>
+            <p
+              data-form-status
+              class="fineprint"
+              role="status"
+              aria-live="polite"
+            >
+              After submitting, your responses will be saved for Nick to review.
             </p>
           </div>
         </div>
-        <input
-          type="hidden"
-          name="project_key"
-          value="betterbodies-feedback-2026"
-        />
       </form>
       <script src="/assets/js/google-sheet-submit.js" defer></script>
     </main>

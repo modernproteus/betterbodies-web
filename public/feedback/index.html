@@ -12,7 +12,7 @@
         --bb-charcoal: #1a1b22;
         --bb-gray: #6b7280;
         --bb-light: #f6f7f9;
-        --bb-white: #ffffff;
+        --bb-white: #fff;
         --bb-border: #e5e7eb;
         --bb-gold: #f2b705;
         --radius: 18px;
@@ -154,7 +154,7 @@
       }
       .bar {
         height: 100%;
-        width: 40%;
+        width: 55%;
         background: linear-gradient(90deg, var(--bb-red), #ff585f);
       }
       .grid {
@@ -220,40 +220,56 @@
         display: flex;
         flex-wrap: wrap;
         gap: 10px;
-        margin-top: 18px;
+        margin-top: 16px;
       }
-      .card .btn {
-        padding: 11px 14px;
-        min-height: 44px;
+      .card-actions a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 10px 13px;
+        text-decoration: none;
+        font-weight: 800;
+        border: 1px solid var(--bb-border);
+        background: #fff;
       }
-      .btn-card {
+      .card-actions a.primary-link {
         background: var(--bb-black);
         color: #fff;
+        border-color: var(--bb-black);
       }
-      .btn-muted {
-        background: #f3f4f6;
-        color: #111827;
-        border-color: #e5e7eb;
+      .card-actions a:hover {
+        border-color: var(--bb-red);
+        color: var(--bb-red);
       }
-      .resource-row {
+      .card-actions a.primary-link:hover {
+        background: var(--bb-red);
+        border-color: var(--bb-red);
+        color: #fff;
+      }
+      .reference {
         display: grid;
         grid-template-columns: 1fr auto;
-        gap: 14px;
+        gap: 18px;
         align-items: center;
         background: #fff;
         border: 1px solid var(--bb-border);
-        border-radius: 14px;
-        padding: 16px 18px;
-        margin-bottom: 10px;
+        border-radius: var(--radius);
+        padding: 18px;
+        box-shadow: 0 8px 22px rgba(11, 11, 15, 0.06);
+        margin-bottom: 12px;
       }
-      .resource-row strong {
-        display: block;
+      .reference h3 {
+        margin: 0 0 4px;
       }
-      .resource-row span {
-        display: block;
+      .reference p {
+        margin: 0;
         color: var(--bb-gray);
-        font-size: 14px;
-        margin-top: 2px;
+      }
+      .reference a {
+        font-weight: 800;
+        text-decoration: none;
+        color: var(--bb-red);
       }
       .timeline {
         background: #fff;
@@ -263,59 +279,56 @@
       }
       .steps {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 12px;
-        margin-top: 14px;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
       }
       .step {
-        border: 1px dashed #d1d5db;
-        border-radius: 14px;
-        padding: 14px;
         background: #fafafa;
+        border: 1px solid #eceef2;
+        border-radius: 16px;
+        padding: 16px;
       }
       .step b {
         display: flex;
-        align-items: center;
         gap: 8px;
+        align-items: center;
       }
       .num {
+        display: inline-grid;
+        place-items: center;
         width: 26px;
         height: 26px;
         border-radius: 50%;
         background: var(--bb-red);
         color: #fff;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
         font-size: 13px;
       }
+      .small {
+        font-size: 14px;
+        color: var(--bb-gray);
+      }
       footer {
-        padding: 28px 18px;
-        background: #0b0b0f;
-        color: #d1d5db;
+        border-top: 1px solid var(--bb-border);
+        padding: 24px 18px;
+        background: #fff;
       }
       footer .wrap {
         display: flex;
         justify-content: space-between;
-        gap: 16px;
+        gap: 18px;
         flex-wrap: wrap;
       }
-      .small {
-        font-size: 13px;
-        color: #9ca3af;
-      }
       @media (max-width: 900px) {
-        .grid {
-          grid-template-columns: 1fr 1fr;
-        }
+        .grid,
         .steps {
           grid-template-columns: 1fr 1fr;
         }
-        .section-head {
-          display: block;
+        .reference {
+          grid-template-columns: 1fr;
         }
-        .progress {
-          margin-top: 14px;
+        .section-head {
+          align-items: start;
+          flex-direction: column;
         }
       }
       @media (max-width: 640px) {
@@ -323,18 +336,77 @@
         .steps {
           grid-template-columns: 1fr;
         }
-        .resource-row {
-          grid-template-columns: 1fr;
-        }
-        .hero {
-          padding-top: 34px;
-        }
-        .card {
-          min-height: auto;
-        }
-        .hero-actions .btn {
+        .hero-actions .btn,
+        .card-actions a {
           width: 100%;
         }
+      }
+      .status-board {
+        display: grid;
+        gap: 12px;
+      }
+
+      .status-row {
+        display: grid;
+        grid-template-columns: 1fr auto auto;
+        gap: 12px;
+        align-items: center;
+        background: #fff;
+        border: 1px solid var(--bb-border, #dedede);
+        border-radius: 16px;
+        padding: 14px 16px;
+      }
+
+      .status-row-title {
+        font-weight: 900;
+      }
+
+      .status-row-meta {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        padding: 6px 10px;
+        font-size: 0.78rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+
+      .status-badge.submitted {
+        color: #fff;
+        background: #1d7f45;
+      }
+
+      .status-badge.not-submitted {
+        color: #2f2200;
+        background: #f4c64c;
+      }
+
+      .status-board-link {
+        color: #111;
+        font-weight: 900;
+        text-decoration: none;
+        border-bottom: 2px solid #d71920;
+      }
+
+      @media (max-width: 720px) {
+        .status-row {
+          grid-template-columns: 1fr;
+        }
+      }
+      .completed {
+        background: #1d7f45;
+        color: #ffffff;
+      }
+
+      .remaining {
+        background: #fff6d8;
+        color: #805a00;
       }
     </style>
   </head>
@@ -343,22 +415,26 @@
       <div class="wrap">
         <div class="eyebrow">
           <span class="logo-dot"></span>
-          BetterBodies TX Rebrand Review
+          BetterBodies Rebrand Review
         </div>
-        <h1>Feedback hub for the new BetterBodies brand and website.</h1>
+        <h1>
+          Feedback hub for the new BetterBodies brand, website, and operating
+          workflow.
+        </h1>
         <p>
           Sheldon, this page collects the first round of review materials. The
-          goal is to make sure the new brand reflects your work, your voice,
-          your community, and the direction you want BetterBodies to grow.
+          goal is to make sure the new direction reflects your work, your voice,
+          your community, and the way BetterBodies should actually operate
+          online.
         </p>
         <div class="hero-actions">
-          <a
-            class="btn btn-primary"
-            href="betterbodies-brand-website-survey.html"
-          >
-            Start Brand + Website Survey
+          <a class="btn btn-primary" href="brand-website-direction.html">
+            Start Brand + Website Direction
           </a>
-          <a class="btn btn-secondary" href="betterbodies-logo-concepts.html">
+          <a class="btn btn-secondary" href="operations-booking-workflow.html">
+            Review Booking Workflow
+          </a>
+          <a class="btn btn-outline" href="betterbodies-logo-concepts.html">
             Review Logo Concepts
           </a>
           <a
@@ -372,204 +448,219 @@
         </div>
       </div>
     </header>
-
     <main>
       <div class="wrap">
-        <section class="notice" aria-labelledby="start-here">
-          <h2 id="start-here">Start here</h2>
+        <section class="notice">
+          <h2>Recommended review order</h2>
           <p>
-            Please complete the Brand + Website Survey first, then review the
-            logo concepts. The remaining cards are placeholders for the next
-            round: photo/content inventory, voice and messaging, and ongoing
-            website update requests.
+            Start with Brand + Website Direction, then Logo Concepts, then
+            Operations + Booking Workflow. The remaining pages help collect
+            supporting content and ongoing update requests.
           </p>
         </section>
-
-        <section aria-labelledby="feedback-tasks">
+        <section aria-labelledby="core-review">
           <div class="section-head">
             <div>
-              <h2 id="feedback-tasks">Feedback tasks</h2>
+              <h2 id="core-review">Core review items</h2>
               <p>
-                Each card is a focused review area. Status is manual for now and
-                can later be powered by GitHub Issues once the request system is
-                connected.
+                These are the most important items for the first rebrand pass.
               </p>
             </div>
-            <div>
-              <span class="small">Round 1 progress</span>
-              <div class="progress" aria-label="Round 1 progress">
-                <div class="bar"></div>
-              </div>
+            <div class="progress" aria-label="Manual progress indicator">
+              <div class="bar" id="feedbackProgressBar"></div>
             </div>
           </div>
-
           <div class="grid">
-            <article class="card primary">
-              <span class="pill ready">Ready</span>
-              <h3>Brand + Website Discovery</h3>
+            <article
+              class="card primary"
+              data-form-type="brand_website_direction"
+            >
+              <span class="pill ready" data-status-pill>Ready</span>
+              <h3>Brand + Website Direction</h3>
               <p>
-                Define the BetterBodies mission, services, audience,
-                local/community feel, website direction, and first-round
-                feedback.
+                Defines the BetterBodies mission, Sheldon’s instructor
+                personality, Austin/community roots, services, visual direction,
+                homepage clarity, and community resource placement.
               </p>
               <div class="meta">
-                <span class="pill">20–30 min</span>
-                <span class="pill review">Start first</span>
+                <span class="pill">20–25 minutes</span>
+                <span class="pill">Brand + website</span>
               </div>
               <div class="card-actions">
-                <a
-                  class="btn btn-card"
-                  href="betterbodies-brand-website-survey.html"
-                >
-                  Start survey
+                <a class="primary-link" href="brand-website-direction.html">
+                  Start Survey
                 </a>
                 <a
-                  class="btn btn-muted"
                   href="https://www.betterbodiestx.com/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Current site ↗
+                  Current Site ↗
                 </a>
               </div>
             </article>
-
-            <article class="card primary">
-              <span class="pill ready">Ready</span>
+            <article
+              class="card primary"
+              data-form-type="logo_concept_feedback"
+            >
+              <span class="pill ready" data-status-pill>Ready</span>
               <h3>Logo Concept Review</h3>
               <p>
-                Review creative logo directions including Austin Signal,
-                Preparedness Crest, Coach Mark, Human Pulse, Street-Safe Badge,
-                and Responder Mark.
+                Reviews the creative logo directions, including Austin-local,
+                preparedness, human-pulse, responder, and badge-style concepts.
               </p>
               <div class="meta">
-                <span class="pill">10–15 min</span>
-                <span class="pill review">Round 1</span>
+                <span class="pill">10–15 minutes</span>
+                <span class="pill">Visual identity</span>
               </div>
               <div class="card-actions">
-                <a class="btn btn-card" href="betterbodies-logo-concepts.html">
-                  Review concepts
+                <a class="primary-link" href="betterbodies-logo-concepts.html">
+                  Review Concepts
                 </a>
               </div>
             </article>
-
-            <article class="card">
-              <span class="pill next">Coming next</span>
-              <h3>Photo + Content Inventory</h3>
+            <article
+              class="card primary"
+              data-form-type="operations_booking_workflow"
+            >
+              <span class="pill ready" data-status-pill>Ready</span>
+              <h3>Operations + Booking Workflow</h3>
               <p>
-                Collect real class photos, video clips, testimonials,
-                certificates, flyers, partnerships, and other proof we can use
-                on the site.
+                Helps decide how the website should handle class requests,
+                upcoming classes, Google Sheet/Calendar management, group
+                training, follow-up, and update requests.
               </p>
               <div class="meta">
-                <span class="pill">10 min</span>
-                <span class="pill">Asset planning</span>
+                <span class="pill">15–20 minutes</span>
+                <span class="pill">Booking + operations</span>
               </div>
               <div class="card-actions">
-                <a
-                  class="btn btn-muted"
-                  href="#"
-                  aria-disabled="true"
-                  onclick="return false;"
-                >
-                  Not open yet
-                </a>
-              </div>
-            </article>
-
-            <article class="card">
-              <span class="pill next">Coming next</span>
-              <h3>Voice + Messaging Review</h3>
-              <p>
-                React to tagline options, homepage headlines, tone, teaching
-                phrases, and the words BetterBodies should use or avoid.
-              </p>
-              <div class="meta">
-                <span class="pill">10–15 min</span>
-                <span class="pill">Copy direction</span>
-              </div>
-              <div class="card-actions">
-                <a
-                  class="btn btn-muted"
-                  href="#"
-                  aria-disabled="true"
-                  onclick="return false;"
-                >
-                  Not open yet
-                </a>
-              </div>
-            </article>
-
-            <article class="card">
-              <span class="pill future">Future</span>
-              <h3>Website Update Requests</h3>
-              <p>
-                After launch, use a simple form to request schedule edits, copy
-                changes, new photos, page updates, bug fixes, or new content
-                ideas.
-              </p>
-              <div class="meta">
-                <span class="pill">As needed</span>
-                <span class="pill">GitHub Issues later</span>
-              </div>
-              <div class="card-actions">
-                <a
-                  class="btn btn-muted"
-                  href="#"
-                  aria-disabled="true"
-                  onclick="return false;"
-                >
-                  Coming soon
-                </a>
-              </div>
-            </article>
-
-            <article class="card">
-              <span class="pill future">Future</span>
-              <h3>Submission Status</h3>
-              <p>
-                Later, this can show submitted requests, open items, in-review
-                items, completed changes, and links to details.
-              </p>
-              <div class="meta">
-                <span class="pill">Dashboard</span>
-                <span class="pill">Planned</span>
-              </div>
-              <div class="card-actions">
-                <a
-                  class="btn btn-muted"
-                  href="#"
-                  aria-disabled="true"
-                  onclick="return false;"
-                >
-                  Planned feature
+                <a class="primary-link" href="operations-booking-workflow.html">
+                  Review Workflow
                 </a>
               </div>
             </article>
           </div>
         </section>
 
-        <section aria-labelledby="review-materials">
+        <section aria-labelledby="supporting-review">
           <div class="section-head">
             <div>
-              <h2 id="review-materials">Reference links</h2>
+              <h2 id="supporting-review">Supporting feedback pages</h2>
               <p>
-                Open these in separate tabs when reviewing. Later we can add
-                embedded visual references next to specific survey questions.
+                These pages collect the proof, content, and language that will
+                make the site feel real and useful.
+              </p>
+            </div>
+          </div>
+          <div class="grid">
+            <article class="card" data-form-type="photo_content_inventory">
+              <span class="pill ready" data-status-pill>Ready</span>
+              <h3>Photo + Content Inventory</h3>
+              <p>
+                Identify photos, videos, class images, testimonials,
+                certifications, partnerships, and other proof we can use on the
+                site.
+              </p>
+              <div class="meta">
+                <span class="pill">10 minutes</span>
+                <span class="pill">Content assets</span>
+              </div>
+              <div class="card-actions">
+                <a class="primary-link" href="photo-content-inventory.html">
+                  Open Inventory
+                </a>
+              </div>
+            </article>
+            <article class="card" data-form-type="voice_messaging_review">
+              <span class="pill ready" data-status-pill>Ready</span>
+              <h3>Voice + Messaging Review</h3>
+              <p>
+                Review tagline options, homepage language, tone of voice, and
+                phrases that sound most like BetterBodies.
+              </p>
+              <div class="meta">
+                <span class="pill">10–15 minutes</span>
+                <span class="pill">Copy + tone</span>
+              </div>
+              <div class="card-actions">
+                <a class="primary-link" href="voice-messaging-review.html">
+                  Open Messaging Review
+                </a>
+              </div>
+            </article>
+            <article class="card" data-form-type="site_update_request">
+              <span class="pill ready" data-status-pill>Ready</span>
+              <h3>Website Update Requests</h3>
+              <p>
+                A simple ongoing form for content changes, class schedule
+                updates, photo swaps, new page ideas, corrections, and other
+                website requests.
+              </p>
+              <div class="meta">
+                <span class="pill">As needed</span>
+                <span class="pill">Future workflow</span>
+              </div>
+              <div class="card-actions">
+                <a class="primary-link" href="site-update-request.html">
+                  Open Request Form
+                </a>
+              </div>
+            </article>
+            <article class="card">
+              <span class="pill future">Future</span>
+              <h3>Submission Status</h3>
+              <p>
+                A future dashboard that can show which surveys and update
+                requests were submitted, what is in review, what is completed,
+                and what still needs input.
+              </p>
+              <div class="meta">
+                <span class="pill">GitHub-backed later</span>
+                <span class="pill">Status visibility</span>
+              </div>
+              <div class="card-actions">
+                <a class="primary-link" href="status.html">
+                  View Status Placeholder
+                </a>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-header">
+            <div>
+              <h2>Submission progress</h2>
+
+              <p>
+                This shows which feedback forms have been submitted and which
+                are still remaining.
               </p>
             </div>
           </div>
 
-          <div class="resource-row">
+          <div class="status-board" id="feedbackStatusBoard">
+            <p>Loading feedback status...</p>
+          </div>
+        </section>
+
+        <section aria-labelledby="references">
+          <div class="section-head">
             <div>
-              <strong>Current BetterBodies website</strong>
-              <span>
-                Use this to compare current messaging, services, and visual
-                feel.
-              </span>
+              <h2 id="references">Review references</h2>
+              <p>Open these in separate tabs while answering the surveys.</p>
+            </div>
+          </div>
+          <div class="reference">
+            <div>
+              <h3>Current BetterBodies Website</h3>
+              <p>
+                Use this to compare the current public site against the new
+                direction.
+              </p>
             </div>
             <a
-              class="btn btn-muted"
               href="https://www.betterbodiestx.com/"
               target="_blank"
               rel="noopener noreferrer"
@@ -577,16 +668,15 @@
               Open ↗
             </a>
           </div>
-          <div class="resource-row">
+          <div class="reference">
             <div>
-              <strong>Instagram</strong>
-              <span>
-                Review current visual tone, community feel, class moments, and
-                language.
-              </span>
+              <h3>Instagram</h3>
+              <p>
+                Use this to look at current tone, visuals, community presence,
+                and real-world content.
+              </p>
             </div>
             <a
-              class="btn btn-muted"
               href="https://www.instagram.com/betterbodiescpr/"
               target="_blank"
               rel="noopener noreferrer"
@@ -594,21 +684,33 @@
               Open ↗
             </a>
           </div>
-          <div class="resource-row">
+          <div class="reference">
             <div>
-              <strong>Facebook</strong>
-              <span>
-                Review updates, posts, community presence, and any useful photos
-                or testimonials.
-              </span>
+              <h3>Facebook</h3>
+              <p>
+                Use this to review posts, service language, local/community
+                signals, and public-facing history.
+              </p>
             </div>
             <a
-              class="btn btn-muted"
               href="https://www.facebook.com/BetterBodiesATX"
               target="_blank"
               rel="noopener noreferrer"
             >
               Open ↗
+            </a>
+          </div>
+          <div class="reference">
+            <div>
+              <h3>Reference Docs</h3>
+              <p>
+                Optional background docs are stored in
+                <code>/reference/</code>
+                for homepage strategy, SWOT, SOW, and Sheldon’s resume.
+              </p>
+            </div>
+            <a href="/reference/" target="_blank" rel="noopener noreferrer">
+              Folder ↗
             </a>
           </div>
         </section>
@@ -618,22 +720,21 @@
             <div>
               <h2 id="next-steps">What happens next</h2>
               <p>
-                After the first round of feedback, we’ll tighten the brand
-                direction and turn the strongest ideas into website-ready copy,
-                visuals, and page structure.
+                After this round, we’ll turn the feedback into tighter homepage
+                copy, a clearer booking workflow, stronger visuals, and a
+                practical launch plan.
               </p>
             </div>
           </div>
-
           <div class="timeline">
             <div class="steps">
               <div class="step">
                 <b>
                   <span class="num">1</span>
-                  Survey feedback
+                  Brand direction
                 </b>
                 <p class="small">
-                  Confirm mission, services, audience, and website priorities.
+                  Confirm mission, audience, identity, and website priorities.
                 </p>
               </div>
               <div class="step">
@@ -642,16 +743,17 @@
                   Logo direction
                 </b>
                 <p class="small">
-                  Narrow the concept field to the strongest visual direction.
+                  Narrow the concept field to the strongest visual system.
                 </p>
               </div>
               <div class="step">
                 <b>
                   <span class="num">3</span>
-                  Content assets
+                  Operations model
                 </b>
                 <p class="small">
-                  Identify photos, videos, testimonials, and trust signals.
+                  Choose request-first, Google Sheet, Calendar, or future
+                  booking flow.
                 </p>
               </div>
               <div class="step">
@@ -660,7 +762,7 @@
                   Homepage build
                 </b>
                 <p class="small">
-                  Apply the direction to the redesigned BetterBodies website.
+                  Apply the direction to the BetterBodies website.
                 </p>
               </div>
             </div>
@@ -668,13 +770,12 @@
         </section>
       </div>
     </main>
-
     <footer>
       <div class="wrap">
         <div>
           <strong>BetterBodies TX Rebrand Feedback Hub</strong>
           <div class="small">
-            Prepared for first-round brand and website review.
+            Prepared for first-round brand, website, and operations review.
           </div>
         </div>
         <div class="small">
@@ -682,5 +783,6 @@
         </div>
       </div>
     </footer>
+    <script src="/assets/js/feedback-status.js" defer></script>
   </body>
 </html>
