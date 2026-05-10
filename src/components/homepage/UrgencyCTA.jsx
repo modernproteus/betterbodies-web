@@ -1,44 +1,91 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { CalendarClock, Users, ArrowRight } from "lucide-react";
+import useUpcomingClasses, {
+  buildEventTimeRange,
+  formatEventDate,
+  scrollToContactWithClass,
+  scrollToSection,
+} from "@/lib/useUpcomingClasses";
 
 export default function UrgencyCTA() {
+  const { nextClass, status } = useUpcomingClasses();
+
+  const hasNextClass = status === "ready" && nextClass;
+
   return (
-    <section className="bg-primary px-5 py-16 md:py-24" id="urgency">
-      <div className="max-w-2xl mx-auto text-center">
-        <div className="inline-flex items-center gap-2 bg-white/15 border border-white/20 rounded-md px-3 py-1.5 mb-6">
-          <CalendarClock className="w-4 h-4 text-white" />
-          <span className="text-xs font-bold text-white uppercase tracking-wider">Limited Spots Available</span>
+    <section id="urgency" className="py-16 bg-[#0f0f0f] text-white">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 md:p-8 lg:p-10">
+          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+            <div>
+              <p className="text-sm font-bold uppercase tracking-wide text-red-400">
+                Class Availability
+              </p>
+
+              <h2 className="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">
+                {hasNextClass
+                  ? `Next ${nextClass.classType || "Training"} Class`
+                  : "Upcoming classes are being scheduled"}
+              </h2>
+
+              <p className="mt-4 max-w-2xl text-white/70">
+                {hasNextClass
+                  ? `${
+                      nextClass.title || "BetterBodies Training Class"
+                    } is scheduled for ${formatEventDate(nextClass.date, {
+                      weekday: "long",
+                      year: "numeric",
+                    })} at ${buildEventTimeRange(nextClass)}.`
+                  : "Need CPR, BLS, or group training soon? Send a request and Sheldon will follow up with available class options."}
+              </p>
+
+              {hasNextClass && nextClass.locationLabel && (
+                <p className="mt-3 text-sm font-semibold text-white/60">
+                  Location: {nextClass.locationLabel}
+                </p>
+              )}
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+              {hasNextClass ? (
+                <Button
+                  className="bg-red-600 hover:bg-red-700 text-white"
+                  onClick={() => scrollToContactWithClass(nextClass)}
+                >
+                  Request This Class
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              ) : (
+                <Button
+                  className="bg-red-600 hover:bg-red-700 text-white"
+                  onClick={() => scrollToSection("#contact")}
+                >
+                  Request Class Info
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              )}
+
+              <Button
+                variant="outline"
+                className="border-white/20 text-white hover:bg-white/10"
+                onClick={() => scrollToSection("#schedule")}
+              >
+                <CalendarClock className="mr-2 h-4 w-4" />
+                View Schedule
+              </Button>
+
+              <Button
+                variant="outline"
+                className="border-white/20 text-white hover:bg-white/10"
+                onClick={() => scrollToSection("#contact")}
+              >
+                <Users className="mr-2 h-4 w-4" />
+                Request Group Training
+              </Button>
+            </div>
+          </div>
         </div>
-
-        <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-white mb-4">
-          Next CPR Class: This Saturday
-        </h2>
-        <p className="text-white/75 text-base mb-8 leading-relaxed max-w-md mx-auto">
-          Weekend classes fill up fast. Reserve your seat now and walk out certified before the end of the week.
-        </p>
-
-        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <Button
-            size="lg"
-            className="bg-white hover:bg-white/90 text-primary font-bold text-base h-13 px-8 rounded-md shadow-lg"
-          >
-            Book Your Spot
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="border-white/30 text-white hover:bg-white/10 text-base h-13 px-8 rounded-md font-semibold"
-          >
-            <Users className="w-4 h-4 mr-2" />
-            Contact for Group Training
-          </Button>
-        </div>
-
-        <p className="text-white/50 text-xs mt-6">
-          From $65 · AHA certification included · Same-day card issued
-        </p>
       </div>
     </section>
   );

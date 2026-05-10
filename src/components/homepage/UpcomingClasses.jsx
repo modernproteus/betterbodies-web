@@ -1,103 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { CalendarDays, MapPin, Users, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
-const EVENTS_BASE_URL =
-  "https://script.google.com/macros/s/AKfycbzXq9f6f1MCbmrZeocsYdWXHeKFx0BWpIaExA-rqAOGw4YuJAn7d9Ruaq48rokRreBV/exec";
-
-function loadEventsJsonp() {
-  return new Promise((resolve, reject) => {
-    const callbackName = `betterBodiesEvents_${Date.now()}`;
-    const script = document.createElement("script");
-
-    window[callbackName] = function (data) {
-      resolve(data);
-      delete window[callbackName];
-      script.remove();
-    };
-
-    script.onerror = function () {
-      reject(new Error("Could not load upcoming classes."));
-      delete window[callbackName];
-      script.remove();
-    };
-
-    script.src = `${EVENTS_BASE_URL}?action=events&callback=${callbackName}`;
-    document.body.appendChild(script);
-  });
-}
-
-function formatEventDate(value) {
-  if (!value) return "Date TBD";
-
-  const date = new Date(value);
-
-  if (Number.isNaN(date.getTime())) {
-    return value;
-  }
-
-  return date.toLocaleDateString(undefined, {
-    weekday: "short",
-    month: "short",
-    day: "numeric",
-  });
-}
-
-function buildTimeRange(event) {
-  if (event.startTime && event.endTime) {
-    return `${event.startTime} – ${event.endTime}`;
-  }
-
-  if (event.startTime) {
-    return event.startTime;
-  }
-
-  return "Time TBD";
-}
-
-function scrollToContact(event) {
-  const selectedClass = [
-    event.title,
-    event.date,
-    event.startTime,
-    event.locationLabel,
-  ]
-    .filter(Boolean)
-    .join(" — ");
-
-  window.dispatchEvent(
-    new CustomEvent("betterbodies:selected-class", {
-      detail: {
-        selectedClass,
-        classType: event.classType || "",
-      },
-    })
-  );
-
-  document.querySelector("#contact")?.scrollIntoView({
-    behavior: "smooth",
-    block: "start",
-  });
-}
+import useUpcomingClasses, {
+  buildEventTimeRange,
+  formatEventDate,
+  scrollToContactWithClass,
+  scrollToSection,
+} from "@/lib/useUpcomingClasses";
 
 export default function UpcomingClasses() {
-  const [events, setEvents] = useState([]);
-  const [status, setStatus] = useState("loading");
-
-  useEffect(() => {
-    loadEventsJsonp()
-      .then((data) => {
-        if (data?.ok && Array.isArray(data.events)) {
-          setEvents(data.events);
-          setStatus("ready");
-        } else {
-          setStatus("error");
-        }
-      })
-      .catch(() => {
-        setStatus("error");
-      });
-  }, []);
+  const { events, status } = useUpcomingClasses();
 
   return (
     <section id="schedule" className="py-20 bg-slate-50 scroll-mt-28">
@@ -144,12 +56,7 @@ export default function UpcomingClasses() {
 
             <Button
               className="mt-5 bg-red-600 hover:bg-red-700"
-              onClick={() =>
-                document.querySelector("#contact")?.scrollIntoView({
-                  behavior: "smooth",
-                  block: "start",
-                })
-              }
+              onClick={() => scrollToSection("#contact")}
             >
               Request Class Info
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -184,7 +91,8 @@ export default function UpcomingClasses() {
                   <p className="flex gap-2">
                     <CalendarDays className="h-5 w-5 shrink-0 text-red-600" />
                     <span>
-                      {formatEventDate(event.date)} · {buildTimeRange(event)}
+                      {formatEventDate(event.date)} ·{" "}
+                      {buildEventTimeRange(event)}
                     </span>
                   </p>
 
@@ -223,7 +131,7 @@ export default function UpcomingClasses() {
                   ) : (
                     <Button
                       className="w-full bg-red-600 hover:bg-red-700"
-                      onClick={() => scrollToContact(event)}
+                      onClick={() => scrollToContactWithClass(event)}
                     >
                       Request This Class
                       <ArrowRight className="ml-2 h-4 w-4" />
