@@ -14,11 +14,14 @@ import FooterCTA from "../components/homepage/FooterCTA";
 import StickyBookingBar from "../components/homepage/StickyBookingBar";
 import CommunityResource from "../components/homepage/CommunityResource";
 import UpcomingClasses from "../components/homepage/UpcomingClasses";
+import MovementStrip from "../components/homepage/MovementStrip";
+import useScrollReveal from "../hooks/useScrollReveal";
 const HERO_IMAGE = `${
   import.meta.env.BASE_URL
 }images/hero-cpr-training-austin.png`;
 
 export default function Home() {
+  useScrollReveal();
   return (
     <div className="min-h-screen bg-[#111111] pb-20 md:pb-0">
       <Navbar />
@@ -32,7 +35,11 @@ export default function Home() {
       <div id="services">
         <ServicesCards />
       </div>
+
+      <MovementStrip />
+
       <UpcomingClasses />
+
       <AboutSection />
 
       <CertificationsSection />
