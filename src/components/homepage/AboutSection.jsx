@@ -1,73 +1,89 @@
 import React from "react";
-import { BadgeCheck, Shield, Users } from "lucide-react";
+import { BadgeCheck, Shield, Users, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { scrollToSection } from "@/lib/useUpcomingClasses";
 
-const credentials = [
-  "American Heart Association CPR / BLS Instructor",
-  "Executive Protection Specialist — Executive Security LLC",
-  "Crisis Management & De-escalation Certified",
-  "Self-Defense Instructor — [Certification Placeholder]",
-  "Background in Community Safety & Education",
-];
+const sheldonImage = `${
+  import.meta.env.BASE_URL
+}assets/images/sheldon/Sheldon.png`;
 
 export default function AboutSection() {
   return (
-    <section className="bg-[#111111] px-5 py-16 md:py-24" id="about">
-      <div className="max-w-4xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
+    <section id="about" className="py-20 bg-white scroll-mt-28">
+      <div className="max-w-6xl mx-auto px-4">
+        <div className="grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+          <div className="relative reveal-on-scroll">
+            <div className="absolute -inset-4 rounded-[2rem] bg-red-600/10 blur-2xl" />
 
-          {/* Left — Text */}
-          <div>
-            <p className="text-xs font-bold text-primary uppercase tracking-widest mb-3">About Your Instructor</p>
-            <h2 className="font-heading text-3xl md:text-4xl font-extrabold text-white mb-5 leading-tight">
-              Meet Sheldon
-            </h2>
-            <p className="text-white/70 text-sm leading-relaxed mb-4">
-              Sheldon is a certified CPR/BLS instructor, executive security professional, and community safety educator based in Austin, Texas. Through Better Bodies TX, he brings practical, no-nonsense training to individuals, families, and organizations who want to be genuinely prepared — not just certified on paper.
-            </p>
-            <p className="text-white/55 text-sm leading-relaxed mb-6">
-              With experience in executive protection through <span className="text-white font-semibold">Executive Security LLC</span> and years of hands-on instruction, Sheldon's approach is direct, competency-focused, and built for real-world situations. His goal is simple: leave every student more aware, more capable, and more confident.
-            </p>
+            <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-slate-100 shadow-xl">
+              <img
+                src={sheldonImage}
+                alt="Sheldon Williams, BetterBodies TX instructor"
+                className="h-full min-h-[420px] w-full object-cover"
+                loading="lazy"
+              />
 
-            {/* Executive Security badge */}
-            <div className="inline-flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-md px-4 py-2.5">
-              <Shield className="w-4 h-4 text-primary flex-shrink-0" />
-              <span className="text-white/70 text-xs font-semibold">Executive Security LLC</span>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
+                <p className="text-sm font-bold uppercase tracking-wide text-red-300">
+                  Meet Sheldon
+                </p>
+                <p className="mt-1 text-xl font-extrabold text-white">
+                  The man with the plan behind BetterBodies.
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Right — Credentials */}
-          <div>
-            <div className="bg-[#1a1a1a] border border-white/10 rounded-lg p-6">
-              <div className="flex items-center gap-2.5 mb-5">
-                <Users className="w-4 h-4 text-primary" />
-                <span className="text-white font-bold text-sm uppercase tracking-wider">Credentials & Certifications</span>
+          <div className="reveal-on-scroll">
+            <p className="text-sm font-bold uppercase tracking-wide text-red-600">
+              Founder-Led Training
+            </p>
+
+            <h2 className="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950">
+              Practical training from an instructor who knows how to keep people
+              engaged.
+            </h2>
+
+            <p className="mt-5 text-lg leading-8 text-slate-700">
+              BetterBodies is built around hands-on instruction, real-world
+              confidence, and community-centered preparedness. Sheldon brings
+              energy, clarity, and practical coaching to every class so people
+              leave knowing what to do when it matters.
+            </p>
+
+            <div className="mt-7 grid gap-4 sm:grid-cols-3">
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <BadgeCheck className="h-6 w-6 text-red-600" />
+                <p className="mt-3 font-extrabold text-slate-950">Certified</p>
+                <p className="mt-1 text-sm text-slate-600">
+                  CPR, BLS, AED, and safety-focused instruction.
+                </p>
               </div>
 
-              <ul className="space-y-3">
-                {credentials.map((c, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <BadgeCheck className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-                    <span className="text-white/65 text-sm leading-snug">{c}</span>
-                  </li>
-                ))}
-              </ul>
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <Shield className="h-6 w-6 text-red-600" />
+                <p className="mt-3 font-extrabold text-slate-950">Prepared</p>
+                <p className="mt-1 text-sm text-slate-600">
+                  Skills people can use in real emergencies.
+                </p>
+              </div>
 
-              {/* Placeholder for cert badge images */}
-              <div className="mt-6 pt-5 border-t border-white/8">
-                <p className="text-white/30 text-xs mb-3 uppercase tracking-wider font-medium">Certification Badges</p>
-                <div className="flex gap-3">
-                  {[1, 2, 3].map((i) => (
-                    <div
-                      key={i}
-                      className="w-14 h-14 rounded-md border border-white/10 bg-white/5 flex items-center justify-center"
-                    >
-                      <BadgeCheck className="w-5 h-5 text-white/20" />
-                    </div>
-                  ))}
-                </div>
-                <p className="text-white/20 text-xs mt-2">Certification badge images — add when available</p>
+              <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+                <Users className="h-6 w-6 text-red-600" />
+                <p className="mt-3 font-extrabold text-slate-950">Community</p>
+                <p className="mt-1 text-sm text-slate-600">
+                  Training for individuals, teams, schools, and groups.
+                </p>
               </div>
             </div>
+
+            <Button
+              className="mt-8 bg-red-600 hover:bg-red-700"
+              onClick={() => scrollToSection("#contact")}
+            >
+              Request Class Info
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
           </div>
         </div>
       </div>
