@@ -43,7 +43,7 @@ export default function MovementStrip() {
             const Icon = item.icon;
             return (
               <div
-                key="{item.label}"
+                key={item.label}
                 className="reveal-on-scroll rounded-3xl border border-white/10 bg-white/10 p-5 backdrop-blur"
               >
                 <Icon className="h-7 w-7 text-red-400" />
