@@ -1,4 +1,5 @@
-const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxCsuiQUJbDRNIt-eGwx5fyodnm8hTCXKrVft45Y5yJzf6YQCwTmLpXeEzYzRTiG-G4/exec";
+const GOOGLE_SCRIPT_URL =
+  "https://script.google.com/macros/s/AKfycbzXq9f6f1MCbmrZeocsYdWXHeKFx0BWpIaExA-rqAOGw4YuJAn7d9Ruaq48rokRreBV/exec";
 
 function getFormPayload(form) {
   const formData = new FormData(form);
@@ -61,15 +62,17 @@ document.querySelectorAll("[data-google-sheet-form]").forEach((form) => {
         method: "POST",
         mode: "no-cors",
         headers: {
-          "Content-Type": "text/plain;charset=utf-8"
+          "Content-Type": "text/plain;charset=utf-8",
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
       });
 
-      status.textContent = "Submission sent. Please confirm it appeared in the Google Sheet before closing this page.";
+      status.textContent =
+        "Submission sent. Please confirm it appeared in the Google Sheet before closing this page.";
     } catch (error) {
       console.error("Feedback submission failed:", error);
-      status.textContent = "Sorry, the form could not be sent. Please try again or contact Nick.";
+      status.textContent =
+        "Sorry, the form could not be sent. Please try again or contact Nick.";
     } finally {
       if (submitButton) submitButton.disabled = false;
     }
