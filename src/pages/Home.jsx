@@ -32,7 +32,7 @@ export default function Home() {
       <div id="services">
         <ServicesCards />
       </div>
-      {/* <UpcomingClasses /> */}
+      <UpcomingClasses />
       <AboutSection />
 
       <CertificationsSection />
@@ -41,9 +41,7 @@ export default function Home() {
 
       <Testimonials />
 
-      <div id="urgency">
-        <UrgencyCTA />
-      </div>
+      <div id="urgency">{/* <UrgencyCTA /> */}</div>
 
       <div id="faq">
         <FAQSection />
