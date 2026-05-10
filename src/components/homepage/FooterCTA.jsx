@@ -1,55 +1,78 @@
 import React from "react";
+import { ArrowRight, Mail, MapPin, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Phone, Mail, MapPin, ArrowRight } from "lucide-react";
 import BrandLogo from "./BrandLogo";
+import { scrollToSection } from "@/lib/useUpcomingClasses";
 
-export default function FooterCTA() {
+export default function FooterCTA({ onRequestTraining }) {
   return (
-    <footer className="bg-[#0f0f0f]">
-      {/* Final CTA band */}
-      <div className="border-b border-white/8 px-5 py-14 md:py-20">
-        <div className="max-w-2xl mx-auto text-center">
-          <div className="w-10 h-1 bg-primary mx-auto mb-6 rounded-full" />
-          <h2 className="font-heading text-2xl md:text-3xl font-extrabold text-white mb-3">
-            Ready to Get Certified?
-          </h2>
-          <p className="text-white/50 text-sm mb-7 max-w-sm mx-auto">
-            Join 1,200+ Austin residents certified through Better Bodies TX. Book your class today.
-          </p>
-          <Button
-            size="lg"
-            className="bg-primary hover:bg-primary/90 text-white font-bold text-base h-13 px-8 rounded-md shadow-lg shadow-primary/20 inline-flex items-center gap-2"
-          >
-            Book Your CPR Class
-            <ArrowRight className="w-4 h-4" />
-          </Button>
-        </div>
-      </div>
-
-      {/* Footer links */}
-      <div className="px-5 py-8">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+    <footer className="bg-[#0f0f0f] pb-24 pt-16 text-white md:pb-16">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
           <div>
-            <BrandLogo size="sm" />
-            <p className="text-white/40 text-xs mt-1.5">CPR & BLS Certification · Austin, Texas</p>
+            <BrandLogo size="md" />
+
+            <h2 className="mt-8 text-3xl font-extrabold tracking-tight md:text-4xl">
+              Ready to train, prepare, and protect your community?
+            </h2>
+
+            <p className="mt-4 max-w-2xl text-white/70">
+              Request CPR, BLS, first aid, personal safety, or group training
+              information and Sheldon or Juana will follow up with available
+              options.
+            </p>
+
+            <div className="mt-7 flex flex-col gap-3 sm:flex-row">
+              <Button
+                className="bg-red-600 hover:bg-red-700"
+                onClick={() =>
+                  onRequestTraining?.({
+                    sourceSection: "footer_cta",
+                    leadIntent: "general_training",
+                    serviceNeeded: "Not sure yet",
+                    ctaLabel: "Request Training",
+                  })
+                }
+              >
+                Request Training
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
+
+              <Button
+                variant="outline"
+                className="border-white/20 text-white hover:bg-white/10"
+                onClick={() => scrollToSection("#schedule")}
+              >
+                View Schedule
+              </Button>
+            </div>
           </div>
-          <div className="flex flex-col gap-2 text-xs text-white/40">
-            <div className="flex items-center gap-2">
-              <MapPin className="w-3.5 h-3.5" />
-              <span>Austin, TX</span>
+
+          <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
+            <h3 className="text-xl font-extrabold">BetterBodies TX</h3>
+
+            <div className="mt-5 space-y-4 text-sm text-white/70">
+              <p className="flex gap-3">
+                <MapPin className="h-5 w-5 shrink-0 text-red-400" />
+                <span>Austin, Texas and surrounding communities</span>
+              </p>
+
+              <p className="flex gap-3">
+                <Phone className="h-5 w-5 shrink-0 text-red-400" />
+                <span>Phone number TBD</span>
+              </p>
+
+              <p className="flex gap-3">
+                <Mail className="h-5 w-5 shrink-0 text-red-400" />
+                <span>Email TBD</span>
+              </p>
             </div>
-            <div className="flex items-center gap-2">
-              <Phone className="w-3.5 h-3.5" />
-              <span>(512) 555-0123</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Mail className="w-3.5 h-3.5" />
-              <span>info@betterbodies.tx</span>
-            </div>
+
+            <p className="mt-6 border-t border-white/10 pt-5 text-xs text-white/45">
+              Preview site prepared for BetterBodies brand, website, and
+              workflow review.
+            </p>
           </div>
-        </div>
-        <div className="max-w-4xl mx-auto mt-6 pt-5 border-t border-white/6 text-center text-xs text-white/25">
-          © {new Date().getFullYear()} Better Bodies TX · American Heart Association Training Site · Austin, TX
         </div>
       </div>
     </footer>

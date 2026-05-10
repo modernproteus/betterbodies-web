@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>BetterBodies Website Update Request</title>
-<style>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BetterBodies Website Update Request</title>
+    <style>
       :root {
         --bb-red: #d71920;
         --bb-red-dark: #a90f16;
@@ -170,124 +169,185 @@
         }
       }
     </style>
-</head>
-<body>
-<header class="hero">
-<div class="wrap">
-<a class="back-link" href="/feedback/index.html">
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <a class="back-link" href="./">
           ← Back to Feedback Hub
         </a>
-<div class="eyebrow">BetterBodies Ongoing Workflow</div>
-<h1>Website Update Request</h1>
-<p>
+        <div class="eyebrow">BetterBodies Ongoing Workflow</div>
+        <h1>Website Update Request</h1>
+        <p>
           Use this form for content changes, schedule updates, photo swaps,
           corrections, new page ideas, or other website requests. Later this can
           submit directly into GitHub Issues.
         </p>
-</div>
-</header>
-<main class="main">
-<form class="wrap" data-form-type="site_update_request" data-google-sheet-form="" id="requestForm"><input name="form_type" type="hidden" value="site_update_request"/><input name="form_title" type="hidden" value="Website Update Request"/><input name="project_key" type="hidden" value="betterbodies-feedback-2026"/>
-<section class="card">
-<h2>Request details</h2>
-<div class="note">
-<strong>Current mode:</strong>
+      </div>
+    </header>
+    <main class="main">
+      <form class="wrap" id="requestForm">
+        <section class="card">
+          <h2>Request details</h2>
+          <div class="note">
+            <strong>Current mode:</strong>
             this page creates a formatted request you can download or copy. Next
             step: connect the submit button to a private GitHub Issue endpoint.
           </div>
-<label for="title">Request title</label>
-<input id="title" name="title" placeholder="Update CPR class schedule" required=""/>
-<div class="row">
-<div>
-<label for="type">Request type</label>
-<select id="type" name="request_type" required="">
-<option value="">Choose one</option>
+          <label for="title">Request title</label>
+          <input
+            id="title"
+            name="title"
+            required
+            placeholder="Update CPR class schedule"
+          />
+          <div class="row">
+            <div>
+              <label for="type">Request type</label>
+              <select id="type" name="request_type" required>
+                <option value="">Choose one</option>
+                <option>Class schedule update</option>
+<option>Training / service update</option>
+<option>Homepage copy update</option>
+<option>Brand / messaging update</option>
+<option>Community resource update</option>
 <option>Content update</option>
-<option>Photo / image update</option>
-<option>Schedule / class update</option>
-<option>Pricing update</option>
-<option>New page request</option>
-<option>Bug / fix</option>
-<option>Design / layout request</option>
-<option>SEO / content idea</option>
-<option>Other</option>
-</select>
-</div>
-<div>
-<label for="priority">Priority</label>
-<select id="priority" name="priority">
-<option>Normal</option>
-<option>Low</option>
-<option>High</option>
-<option>Urgent</option>
-</select>
-</div>
-</div>
-<div class="row">
-<div>
-<label for="page">Page affected</label>
-<input id="page" name="page_affected" placeholder="Homepage, CPR page, footer, etc."/>
-</div>
-<div>
-<label for="deadline">Desired deadline</label>
-<input id="deadline" name="deadline" placeholder="No rush, Friday, before next class, etc."/>
-</div>
-</div>
-<label for="contact">Contact info</label>
-<input id="contact" name="contact" placeholder="Email, phone, or preferred contact method"/>
-</section>
-<section class="card">
-<h2>What needs to change?</h2>
-<label for="change">Describe the requested update</label>
-<textarea id="change" name="requested_change" placeholder="What should be added, changed, removed, or fixed?" required=""></textarea>
-<label for="content">Exact copy/content to use</label>
-<textarea id="content" name="exact_content" placeholder="Paste exact wording, dates, pricing, names, or text here."></textarea>
-<label for="links">Image or file links</label>
-<textarea id="links" name="file_links" placeholder="Google Drive, Dropbox, image URL, social post, etc."></textarea>
-<label for="notes">Additional notes</label>
-<textarea id="notes" name="notes"></textarea>
-<div class="actions">
-<button class="btn btn-primary" type="submit">Submit Website Update Request</button>
-<button class="btn btn-secondary" id="copyButton" type="button">
+                <option>Photo / image update</option>
+                <option>Schedule / class update</option>
+                <option>Pricing update</option>
+                <option>New page request</option>
+                <option>Bug / fix</option>
+                <option>Design / layout request</option>
+                <option>SEO / content idea</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div>
+              <label for="priority">Priority</label>
+              <select id="priority" name="priority">
+                <option>Normal</option>
+                <option>Low</option>
+                <option>High</option>
+                <option>Urgent</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div>
+              <label for="page">Page affected</label>
+              <input
+                id="page"
+                name="page_affected"
+                placeholder="Homepage, CPR page, footer, etc."
+              />
+            </div>
+            <div>
+              <label for="deadline">Desired deadline</label>
+              <input
+                id="deadline"
+                name="deadline"
+                placeholder="No rush, Friday, before next class, etc."
+              />
+            </div>
+          </div>
+          <label for="contact">Contact info</label>
+          <input
+            id="contact"
+            name="contact"
+            placeholder="Email, phone, or preferred contact method"
+          />
+        </section>
+        <section class="card">
+          <h2>What needs to change?</h2>
+          <label for="change">Describe the requested update</label>
+          <textarea
+            id="change"
+            name="requested_change"
+            required
+            placeholder="What should be added, changed, removed, or fixed?"
+          ></textarea>
+          <label for="content">Exact copy/content to use</label>
+          <textarea
+            id="content"
+            name="exact_content"
+            placeholder="Paste exact wording, dates, pricing, names, or text here."
+          ></textarea>
+          <label for="links">Image or file links</label>
+          <textarea
+            id="links"
+            name="file_links"
+            placeholder="Google Drive, Dropbox, image URL, social post, etc."
+          ></textarea>
+          <label for="notes">Additional notes</label>
+          <textarea id="notes" name="notes"></textarea>
+          <div class="actions">
+            <button class="btn btn-primary" type="submit">
+              Generate Request
+            </button>
+            <button class="btn btn-secondary" type="button" id="copyButton">
               Copy Markdown
             </button>
-<a class="btn btn-secondary" href="/feedback/">Back to Hub</a>
-</div><p aria-live="polite" class="helper" data-form-status="" role="status">After submitting, your responses will be saved for Nick to review.</p>
-<p class="helper">
-            Submit the request to save it, or use Copy Markdown if you also want a formatted version.
+            <a class="btn btn-secondary" href="./">Back to Hub</a>
+          </div>
+          <p class="helper">
+            After generation, you can paste the markdown into GitHub Issues or
+            send it directly.
           </p>
-<pre class="output" id="output"></pre>
-</section>
-</form>
-</main>
-<script>
-const form = document.getElementById("requestForm");
-const output = document.getElementById("output");
-let latest = "";
-
-function val(name) {
-  return new FormData(form).get(name) || "Not provided";
-}
-
-function makeMarkdown() {
-  return `## Website Update Request\n\n**Title:** ${val("title")}\n**Request type:** ${val("request_type")}\n**Priority:** ${val("priority")}\n**Page affected:** ${val("page_affected")}\n**Deadline:** ${val("deadline")}\n**Contact:** ${val("contact")}\n\n## Requested Change\n\n${val("requested_change")}\n\n## Exact Copy / Content\n\n${val("exact_content")}\n\n## Image or File Links\n\n${val("file_links")}\n\n## Notes\n\n${val("notes")}\n`;
-}
-
-const copyButton = document.getElementById("copyButton");
-if (copyButton) {
-  copyButton.addEventListener("click", async () => {
-    latest = makeMarkdown();
-    if (output) {
-      output.textContent = latest;
-      output.style.display = "block";
-    }
-    try {
-      await navigator.clipboard.writeText(latest);
-      alert("Request markdown copied.");
-    } catch (e) {
-      alert("Copy failed. You can select the text manually.");
-    }
-  });
-}
-</script><script defer="" src="/assets/js/google-sheet-submit.js"></script></body>
+          <pre class="output" id="output"></pre>
+        </section>
+      </form>
+    </main>
+    <script>
+      const form = document.getElementById("requestForm");
+      const output = document.getElementById("output");
+      let latest = "";
+      function val(name) {
+        return new FormData(form).get(name) || "Not provided";
+      }
+      function makeMarkdown() {
+        return `## Website Update Request\n\n**Title:** ${val(
+          "title"
+        )}\n**Request type:** ${val("request_type")}\n**Priority:** ${val(
+          "priority"
+        )}\n**Area affected:** ${val("area_affected")}\n**Page affected:** ${val("page_affected")}\n**Deadline:** ${val(
+          "deadline"
+        )}\n**Contact:** ${val("contact")}\n\n## Requested Change\n\n${val(
+          "requested_change"
+        )}\n\n## Exact Copy / Content\n\n${val(
+          "exact_content"
+        )}\n\n## Image or File Links\n\n${val(
+          "file_links"
+        )}\n\n## Notes\n\n${val("notes")}\n`;
+      }
+      function downloadText(filename, text) {
+        const blob = new Blob([text], { type: "text/markdown" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        latest = makeMarkdown();
+        output.textContent = latest;
+        output.style.display = "block";
+        downloadText("betterbodies-website-update-request.md", latest);
+      });
+      document
+        .getElementById("copyButton")
+        .addEventListener("click", async () => {
+          latest = latest || makeMarkdown();
+          output.textContent = latest;
+          output.style.display = "block";
+          try {
+            await navigator.clipboard.writeText(latest);
+            alert("Request markdown copied.");
+          } catch (e) {
+            alert("Copy failed. You can select the text manually.");
+          }
+        });
+    </script>
+  </body>
 </html>

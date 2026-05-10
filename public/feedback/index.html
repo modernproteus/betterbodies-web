@@ -399,15 +399,6 @@
           grid-template-columns: 1fr;
         }
       }
-      .completed {
-        background: #1d7f45;
-        color: #ffffff;
-      }
-
-      .remaining {
-        background: #fff6d8;
-        color: #805a00;
-      }
     </style>
   </head>
   <body>
@@ -418,14 +409,16 @@
           BetterBodies Rebrand Review
         </div>
         <h1>
-          Feedback hub for the new BetterBodies brand, website, and operating
+          Feedback hub for the new BetterBodies readiness brand, website, and operating
           workflow.
         </h1>
         <p>
-          Sheldon, this page collects the first round of review materials. The
-          goal is to make sure the new direction reflects your work, your voice,
-          your community, and the way BetterBodies should actually operate
-          online.
+          Sheldon and Juana, this page collects the first round of review materials. The
+          current direction positions BetterBodies as a hands-on readiness brand:
+          CPR, BLS, AED, first aid, crisis readiness, personal safety, movement,
+          and community training. The goal is to make sure the new direction
+          reflects the real work, voice, community, and operating workflow behind
+          BetterBodies.
         </p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="brand-website-direction.html">
@@ -445,14 +438,6 @@
           >
             Open Current Website ↗
           </a>
-          <a
-            class="btn btn-outline"
-            href="https://modernproteus.github.io/betterbodies-web/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Open NEW Website ↗
-          </a>
         </div>
       </div>
     </header>
@@ -461,10 +446,26 @@
         <section class="notice">
           <h2>Recommended review order</h2>
           <p>
-            Start with Brand + Website Direction, then Logo Concepts, then
-            Operations + Booking Workflow. The remaining pages help collect
-            supporting content and ongoing update requests.
+            Start with Brand + Website Direction, then Voice + Messaging, then
+            Logo Concepts, then Operations + Booking Workflow. The remaining pages
+            help collect photos, proof, content, and ongoing update requests.
           </p>
+        </section>
+        <section class="section">
+          <div class="section-header">
+            <div>
+              <h2>Submission progress</h2>
+
+              <p>
+                This shows which feedback forms have been submitted and which
+                are still remaining.
+              </p>
+            </div>
+          </div>
+
+          <div class="status-board" id="feedbackStatusBoard">
+            <p>Loading feedback status...</p>
+          </div>
         </section>
         <section aria-labelledby="core-review">
           <div class="section-head">
@@ -475,20 +476,17 @@
               </p>
             </div>
             <div class="progress" aria-label="Manual progress indicator">
-              <div class="bar" id="feedbackProgressBar"></div>
+              <div class="bar"></div>
             </div>
           </div>
           <div class="grid">
-            <article
-              class="card primary"
-              data-form-type="brand_website_direction"
-            >
-              <span class="pill ready" data-status-pill>Ready</span>
+            <article class="card primary">
+              <span class="pill ready">Ready</span>
               <h3>Brand + Website Direction</h3>
               <p>
-                Defines the BetterBodies mission, Sheldon’s instructor
-                personality, Austin/community roots, services, visual direction,
-                homepage clarity, and community resource placement.
+                Defines the broader BetterBodies identity: readiness, CPR/BLS/AED,
+                first aid, crisis response, personal safety, movement, community,
+                Sheldon’s role, homepage clarity, and resource placement.
               </p>
               <div class="meta">
                 <span class="pill">20–25 minutes</span>
@@ -507,15 +505,13 @@
                 </a>
               </div>
             </article>
-            <article
-              class="card primary"
-              data-form-type="logo_concept_feedback"
-            >
-              <span class="pill ready" data-status-pill>Ready</span>
+            <article class="card primary">
+              <span class="pill ready">Ready</span>
               <h3>Logo Concept Review</h3>
               <p>
-                Reviews the creative logo directions, including Austin-local,
-                preparedness, human-pulse, responder, and badge-style concepts.
+                Reviews whether the visual identity can support CPR, BLS, AED,
+                safety, self-defense, movement, and community training under one
+                recognizable brand.
               </p>
               <div class="meta">
                 <span class="pill">10–15 minutes</span>
@@ -527,16 +523,13 @@
                 </a>
               </div>
             </article>
-            <article
-              class="card primary"
-              data-form-type="operations_booking_workflow"
-            >
-              <span class="pill ready" data-status-pill>Ready</span>
+            <article class="card primary">
+              <span class="pill ready">Ready</span>
               <h3>Operations + Booking Workflow</h3>
               <p>
-                Helps decide how the website should handle class requests,
-                upcoming classes, Google Sheet/Calendar management, group
-                training, follow-up, and update requests.
+                Helps decide how the website should handle public classes, private/group
+                training requests, lead follow-up, Google Sheet schedule updates,
+                confirmed bookings, and future update requests.
               </p>
               <div class="meta">
                 <span class="pill">15–20 minutes</span>
@@ -562,13 +555,13 @@
             </div>
           </div>
           <div class="grid">
-            <article class="card" data-form-type="photo_content_inventory">
-              <span class="pill ready" data-status-pill>Ready</span>
+            <article class="card">
+              <span class="pill ready">Ready</span>
               <h3>Photo + Content Inventory</h3>
               <p>
-                Identify photos, videos, class images, testimonials,
-                certifications, partnerships, and other proof we can use on the
-                site.
+                Identify photos, videos, Sheldon/instructor images, class images,
+                testimonials, certification badges, partnerships, and proof we can
+                use to show BetterBodies in action.
               </p>
               <div class="meta">
                 <span class="pill">10 minutes</span>
@@ -580,12 +573,13 @@
                 </a>
               </div>
             </article>
-            <article class="card" data-form-type="voice_messaging_review">
-              <span class="pill ready" data-status-pill>Ready</span>
+            <article class="card">
+              <span class="pill ready">Ready</span>
               <h3>Voice + Messaging Review</h3>
               <p>
-                Review tagline options, homepage language, tone of voice, and
-                phrases that sound most like BetterBodies.
+                Review the new brand language, including “Train your body. Prepare
+                your mind. Protect your community,” homepage tone, service language,
+                and words to use or avoid.
               </p>
               <div class="meta">
                 <span class="pill">10–15 minutes</span>
@@ -597,8 +591,8 @@
                 </a>
               </div>
             </article>
-            <article class="card" data-form-type="site_update_request">
-              <span class="pill ready" data-status-pill>Ready</span>
+            <article class="card">
+              <span class="pill ready">Ready</span>
               <h3>Website Update Requests</h3>
               <p>
                 A simple ongoing form for content changes, class schedule
@@ -619,9 +613,9 @@
               <span class="pill future">Future</span>
               <h3>Submission Status</h3>
               <p>
-                A future dashboard that can show which surveys and update
-                requests were submitted, what is in review, what is completed,
-                and what still needs input.
+                A status dashboard for seeing which surveys have been completed and,
+                later, which update requests are submitted, in review, completed,
+                or still needing input.
               </p>
               <div class="meta">
                 <span class="pill">GitHub-backed later</span>
@@ -633,23 +627,6 @@
                 </a>
               </div>
             </article>
-          </div>
-        </section>
-
-        <section class="section">
-          <div class="section-header">
-            <div>
-              <h2>Submission progress</h2>
-
-              <p>
-                This shows which feedback forms have been submitted and which
-                are still remaining.
-              </p>
-            </div>
-          </div>
-
-          <div class="status-board" id="feedbackStatusBoard">
-            <p>Loading feedback status...</p>
           </div>
         </section>
 
@@ -717,7 +694,7 @@
                 for homepage strategy, SWOT, SOW, and Sheldon’s resume.
               </p>
             </div>
-            <a href="/reference/" target="_blank" rel="noopener noreferrer">
+            <a href="../reference/" target="_blank" rel="noopener noreferrer">
               Folder ↗
             </a>
           </div>
@@ -791,6 +768,6 @@
         </div>
       </div>
     </footer>
-    <script src="/assets/js/feedback-status.js" defer></script>
+    <script src="../assets/js/feedback-status.js" defer></script>
   </body>
 </html>

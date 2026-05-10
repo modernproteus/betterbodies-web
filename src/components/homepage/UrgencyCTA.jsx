@@ -1,29 +1,42 @@
 import React from "react";
+import { ArrowRight, CalendarClock, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { CalendarClock, Users, ArrowRight } from "lucide-react";
 import useUpcomingClasses, {
   buildEventTimeRange,
+  buildSelectedClassLabel,
   formatEventDate,
-  scrollToContactWithClass,
   scrollToSection,
 } from "@/lib/useUpcomingClasses";
 
-export default function UrgencyCTA() {
-  const { nextClass, status } = useUpcomingClasses();
+function classTypeToService(classType) {
+  const value = String(classType || "").toLowerCase();
 
+  if (value.includes("cpr")) return "CPR Certification";
+  if (value.includes("bls")) return "BLS Certification";
+  if (value.includes("aid") || value.includes("aed")) return "AED / First Aid";
+  if (value.includes("group")) return "Group / On-Site Training";
+  if (value.includes("defense") || value.includes("safety")) {
+    return "Personal Safety / Self-Defense";
+  }
+
+  return classType || "Class Inquiry";
+}
+
+export default function UrgencyCTA({ onRequestTraining }) {
+  const { nextClass, status } = useUpcomingClasses();
   const hasNextClass = status === "ready" && Boolean(nextClass);
 
   return (
-    <section id="urgency" className="py-16 bg-[#0f0f0f] text-white">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 md:p-8 lg:p-10">
+    <section id="urgency" className="bg-[#0f0f0f] py-16 text-white">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 md:p-8 lg:p-10 reveal-on-scroll">
           <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
             <div>
               <p className="text-sm font-bold uppercase tracking-wide text-red-400">
                 Class Availability
               </p>
 
-              <h2 className="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight">
+              <h2 className="mt-2 text-3xl font-extrabold tracking-tight md:text-4xl">
                 {hasNextClass
                   ? `Next ${nextClass.classType || "Training"} Class`
                   : "Upcoming classes are being scheduled"}
@@ -50,16 +63,32 @@ export default function UrgencyCTA() {
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
               {hasNextClass ? (
                 <Button
-                  className="bg-red-600 hover:bg-red-700 text-white"
-                  onClick={() => scrollToContactWithClass(nextClass)}
+                  className="bg-red-600 text-white hover:bg-red-700"
+                  onClick={() =>
+                    onRequestTraining?.({
+                      sourceSection: "urgency_cta",
+                      leadIntent: "specific_class",
+                      serviceNeeded: classTypeToService(nextClass.classType),
+                      selectedClass: buildSelectedClassLabel(nextClass),
+                      selectedClassId: nextClass.id,
+                      ctaLabel: "Request This Class",
+                    })
+                  }
                 >
                   Request This Class
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               ) : (
                 <Button
-                  className="bg-red-600 hover:bg-red-700 text-white"
-                  onClick={() => scrollToSection("#contact")}
+                  className="bg-red-600 text-white hover:bg-red-700"
+                  onClick={() =>
+                    onRequestTraining?.({
+                      sourceSection: "urgency_cta",
+                      leadIntent: "general_training",
+                      serviceNeeded: "Not sure yet",
+                      ctaLabel: "Request Class Info",
+                    })
+                  }
                 >
                   Request Class Info
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -78,7 +107,14 @@ export default function UrgencyCTA() {
               <Button
                 variant="outline"
                 className="border-white/20 text-white hover:bg-white/10"
-                onClick={() => scrollToSection("#contact")}
+                onClick={() =>
+                  onRequestTraining?.({
+                    sourceSection: "urgency_cta",
+                    leadIntent: "group_training",
+                    serviceNeeded: "Group / On-Site Training",
+                    ctaLabel: "Request Group Training",
+                  })
+                }
               >
                 <Users className="mr-2 h-4 w-4" />
                 Request Group Training

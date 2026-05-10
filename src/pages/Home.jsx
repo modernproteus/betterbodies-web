@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/homepage/Navbar";
 import HeroSection from "../components/homepage/HeroSection";
 import TrustStrip from "../components/homepage/TrustStrip";
 import ServicesCards from "../components/homepage/ServicesCards";
+import MovementStrip from "../components/homepage/MovementStrip";
+import UpcomingClasses from "../components/homepage/UpcomingClasses";
 import AboutSection from "../components/homepage/AboutSection";
 import CertificationsSection from "../components/homepage/CertificationsSection";
 import WhoWeServe from "../components/homepage/WhoWeServe";
@@ -12,33 +14,53 @@ import FAQSection from "../components/homepage/FAQSection";
 import ContactForm from "../components/homepage/ContactForm";
 import FooterCTA from "../components/homepage/FooterCTA";
 import StickyBookingBar from "../components/homepage/StickyBookingBar";
-import CommunityResource from "../components/homepage/CommunityResource";
-import UpcomingClasses from "../components/homepage/UpcomingClasses";
-import MovementStrip from "../components/homepage/MovementStrip";
+import TrainingRequestModal from "../components/homepage/TrainingRequestModal";
 import useScrollReveal from "../hooks/useScrollReveal";
+
 const HERO_IMAGE = `${
   import.meta.env.BASE_URL
-}images/hero-cpr-training-austin.png`;
+}assets/images/placeholders/cpr.jpg`;
 
 export default function Home() {
   useScrollReveal();
-  return (
-    <div className="min-h-screen bg-[#111111] pb-20 md:pb-0">
-      <Navbar />
 
-      <div id="hero">
-        <HeroSection heroImage={HERO_IMAGE} />
-      </div>
+  const [trainingRequest, setTrainingRequest] = useState({
+    open: false,
+    context: {},
+  });
+
+  const openTrainingRequest = (context = {}) => {
+    setTrainingRequest({
+      open: true,
+      context,
+    });
+  };
+
+  const closeTrainingRequest = () => {
+    setTrainingRequest({
+      open: false,
+      context: {},
+    });
+  };
+
+  return (
+    <>
+      <Navbar onRequestTraining={openTrainingRequest} />
+
+      <HeroSection
+        heroImage={HERO_IMAGE}
+        onRequestTraining={openTrainingRequest}
+      />
 
       <TrustStrip />
 
       <div id="services">
-        <ServicesCards />
+        <ServicesCards onRequestTraining={openTrainingRequest} />
       </div>
 
       <MovementStrip />
 
-      <UpcomingClasses />
+      <UpcomingClasses onRequestTraining={openTrainingRequest} />
 
       <AboutSection />
 
@@ -48,20 +70,21 @@ export default function Home() {
 
       <Testimonials />
 
-      <div id="urgency">
-        <UrgencyCTA />
-      </div>
+      <UrgencyCTA onRequestTraining={openTrainingRequest} />
 
-      <div id="faq">
-        <FAQSection />
-      </div>
-
-      <CommunityResource />
+      <FAQSection />
 
       <ContactForm />
 
-      <FooterCTA />
-      <StickyBookingBar />
-    </div>
+      <FooterCTA onRequestTraining={openTrainingRequest} />
+
+      <StickyBookingBar onRequestTraining={openTrainingRequest} />
+
+      <TrainingRequestModal
+        open={trainingRequest.open}
+        context={trainingRequest.context}
+        onClose={closeTrainingRequest}
+      />
+    </>
   );
 }

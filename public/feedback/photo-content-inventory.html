@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1" name="viewport"/>
-<title>BetterBodies Photo + Content Inventory</title>
-<style>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>BetterBodies Photo + Content Inventory</title>
+    <style>
       :root {
         --bb-red: #d71920;
         --bb-red-dark: #a90f16;
@@ -211,203 +210,341 @@
         }
       }
     </style>
-</head>
-<body>
-<header class="hero">
-<div class="wrap">
-<a class="back-link" href="/feedback/index.html">
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <a class="back-link" href="./">
           ← Back to Feedback Hub
         </a>
-<div class="eyebrow">BetterBodies Rebrand Review</div>
-<h1>Photo + Content Inventory</h1>
-<p>
+        <div class="eyebrow">BetterBodies Rebrand Review</div>
+        <h1>Photo + Content Inventory</h1>
+        <p>
           Help identify the real images, videos, testimonials, credentials,
           partnerships, and proof points we can use to make the new BetterBodies
           website feel authentic, local, and trustworthy.
         </p>
-</div>
-</header>
-<main class="main">
-<form class="wrap" data-form-type="photo_content_inventory" data-google-sheet-form="" id="inventoryForm"><input name="form_type" type="hidden" value="photo_content_inventory"/><input name="form_title" type="hidden" value="Photo + Content Inventory"/><input name="project_key" type="hidden" value="betterbodies-feedback-2026"/>
-<section class="card">
-<h2>Quick context</h2>
-<div class="note">
-<strong>Goal:</strong>
+      </div>
+    </header>
+    <main class="main">
+      <form class="wrap" id="inventoryForm">
+        <section class="card">
+          <h2>Quick context</h2>
+          <div class="note">
+            <strong>Goal:</strong>
             Real photos and proof will make the website stronger than generic
             stock imagery. This form helps us find what already exists and what
             we should capture next.
           </div>
-<h3>Your name</h3>
-<input name="name" placeholder="Sheldon Williams" type="text"/>
-</section>
-<section class="card">
-<h2>Existing photos and videos</h2>
-<p class="helper">
+          <h3>Your name</h3>
+          <input type="text" name="name" placeholder="Sheldon Williams" />
+        </section>
+        <section class="card">
+          <h2>Existing photos and videos</h2>
+          <p class="helper">
             Check anything that already exists and may be available for
             website/social use.
           </p>
-<div class="grid">
-<label class="check">
-<input name="assets" type="checkbox" value="CPR class photos"/>
+          <div class="grid">
+            <label class="check">
+              <input type="checkbox" name="assets" value="CPR class photos" />
               CPR class photos
             </label>
-<label class="check">
-<input name="assets" type="checkbox" value="BLS training photos"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="assets"
+                value="BLS training photos"
+              />
               BLS training photos
             </label>
-<label class="check">
-<input name="assets" type="checkbox" value="AED training photos"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="assets"
+                value="AED training photos"
+              />
               AED training photos
             </label>
-<label class="check">
-<input name="assets" type="checkbox" value="Group training photos"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="assets"
+                value="Group training photos"
+              />
               Group training photos
             </label>
-<label class="check">
-<input name="assets" type="checkbox" value="Self-defense photos"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="assets"
+                value="Self-defense photos"
+              />
               Self-defense photos
             </label>
-<label class="check">
-<input name="assets" type="checkbox" value="Instructor portraits"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="assets"
+                value="Instructor portraits"
+              />
               Instructor portraits/headshots
             </label>
-<label class="check">
-<input name="assets" type="checkbox" value="Senior fitness photos"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="assets"
+                value="Senior fitness photos"
+              />
               Senior fitness / wellness photos
             </label>
-<label class="check">
-<input name="assets" type="checkbox" value="Video clips"/>
+            <label class="check">
+              <input type="checkbox" name="assets" value="Video clips" />
               Video clips
             </label>
-<label class="check">
-<input name="assets" type="checkbox" value="Flyers or old graphics"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="assets"
+                value="Flyers or old graphics"
+              />
               Flyers / old graphics
             </label>
-<label class="check">
-<input name="assets" type="checkbox" value="None yet"/>
+            <label class="check">
+              <input type="checkbox" name="assets" value="None yet" />
               None yet / need new shoot
             </label>
-</div>
-<h3>Where can we find these assets?</h3>
-<textarea name="asset_locations" placeholder="Google Drive links, phone albums, Facebook posts, Instagram posts, folders, etc."></textarea>
+          </div>
+          <h3>Where can we find these assets?</h3>
+          <textarea
+            name="asset_locations"
+            placeholder="Google Drive links, phone albums, Facebook posts, Instagram posts, folders, etc."
+          ></textarea>
+          <h3>Do we have permission to use these publicly on the website/social media?</h3>
+<select name="public_use_permission">
+<option value="">Choose one</option>
+<option>Yes</option>
+<option>Some yes, some need review</option>
+<option>No, need permission first</option>
+<option>Not sure</option>
+</select>
 <h3>Anything we should not use publicly?</h3>
-<textarea name="do_not_use" placeholder="People without permission, old branding, outdated schedules, private client material, etc."></textarea>
-</section>
-<section class="card">
-<h2>Proof points and credibility</h2>
-<div class="grid">
-<label class="check">
-<input name="proof" type="checkbox" value="Google reviews"/>
+          <textarea
+            name="do_not_use"
+            placeholder="People without permission, old branding, outdated schedules, private client material, etc."
+          ></textarea>
+        </section>
+        <section class="card">
+          <h2>Proof points and credibility</h2>
+          <div class="grid">
+            <label class="check">
+              <input type="checkbox" name="proof" value="Google reviews" />
               Google reviews
             </label>
-<label class="check">
-<input name="proof" type="checkbox" value="Testimonials"/>
+            <label class="check">
+              <input type="checkbox" name="proof" value="Testimonials" />
               Testimonials
             </label>
-<label class="check">
-<input name="proof" type="checkbox" value="Certification badges"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="proof"
+                value="Certification badges"
+              />
               Certification badges
             </label>
-<label class="check">
-<input name="proof" type="checkbox" value="Organizations served"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="proof"
+                value="Organizations served"
+              />
               Organizations served
             </label>
-<label class="check">
-<input name="proof" type="checkbox" value="Class schedule"/>
+            <label class="check">
+              <input type="checkbox" name="proof" value="Class schedule" />
               Current class schedule
             </label>
-<label class="check">
-<input name="proof" type="checkbox" value="Pricing info"/>
+            <label class="check">
+              <input type="checkbox" name="proof" value="Pricing info" />
               Pricing info
             </label>
-<label class="check">
-<input name="proof" type="checkbox" value="Partnerships"/>
+            <label class="check">
+              <input type="checkbox" name="proof" value="Partnerships" />
               Local partnerships
             </label>
-<label class="check">
-<input name="proof" type="checkbox" value="Public-sector work"/>
+            <label class="check">
+              <input type="checkbox" name="proof" value="Public-sector work" />
               Public-sector / agency work
             </label>
-</div>
-<h3>
+          </div>
+          <h3>
             Organizations, agencies, schools, or communities we can mention
             publicly
           </h3>
-<textarea name="organizations" placeholder="List any names that are okay to mention on the website."></textarea>
-<h3>Testimonials or review snippets we should use</h3>
-<textarea name="testimonials" placeholder="Paste quotes or tell us where to find them."></textarea>
-</section>
-<section class="card">
-<h2>Photos we should capture next</h2>
-<div class="mini-ref">
-<div class="mock-img">Photo idea</div>
-<p>
+          <textarea
+            name="organizations"
+            placeholder="List any names that are okay to mention on the website."
+          ></textarea>
+          <h3>Testimonials or review snippets we should use</h3>
+          <textarea
+            name="testimonials"
+            placeholder="Paste quotes or tell us where to find them."
+          ></textarea>
+        </section>
+        <section class="card">
+          <h2>Photos we should capture next</h2>
+          <div class="mini-ref">
+            <div class="mock-img">Photo idea</div>
+            <p>
               Examples: Sheldon teaching compressions, AED demo, group training,
               team workshop, Austin/local shots, instructor portrait, real class
               moments.
             </p>
-</div>
-<div class="grid">
-<label class="check">
-<input name="new_photos" type="checkbox" value="Sheldon teaching CPR"/>
+          </div>
+          <div class="grid">
+            <label class="check">
+              <input
+                type="checkbox"
+                name="new_photos"
+                value="Sheldon teaching CPR"
+              />
               Sheldon teaching CPR
             </label>
-<label class="check">
-<input name="new_photos" type="checkbox" value="AED demonstration"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="new_photos"
+                value="AED demonstration"
+              />
               AED demonstration
             </label>
-<label class="check">
-<input name="new_photos" type="checkbox" value="Coaching a student"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="new_photos"
+                value="Coaching a student"
+              />
               Coaching a student
             </label>
-<label class="check">
-<input name="new_photos" type="checkbox" value="Leading a group class"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="new_photos"
+                value="Leading a group class"
+              />
               Leading a group class
             </label>
-<label class="check">
-<input name="new_photos" type="checkbox" value="Instructor portrait"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="new_photos"
+                value="Instructor portrait"
+              />
               Instructor portrait
             </label>
-<label class="check">
-<input name="new_photos" type="checkbox" value="Hands-on CPR closeups"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="new_photos"
+                value="Hands-on CPR closeups"
+              />
               Hands-on CPR closeups
             </label>
-<label class="check">
-<input name="new_photos" type="checkbox" value="Workplace training"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="new_photos"
+                value="Workplace training"
+              />
               Workplace/group training
             </label>
-<label class="check">
-<input name="new_photos" type="checkbox" value="Self-defense instruction"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="new_photos"
+                value="Self-defense instruction"
+              />
               Self-defense instruction
             </label>
-<label class="check">
-<input name="new_photos" type="checkbox" value="Austin local shots"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="new_photos"
+                value="Austin local shots"
+              />
               Austin outdoor/local shots
             </label>
-<label class="check">
-<input name="new_photos" type="checkbox" value="Safety workshop"/>
+            <label class="check">
+              <input
+                type="checkbox"
+                name="new_photos"
+                value="Safety workshop"
+              />
               Situational awareness workshop
             </label>
-</div>
+          </div>
+          <h3>Which images best capture the BetterBodies energy?</h3>
+<textarea name="best_energy_images"></textarea>
 <h3>Most important visual moments to capture</h3>
-<textarea name="photo_priorities"></textarea>
-</section>
-<section class="card">
-<h2>Final notes</h2>
-<h3>
+          <textarea name="photo_priorities"></textarea>
+        </section>
+        <section class="card">
+          <h2>Final notes</h2>
+          <h3>
             Anything else we should know about BetterBodies content, photos,
             testimonials, or proof?
           </h3>
-<textarea name="final_notes"></textarea>
-<div class="actions">
-<button class="btn btn-primary" type="submit">Submit Photo + Content Inventory</button>
-<a class="btn btn-secondary" href="/feedback/">Back to Hub</a>
-</div><p aria-live="polite" class="helper" data-form-status="" role="status">After submitting, your responses will be saved for Nick to review.</p>
-<p class="helper">
-            After submitting, your responses will be saved for Nick to review.
+          <textarea name="final_notes"></textarea>
+          <div class="actions">
+            <button class="btn btn-primary" type="submit">
+              Download Inventory Notes
+            </button>
+            <a class="btn btn-secondary" href="./">Back to Hub</a>
+          </div>
+          <p class="helper">
+            For now, this creates a local text file you can send or archive.
+            Later we can wire this to GitHub Issues.
           </p>
-</section>
-</form>
-</main>
-<script defer="" src="/assets/js/google-sheet-submit.js"></script></body>
+        </section>
+      </form>
+    </main>
+    <script>
+      function collectForm(form) {
+        const data = new FormData(form);
+        const out = {};
+        for (const [k, v] of data.entries()) {
+          if (out[k]) {
+            out[k] = Array.isArray(out[k]) ? [...out[k], v] : [out[k], v];
+          } else out[k] = v;
+        }
+        return out;
+      }
+      function downloadText(filename, text) {
+        const blob = new Blob([text], { type: "text/plain" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = filename;
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+      document
+        .getElementById("inventoryForm")
+        .addEventListener("submit", (e) => {
+          e.preventDefault();
+          const d = collectForm(e.currentTarget);
+          let txt =
+            "BetterBodies Photo + Content Inventory\n======================================\n\n";
+          for (const [k, v] of Object.entries(d)) {
+            txt +=
+              k.replaceAll("_", " ").toUpperCase() +
+              ":\n" +
+              (Array.isArray(v) ? v.join(", ") : v) +
+              "\n\n";
+          }
+          downloadText("betterbodies-photo-content-inventory.txt", txt);
+        });
+    </script>
+  </body>
 </html>

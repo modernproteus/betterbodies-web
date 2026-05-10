@@ -1,26 +1,39 @@
 import React from "react";
-import { CalendarDays, MapPin, Users, ArrowRight } from "lucide-react";
+import { ArrowRight, CalendarDays, MapPin, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import useUpcomingClasses, {
   buildEventTimeRange,
+  buildSelectedClassLabel,
   formatEventDate,
-  scrollToContactWithClass,
-  scrollToSection,
 } from "@/lib/useUpcomingClasses";
 
-export default function UpcomingClasses() {
+function classTypeToService(classType) {
+  const value = String(classType || "").toLowerCase();
+
+  if (value.includes("cpr")) return "CPR Certification";
+  if (value.includes("bls")) return "BLS Certification";
+  if (value.includes("aid") || value.includes("aed")) return "AED / First Aid";
+  if (value.includes("group")) return "Group / On-Site Training";
+  if (value.includes("defense") || value.includes("safety")) {
+    return "Personal Safety / Self-Defense";
+  }
+
+  return classType || "Class Inquiry";
+}
+
+export default function UpcomingClasses({ onRequestTraining }) {
   const { events: loadedEvents = [], status } = useUpcomingClasses();
   const events = Array.isArray(loadedEvents) ? loadedEvents : [];
 
   return (
-    <section id="schedule" className="py-20 bg-slate-50 scroll-mt-28">
-      <div className="max-w-6xl mx-auto px-4">
-        <div className="max-w-3xl">
+    <section id="schedule" className="scroll-mt-28 bg-slate-50 py-20">
+      <div className="mx-auto max-w-6xl px-4">
+        <div className="max-w-3xl reveal-on-scroll">
           <p className="text-sm font-bold uppercase tracking-wide text-red-600">
             Upcoming Classes
           </p>
 
-          <h2 className="mt-2 text-3xl md:text-4xl font-extrabold tracking-tight text-slate-950">
+          <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-slate-950 md:text-4xl">
             View upcoming BetterBodies training dates
           </h2>
 
@@ -45,7 +58,7 @@ export default function UpcomingClasses() {
         )}
 
         {status === "ready" && events.length === 0 && (
-          <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+          <div className="mt-8 rounded-3xl border border-slate-200 bg-white p-6 shadow-sm reveal-on-scroll">
             <h3 className="text-xl font-extrabold text-slate-950">
               Upcoming classes are being scheduled.
             </h3>
@@ -57,7 +70,14 @@ export default function UpcomingClasses() {
 
             <Button
               className="mt-5 bg-red-600 hover:bg-red-700"
-              onClick={() => scrollToSection("#contact")}
+              onClick={() =>
+                onRequestTraining?.({
+                  sourceSection: "upcoming_classes_empty",
+                  leadIntent: "general_training",
+                  serviceNeeded: "Not sure yet",
+                  ctaLabel: "Request Class Info",
+                })
+              }
             >
               Request Class Info
               <ArrowRight className="ml-2 h-4 w-4" />
@@ -70,7 +90,7 @@ export default function UpcomingClasses() {
             {events.map((event) => (
               <article
                 key={event.id}
-                className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
+                className="reveal-on-scroll rounded-3xl border border-slate-200 bg-white p-6 shadow-sm"
               >
                 <div className="flex items-center justify-between gap-3">
                   <span className="rounded-full bg-red-50 px-3 py-1 text-xs font-extrabold uppercase tracking-wide text-red-700">
@@ -132,7 +152,16 @@ export default function UpcomingClasses() {
                   ) : (
                     <Button
                       className="w-full bg-red-600 hover:bg-red-700"
-                      onClick={() => scrollToContactWithClass(event)}
+                      onClick={() =>
+                        onRequestTraining?.({
+                          sourceSection: "upcoming_classes",
+                          leadIntent: "specific_class",
+                          serviceNeeded: classTypeToService(event.classType),
+                          selectedClass: buildSelectedClassLabel(event),
+                          selectedClassId: event.id,
+                          ctaLabel: "Request This Class",
+                        })
+                      }
                     >
                       Request This Class
                       <ArrowRight className="ml-2 h-4 w-4" />

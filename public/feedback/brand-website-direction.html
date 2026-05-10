@@ -219,9 +219,7 @@
   <body>
     <header class="topbar">
       <div class="wrap">
-        <a class="back-link" href="/feedback/index.html">
-          ← Back to Feedback Hub
-        </a>
+        <a class="back-link" href="./">← Back to Feedback Hub</a>
         <div class="eyebrow">BetterBodies TX</div>
         <h1>Brand + Website Direction Survey</h1>
         <p class="lead">
@@ -242,13 +240,15 @@
         </p>
         <div class="note">
           <strong>Working direction:</strong>
-          BetterBodies should feel local to Austin, community-rooted,
-          professional, strong, practical, hands-on, and easy to understand.
+          BetterBodies is being positioned as a hands-on readiness training brand — not
+          only CPR certification. CPR, BLS, AED, and first aid remain important,
+          but the broader brand also includes crisis readiness, personal safety,
+          self-defense, health, movement, confidence, and community preparedness.
         </div>
         <div class="reference-links">
           <a
             class="ref-link"
-            href="/"
+            href="../"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -256,7 +256,7 @@
           </a>
           <a
             class="ref-link"
-            href="/feedback/betterbodies-logo-concepts.html"
+            href="./betterbodies-logo-concepts.html"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -272,22 +272,119 @@
           </a>
         </div>
       </section>
-      <form data-google-sheet-form data-form-type="brand_website_direction">
+      <form data-google-sheet-form data-form-type="operations_booking_workflow">
+        <input
+          type="hidden"
+          name="form_type"
+          value="operations_booking_workflow"
+        />
+        <input
+          type="hidden"
+          name="_subject"
+          value="BetterBodies brand and website direction submitted"
+        />
+        <input type="hidden" name="_template" value="table" />
         <input type="hidden" name="form_type" value="brand_website_direction" />
-
-        <input
-          type="hidden"
-          name="form_title"
-          value="Brand + Website Direction Survey"
-        />
-
-        <input
-          type="hidden"
-          name="project_key"
-          value="betterbodies-feedback-2026"
-        />
+        
         <section class="card">
-          <h2>1. BetterBodies Mission</h2>
+          <h2>1. Broader Brand Direction</h2>
+          <div class="assumption">
+            <strong>Working brand architecture:</strong>
+            BetterBodies TX is a practical readiness training brand with four core tracks:
+            Emergency Response, Crisis Readiness, Personal Safety, and Group Training.
+          </div>
+          <label>Does this broader direction feel accurate for BetterBodies?</label>
+          <div class="options">
+            <label class="option"><input type="radio" name="broader_brand_direction" value="Yes, this feels right" /> Yes, this feels right</label>
+            <label class="option"><input type="radio" name="broader_brand_direction" value="Mostly, but CPR should still be the main focus" /> Mostly, but CPR should still be the main focus</label>
+            <label class="option"><input type="radio" name="broader_brand_direction" value="Mostly, but safety/self-defense should be more visible" /> Mostly, but safety/self-defense should be more visible</label>
+            <label class="option"><input type="radio" name="broader_brand_direction" value="Mostly, but health/movement should be more visible" /> Mostly, but health/movement should be more visible</label>
+            <label class="option"><input type="radio" name="broader_brand_direction" value="No, BetterBodies should stay focused mainly on CPR/BLS" /> No, BetterBodies should stay focused mainly on CPR/BLS</label>
+            <label class="option"><input type="radio" name="broader_brand_direction" value="Not sure yet" /> Not sure yet</label>
+          </div>
+          <label>
+            What services or training areas are missing from this structure?
+            <textarea name="missing_service_tracks"></textarea>
+          </label>
+        </section>
+
+        <section class="card">
+          <h2>2. Homepage Hero Message</h2>
+          <div class="assumption">
+            <strong>Current hero direction:</strong><br />
+            Train your body. Prepare your mind. Protect your community.<br /><br />
+            BetterBodies TX provides hands-on CPR, BLS, AED, first aid, crisis readiness,
+            and personal safety training for individuals, workplaces, schools, churches,
+            gyms, and community groups.<br /><br />
+            Helping Austin become safer, stronger, and more prepared.
+          </div>
+          <label>How well does this hero message represent BetterBodies?</label>
+          <div class="options">
+            <label class="option"><input type="radio" name="hero_message_fit" value="Feels very accurate" /> Feels very accurate</label>
+            <label class="option"><input type="radio" name="hero_message_fit" value="Feels mostly accurate" /> Feels mostly accurate</label>
+            <label class="option"><input type="radio" name="hero_message_fit" value="Good direction, but needs different wording" /> Good direction, but needs different wording</label>
+            <label class="option"><input type="radio" name="hero_message_fit" value="Too broad — CPR/BLS should be more dominant" /> Too broad — CPR/BLS should be more dominant</label>
+            <label class="option"><input type="radio" name="hero_message_fit" value="Too serious — needs more energy/movement" /> Too serious — needs more energy/movement</label>
+            <label class="option"><input type="radio" name="hero_message_fit" value="Too fitness-focused" /> Too fitness-focused</label>
+            <label class="option"><input type="radio" name="hero_message_fit" value="Not sure" /> Not sure</label>
+          </div>
+          <label>
+            What would you change about the hero wording?
+            <textarea name="hero_wording_changes"></textarea>
+          </label>
+        </section>
+
+        <section class="card">
+          <h2>3. Service Tracks + Priorities</h2>
+          <div class="assumption">
+            <strong>Proposed service tracks:</strong><br />
+            Emergency Response — CPR, BLS, AED, First Aid<br />
+            Crisis Readiness — crisis management, situational awareness, emergency confidence<br />
+            Personal Safety — self-defense, body awareness, confidence<br />
+            Group Training — workplaces, schools, churches, gyms, caregivers, community groups
+          </div>
+          <label>Do these service tracks make sense for BetterBodies?</label>
+          <div class="options">
+            <label class="option"><input type="radio" name="service_track_fit" value="Yes, this structure feels right" /> Yes, this structure feels right</label>
+            <label class="option"><input type="radio" name="service_track_fit" value="Mostly, but I would rename one or more tracks" /> Mostly, but I would rename one or more tracks</label>
+            <label class="option"><input type="radio" name="service_track_fit" value="CPR/BLS should be its own primary category" /> CPR/BLS should be its own primary category</label>
+            <label class="option"><input type="radio" name="service_track_fit" value="Self-defense should be more prominent" /> Self-defense should be more prominent</label>
+            <label class="option"><input type="radio" name="service_track_fit" value="Health/movement should be more prominent" /> Health/movement should be more prominent</label>
+            <label class="option"><input type="radio" name="service_track_fit" value="This feels too broad" /> This feels too broad</label>
+            <label class="option"><input type="radio" name="service_track_fit" value="Not sure" /> Not sure</label>
+          </div>
+          <label>
+            Which services should be most visible on the homepage?
+            <textarea name="homepage_service_priorities" placeholder="CPR, BLS, AED, First Aid, Crisis Management, Self-Defense, Group Training, Health/Movement, Community Workshops..."></textarea>
+          </label>
+          <label>
+            What is the main thing someone should understand about BetterBodies within the first 10 seconds?
+            <textarea name="first_10_seconds_message"></textarea>
+          </label>
+        </section>
+
+        <section class="card">
+          <h2>4. Sheldon + Visual Direction</h2>
+          <label>How visible should Sheldon be on the website?</label>
+          <div class="options">
+            <label class="option"><input type="radio" name="sheldon_visibility" value="Very visible — Sheldon should be a major part of the brand" /> Very visible — Sheldon should be a major part of the brand</label>
+            <label class="option"><input type="radio" name="sheldon_visibility" value="Visible, but balanced with the services" /> Visible, but balanced with the services</label>
+            <label class="option"><input type="radio" name="sheldon_visibility" value="Somewhat visible, mostly in the About section" /> Somewhat visible, mostly in the About section</label>
+            <label class="option"><input type="radio" name="sheldon_visibility" value="Minimally visible" /> Minimally visible</label>
+            <label class="option"><input type="radio" name="sheldon_visibility" value="Not sure" /> Not sure</label>
+          </div>
+          <label>
+            What types of imagery should we prioritize?
+            <textarea name="image_priorities" placeholder="Sheldon teaching, CPR practice, group classes, self-defense movement, fitness/movement, community events, badges, Austin/local imagery..."></textarea>
+          </label>
+          <label>
+            Are there any visuals we should avoid?
+            <textarea name="image_avoid"></textarea>
+          </label>
+        </section>
+
+        <section class="card">
+          <h2>5. BetterBodies Mission</h2>
           <label>
             In one or two sentences, what is BetterBodies?
             <textarea name="what_is_betterbodies"></textarea>
@@ -310,7 +407,7 @@
         </section>
 
         <section class="card">
-          <h2>2. Sheldon as Instructor</h2>
+          <h2>6. Sheldon as Instructor</h2>
           <label>
             How would your students describe your teaching style?
             <span class="hint">Choose any that fit.</span>
@@ -385,7 +482,7 @@
         </section>
 
         <section class="card">
-          <h2>3. Austin + Community Roots</h2>
+          <h2>7. Austin + Community Roots</h2>
           <label>
             What does being Austin-based mean to BetterBodies?
             <textarea name="austin_meaning"></textarea>
@@ -419,7 +516,7 @@
         </section>
 
         <section class="card">
-          <h2>4. Services + Customers</h2>
+          <h2>8. Services + Customers</h2>
           <label>
             Which services should BetterBodies be known for first?
             <textarea name="service_priority"></textarea>
@@ -480,7 +577,7 @@
         </section>
 
         <section class="card">
-          <h2>5. Brand Look + Feel</h2>
+          <h2>9. Brand Look + Feel</h2>
           <label>
             Which words should describe the BetterBodies visual style?
             <textarea
@@ -506,7 +603,7 @@
         </section>
 
         <section class="card">
-          <h2>6. Website Direction</h2>
+          <h2>10. Website Direction</h2>
           <label>
             When you look at the current website/rebrand direction, what feels
             right?
@@ -552,7 +649,7 @@
         </section>
 
         <section class="card">
-          <h2>7. Community Resource</h2>
+          <h2>11. Community Resource</h2>
           <p>
             Sheldon shared a third-party debt relief / credit repair referral
             link that may be included on the website.
@@ -695,7 +792,7 @@
         </section>
 
         <section class="card">
-          <h2>8. Final Thoughts</h2>
+          <h2>12. Final Thoughts</h2>
           <label>
             What would make you proud to send someone to the new website?
             <textarea name="proud_website"></textarea>
@@ -714,18 +811,19 @@
         <div class="actions">
           <div class="wrap">
             <button type="submit">Submit Brand + Website Direction</button>
-            <p
-              data-form-status
-              class="fineprint"
-              role="status"
-              aria-live="polite"
-            >
-              After submitting, your responses will be saved for Nick to review.
+            <p class="fineprint">
+              After submitting, the responses will be emailed to Nick once the
+              form endpoint is connected.
             </p>
           </div>
         </div>
+        <input
+          type="hidden"
+          name="project_key"
+          value="betterbodies-feedback-2026"
+        />
       </form>
-      <script src="/assets/js/google-sheet-submit.js" defer></script>
+      <script src="../assets/js/google-sheet-submit.js" defer></script>
     </main>
   </body>
 </html>
