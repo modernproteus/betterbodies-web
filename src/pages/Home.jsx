@@ -14,7 +14,9 @@ import FooterCTA from "../components/homepage/FooterCTA";
 import StickyBookingBar from "../components/homepage/StickyBookingBar";
 import CommunityResource from "../components/homepage/CommunityResource";
 import UpcomingClasses from "../components/homepage/UpcomingClasses";
-const HERO_IMAGE = "/images/hero-cpr-training-austin.png";
+const HERO_IMAGE = `${
+  import.meta.env.BASE_URL
+}images/hero-cpr-training-austin.png`;
 
 export default function Home() {
   return (
@@ -30,7 +32,7 @@ export default function Home() {
       <div id="services">
         <ServicesCards />
       </div>
-      <UpcomingClasses />
+      {/* <UpcomingClasses /> */}
       <AboutSection />
 
       <CertificationsSection />

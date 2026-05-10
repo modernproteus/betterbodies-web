@@ -9,7 +9,8 @@ import useUpcomingClasses, {
 } from "@/lib/useUpcomingClasses";
 
 export default function UpcomingClasses() {
-  const { events, status } = useUpcomingClasses();
+  const { events: loadedEvents = [], status } = useUpcomingClasses();
+  const events = Array.isArray(loadedEvents) ? loadedEvents : [];
 
   return (
     <section id="schedule" className="py-20 bg-slate-50 scroll-mt-28">

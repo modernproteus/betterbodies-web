@@ -11,7 +11,7 @@ import useUpcomingClasses, {
 export default function UrgencyCTA() {
   const { nextClass, status } = useUpcomingClasses();
 
-  const hasNextClass = status === "ready" && nextClass;
+  const hasNextClass = status === "ready" && Boolean(nextClass);
 
   return (
     <section id="urgency" className="py-16 bg-[#0f0f0f] text-white">
