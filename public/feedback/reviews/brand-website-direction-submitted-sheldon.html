@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>BetterBodies Brand + Website Direction — Submitted Review</title>
+<style>
+      :root {
+        --bb-red: #d71920;
+        --bb-red-dark: #a90f16;
+        --bb-black: #0d0d0f;
+        --bb-charcoal: #242428;
+        --bb-gray: #f4f4f5;
+        --bb-border: #dedee3;
+        --bb-white: #fff;
+        --bb-muted: #64646d;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial,
+          sans-serif;
+        background: var(--bb-gray);
+        color: var(--bb-black);
+        line-height: 1.5;
+      }
+      a {
+        color: inherit;
+      }
+      .topbar {
+        background: linear-gradient(
+          135deg,
+          var(--bb-black),
+          var(--bb-charcoal)
+        );
+        color: #fff;
+        padding: 34px 18px;
+      }
+      .wrap {
+        max-width: 920px;
+        margin: 0 auto;
+      }
+      .eyebrow {
+        color: #ffb5b8;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        font-size: 0.78rem;
+        font-weight: 800;
+      }
+      h1 {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+        line-height: 1;
+        margin: 0.4rem 0 1rem;
+      }
+      .lead {
+        font-size: 1.08rem;
+        max-width: 780px;
+        color: #f1f1f3;
+      }
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin: 18px 0 0;
+        color: #fff;
+        font-weight: 800;
+        text-decoration: none;
+        border-bottom: 2px solid var(--bb-red);
+      }
+      .card {
+        background: #fff;
+        border: 1px solid var(--bb-border);
+        border-radius: 18px;
+        padding: 22px;
+        margin: 18px 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+      }
+      h2 {
+        font-size: 1.45rem;
+        margin: 0 0 10px;
+        border-left: 6px solid var(--bb-red);
+        padding-left: 12px;
+      }
+      h3 {
+        font-size: 1.05rem;
+        margin: 22px 0 8px;
+      }
+      .note,
+      .assumption {
+        background: #fff5f5;
+        border: 1px solid #ffd5d7;
+        border-radius: 14px;
+        padding: 14px;
+        color: #4b1114;
+        margin: 14px 0;
+      }
+      .assumption {
+        background: #f9fafb;
+        border-color: #e5e7eb;
+        color: #374151;
+      }
+      label {
+        display: block;
+        font-weight: 750;
+        margin: 18px 0 8px;
+      }
+      .hint {
+        display: block;
+        font-weight: 500;
+        color: var(--bb-muted);
+        font-size: 0.92rem;
+        margin-top: 3px;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="url"],
+      textarea,
+      select {
+        width: 100%;
+        border: 1px solid #cfcfd5;
+        border-radius: 12px;
+        padding: 12px 13px;
+        font: inherit;
+        background: #fff;
+      }
+      textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+      .options {
+        display: grid;
+        gap: 8px;
+        margin-top: 8px;
+      }
+      .option {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        font-weight: 500;
+        margin: 0;
+        background: #fafafa;
+        border: 1px solid #e8e8ec;
+        border-radius: 12px;
+        padding: 10px;
+      }
+      input[type="checkbox"],
+      input[type="radio"] {
+        margin-top: 4px;
+        accent-color: var(--bb-red);
+      }
+      .grid {
+        display: grid;
+        gap: 14px;
+      }
+      .two {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .actions {
+        position: sticky;
+        bottom: 0;
+        background: rgba(244, 244, 245, 0.94);
+        backdrop-filter: blur(8px);
+        border-top: 1px solid var(--bb-border);
+        padding: 14px 18px;
+        margin-top: 24px;
+      }
+      button {
+        border: 0;
+        border-radius: 999px;
+        padding: 13px 20px;
+        background: var(--bb-red);
+        color: #fff;
+        font-weight: 850;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      button:hover {
+        background: var(--bb-red-dark);
+      }
+      .fineprint {
+        color: var(--bb-muted);
+        font-size: 0.88rem;
+        margin: 0.5rem 0 0;
+      }
+      .reference-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+      .ref-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #e5e7eb;
+        border-radius: 999px;
+        padding: 10px 13px;
+        text-decoration: none;
+        font-weight: 800;
+        background: #fff;
+      }
+      .ref-link:hover {
+        border-color: var(--bb-red);
+        color: var(--bb-red);
+      }
+      @media (max-width: 700px) {
+        .two {
+          grid-template-columns: 1fr;
+        }
+        .actions {
+          position: static;
+        }
+      }
+    
+      .submission-meta {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        margin-top: 16px;
+      }
+      .meta-pill {
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.18);
+        border-radius: 14px;
+        padding: 12px;
+        color: #f7f7f8;
+      }
+      .meta-pill strong {
+        display: block;
+        color: #ffb5b8;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 4px;
+      }
+      .answer-box {
+        width: 100%;
+        border: 1px solid #e2e2e7;
+        border-radius: 12px;
+        padding: 13px 14px;
+        background: #f9fafb;
+        color: #111827;
+        font-weight: 550;
+        white-space: pre-wrap;
+        margin: 8px 0 4px;
+      }
+      .answer-empty {
+        color: #6b7280;
+        font-style: italic;
+        font-weight: 500;
+      }
+      .option {
+        opacity: 0.56;
+      }
+      .option.selected-answer {
+        background: #fff5f5;
+        border-color: #d71920;
+        opacity: 1;
+        box-shadow: inset 4px 0 0 #d71920;
+      }
+      .option input {
+        pointer-events: none;
+      }
+      .review-note {
+        background: #ecfdf5;
+        border: 1px solid #bbf7d0;
+        color: #14532d;
+        border-radius: 14px;
+        padding: 14px;
+        margin: 14px 0;
+      }
+      .actions {
+        position: static;
+      }
+      .readonly-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .button-link {
+        border: 0;
+        border-radius: 999px;
+        padding: 13px 20px;
+        background: var(--bb-red);
+        color: #fff;
+        font-weight: 850;
+        font-size: 1rem;
+        text-decoration: none;
+        display: inline-flex;
+      }
+      .button-link.secondary {
+        background: var(--bb-black);
+      }
+      @media (max-width: 700px) {
+        .submission-meta {
+          grid-template-columns: 1fr;
+        }
+      }
+</style>
+</head>
+<body>
+<header class="topbar">
+<div class="wrap">
+<a class="back-link" href="/feedback/index.html">
+          ← Back to Feedback Hub
+        </a>
+<div class="eyebrow">BetterBodies TX</div>
+<h1>Brand + Website Direction — Submitted Review</h1>
+<p class="lead">Read-only review of Sheldon Williams’ submitted feedback for the BetterBodies brand, website, marketing, and operations direction.</p>
+<div class="submission-meta"><div class="meta-pill"><strong>Submitted by</strong>Sheldon Williams</div><div class="meta-pill"><strong>Submitted at</strong>2026-05-13T02:09:01.441Z</div><div class="meta-pill"><strong>Form</strong>Brand + Website Direction</div><div class="meta-pill"><strong>Status</strong>Received / Ready for review</div></div></div>
+</header>
+<main class="wrap">
+<section class="card">
+<h2>Submission Summary</h2><div class="review-note"><strong>Key takeaway:</strong> Sheldon validated the broader BetterBodies direction and emphasized that the brand should feel personal, positive, diverse, community-rooted, and caring — with CPR/BLS still leading the service focus.</div>
+<p>This read-only page shows the feedback exactly as submitted, so the team can quickly confirm what was captured before the responses are translated into website, brand, and workflow updates.</p>
+<div class="note">
+<strong>Working direction:</strong>
+          BetterBodies should feel local to Austin, community-rooted,
+          professional, strong, practical, hands-on, and easy to understand.
+        </div>
+<div class="reference-links">
+<a class="ref-link" href="/" rel="noopener noreferrer" target="_blank">
+            Open homepage preview ↗
+          </a>
+<a class="ref-link" href="/feedback/betterbodies-logo-concepts.html" rel="noopener noreferrer" target="_blank">
+            Open logo concepts ↗
+          </a>
+<a class="ref-link" href="https://www.betterbodiestx.com/" rel="noopener noreferrer" target="_blank">
+            Open current website ↗
+          </a>
+</div>
+</section>
+<form class="submitted-review">
+
+
+
+<section class="card">
+<h2>1. BetterBodies Mission</h2>
+<label>
+            In one or two sentences, what is BetterBodies?
+            <div class="answer-box" data-answer-name="what_is_betterbodies">Betterbodies is established business that has been operating for over 25 years, we are community based and viable in all areas and this is a calling not a job</div>
+</label>
+<div class="assumption">
+<strong>Working assumption:</strong>
+            BetterBodies is an Austin-based training brand offering CPR, BLS,
+            safety, self-defense, and practical preparedness training for
+            individuals, groups, and organizations.
+          </div>
+<label>
+            Why did you start BetterBodies?
+            <div class="answer-box" data-answer-name="why_started">I started Betterbodies to extend my reach to fitness communities, I wanted to give individuals the opportunity to be trained by someone that would really take their health personally and who would  really push to and past their limits</div>
+</label>
+<label>
+            Complete this sentence: “When someone trains with BetterBodies, they
+            leave knowing they can…”
+            <div class="answer-box" data-answer-name="main_promise">Do ANYTHING that they put their mind to, when they leave they will also know that they have had a hell of a workout!</div>
+</label>
+</section>
+<section class="card">
+<h2>2. Sheldon as Instructor</h2>
+<label>
+            How would your students describe your teaching style?
+            <span class="hint">Choose any that fit.</span>
+</label>
+<div class="options">
+<label class="option">
+<input disabled="disabled" name="teaching_style" type="checkbox" value="Calm"/>
+              Calm
+            </label>
+<label class="option selected-answer">
+<input checked="checked" disabled="disabled" name="teaching_style" type="checkbox" value="Direct"/>
+              Direct
+            </label>
+<label class="option selected-answer">
+<input checked="checked" disabled="disabled" name="teaching_style" type="checkbox" value="Encouraging"/>
+              Encouraging
+            </label>
+<label class="option selected-answer">
+<input checked="checked" disabled="disabled" name="teaching_style" type="checkbox" value="Hands-on"/>
+              Hands-on
+            </label>
+<label class="option selected-answer">
+<input checked="checked" disabled="disabled" name="teaching_style" type="checkbox" value="No-nonsense"/>
+              No-nonsense
+            </label>
+<label class="option selected-answer">
+<input checked="checked" disabled="disabled" name="teaching_style" type="checkbox" value="Practical"/>
+              Practical
+            </label>
+<label class="option selected-answer">
+<input checked="checked" disabled="disabled" name="teaching_style" type="checkbox" value="Real-world"/>
+              Real-world
+            </label>
+<label class="option selected-answer">
+<input checked="checked" disabled="disabled" name="teaching_style" type="checkbox" value="Supportive"/>
+              Supportive
+            </label>
+<label class="option">
+<input disabled="disabled" name="teaching_style" type="checkbox" value="Patient"/>
+              Patient
+            </label>
+<label class="option selected-answer">
+<input checked="checked" disabled="disabled" name="teaching_style" type="checkbox" value="High-energy"/>
+              High-energy
+            </label>
+</div>
+<label>
+            What makes your classes different from other CPR, BLS, or safety
+            classes?
+            <div class="answer-box" data-answer-name="class_difference">I personalize all classes so each student will have a positive personal experience, classes last from 1.5 to 2 hours to keep everyone’s attention and focus</div>
+</label>
+<label>
+            What are three words that describe you as an instructor?
+            <div class="answer-box" data-answer-name="three_words">Energetic, personal and honest</div>
+</label>
+<label>
+            Any phrase, saying, or mindset you repeat often when teaching?
+            <div class="answer-box" data-answer-name="teaching_phrase">When your body says no YOU  make it say yes! Lets Go!!!! Are you gonna BBQ or Mildew!!!</div>
+</label>
+</section>
+<section class="card">
+<h2>3. Austin + Community Roots</h2>
+<label>
+            What does being Austin-based mean to BetterBodies?
+            <div class="answer-box" data-answer-name="austin_meaning">It means that I am doing my part to help and heal my community, it means I’m doing my part</div>
+</label>
+<label>
+            Are there identity, culture, ownership, or community values you want
+            clearly represented?
+            <span class="hint">
+              Only share what you want the brand to actually say or show.
+            </span>
+<div class="answer-box" data-answer-name="identity_community_values">Diversity, no judgement zone, safe,</div>
+</label>
+<label>
+            What Austin communities, groups, or organizations do you most want
+            to serve?
+            <div class="answer-box" data-answer-name="communities_served">Any and every that will trust me to help grow and train their team</div>
+</label>
+<label>
+            Have you trained or partnered with local businesses, schools,
+            churches, gyms, or organizations that can be mentioned publicly?
+            <div class="answer-box" data-answer-name="local_partnerships">Austin Urban League, Worksource, Child Inc, Boys &amp; girls clubs, Manor ISD, Elgin ISD, Texas Empowerment  charter school, southwest keys, East Austin College Prep, Habits group LLC, 24hr fitness,</div>
+</label>
+<label>
+            Specific Austin areas or surrounding cities to mention?
+            <div class="answer-box" data-answer-name="service_areas">Austin, pflugerville, cedar park, Killeen, Elgin, Bastrop , all surrounding cities</div>
+</label>
+</section>
+<section class="card">
+<h2>4. Services + Customers</h2>
+<label>
+            Which services should BetterBodies be known for first?
+            <div class="answer-box" data-answer-name="service_priority">CPR, BLS, ( the working assumption is correct</div>
+</label>
+<div class="assumption">
+<strong>Working assumption:</strong>
+            CPR and BLS should lead the website because they create the clearest
+            booking path. Crisis readiness, self-defense, and other training can
+            support the larger BetterBodies brand.
+          </div>
+<label>For the homepage, what should be the main focus?</label>
+<div class="options">
+<label class="option">
+<input disabled="disabled" name="homepage_focus" type="radio" value="CPR Certification"/>
+              CPR Certification
+            </label>
+<label class="option selected-answer">
+<input checked="checked" disabled="disabled" name="homepage_focus" type="radio" value="CPR + BLS Certification"/>
+              CPR + BLS Certification
+            </label>
+<label class="option">
+<input disabled="disabled" name="homepage_focus" type="radio" value="CPR, BLS + First Aid"/>
+              CPR, BLS + First Aid
+            </label>
+<label class="option">
+<input disabled="disabled" name="homepage_focus" type="radio" value="Full safety/preparedness brand"/>
+              Full safety/preparedness brand
+            </label>
+<label class="option">
+<input disabled="disabled" name="homepage_focus" type="radio" value="Not sure"/>
+              Not sure
+            </label>
+</div>
+<label>
+            Who is the ideal customer right now?
+            <div class="answer-box" data-answer-name="ideal_customer">EVERYONE Should be CPR certified, so everyone</div>
+</label>
+<label>
+            What are the biggest reasons people should choose BetterBodies?
+            <div class="answer-box" data-answer-name="reasons_choose_betterbodies">Because we genuinely care about people and our classes are fun and interactive</div>
+</label>
+</section>
+<section class="card">
+<h2>5. Brand Look + Feel</h2>
+<label>
+            Which words should describe the BetterBodies visual style?
+            <div class="answer-box" data-answer-name="visual_words">Strong clean dedicated and disciplined</div>
+</label>
+<label>
+            What should the logo feel like?
+            <div class="answer-box" data-answer-name="logo_feel">Strong and bold</div>
+</label>
+<label>
+            Visuals to keep?
+            <div class="answer-box" data-answer-name="visuals_keep">All visuals look great</div>
+</label>
+<label>
+            Visuals to avoid?
+            <div class="answer-box" data-answer-name="visuals_avoid">No mean looking stuff and make sure all races are included</div>
+</label>
+</section>
+<section class="card">
+<h2>6. Website Direction</h2>
+<label>
+            When you look at the current website/rebrand direction, what feels
+            right?
+            <div class="answer-box" data-answer-name="website_feels_right">All of it! You’re a bad ass bro!!</div>
+</label>
+<label>
+            What feels off, missing, or not quite like BetterBodies yet?
+            <div class="answer-box" data-answer-name="website_feels_off">N/A</div>
+</label>
+<label>
+            Does the website make it clear what BetterBodies offers?
+          </label>
+<div class="answer-box" data-answer-name="site_clarity">Yes, very clear</div>
+<label>
+            What information must be easy to find on the homepage?
+            <div class="answer-box" data-answer-name="homepage_must_include">Certifications</div>
+</label>
+<label>
+            What would make someone trust BetterBodies faster?
+            <div class="answer-box" data-answer-name="trust_factors">Reading the positive comments and remarks</div>
+</label>
+<label>
+            What pages should we build first after the homepage?
+            <div class="answer-box" data-answer-name="next_pages">CPR</div>
+</label>
+<label>
+            What should the website absolutely avoid?
+            <div class="answer-box" data-answer-name="site_avoid">To many pictures of models and perfect people? There is no such thing as perfection</div>
+</label>
+</section>
+<section class="card">
+<h2>7. Community Resource</h2>
+<p>
+            Sheldon shared a third-party debt relief / credit repair referral
+            link that may be included on the website.
+          </p>
+<div class="assumption">
+<strong>Working assumption:</strong>
+            This should be framed as a small “Community Resource” near the lower
+            part of the homepage, separate from BetterBodies CPR, BLS, and
+            safety training services.
+          </div>
+<label>How would you like this represented?</label>
+<div class="options">
+<label class="option">
+<input disabled="disabled" name="community_resource_placement" type="radio" value="Small Community Resource card near the bottom of the homepage"/>
+              Small Community Resource card near the bottom of the homepage
+            </label>
+<label class="option">
+<input disabled="disabled" name="community_resource_placement" type="radio" value="Simple footer link only"/>
+              Simple footer link only
+            </label>
+<label class="option">
+<input disabled="disabled" name="community_resource_placement" type="radio" value="Future Resources page"/>
+              Future Resources page
+            </label>
+<label class="option">
+<input disabled="disabled" name="community_resource_placement" type="radio" value="Do not include it right now"/>
+              Do not include it right now
+            </label>
+<label class="option selected-answer">
+<input checked="checked" disabled="disabled" name="community_resource_placement" type="radio" value="Not sure yet"/>
+              Not sure yet
+            </label>
+</div>
+<label>What wording feels most natural?</label>
+<div class="options">
+<label class="option">
+<input disabled="disabled" name="community_resource_wording" type="checkbox" value="Community Resource"/>
+              Community Resource
+            </label>
+<label class="option">
+<input disabled="disabled" name="community_resource_wording" type="checkbox" value="Debt Relief Support"/>
+              Debt Relief Support
+            </label>
+<label class="option">
+<input disabled="disabled" name="community_resource_wording" type="checkbox" value="Credit Repair Resource"/>
+              Credit Repair Resource
+            </label>
+<label class="option selected-answer">
+<input checked="checked" disabled="disabled" name="community_resource_wording" type="checkbox" value="Financial Wellness Resource"/>
+              Financial Wellness Resource
+            </label>
+<label class="option">
+<input disabled="disabled" name="community_resource_wording" type="checkbox" value="Fresh Start Resource"/>
+              Fresh Start Resource
+            </label>
+</div>
+<label>What disclosure language feels appropriate?</label>
+<div class="options">
+<label class="option selected-answer">
+<input checked="checked" disabled="disabled" name="community_resource_disclosure" type="radio" value="Say only that it is a third-party resource"/>
+              Say only that it is a third-party resource
+            </label>
+<label class="option">
+<input disabled="disabled" name="community_resource_disclosure" type="radio" value="Say it is a third-party referral resource"/>
+              Say it is a third-party referral resource
+            </label>
+<label class="option">
+<input disabled="disabled" name="community_resource_disclosure" type="radio" value="Say it is a third-party referral resource and Sheldon may receive a referral benefit"/>
+              Say it is a third-party referral resource and Sheldon may receive
+              a referral benefit
+            </label>
+<label class="option">
+<input disabled="disabled" name="community_resource_disclosure" type="radio" value="Not sure yet"/>
+              Not sure yet
+            </label>
+</div>
+<label>
+            Any notes about how this should or should not be presented?
+            <div class="answer-box" data-answer-name="community_resource_notes">Protect me, but put it out there</div>
+</label>
+</section>
+<section class="card">
+<h2>8. Final Thoughts</h2>
+<label>
+            What would make you proud to send someone to the new website?
+            <div class="answer-box" data-answer-name="proud_website">Not sure but I trust your judgement</div>
+</label>
+<label>
+            What do you want people to remember about BetterBodies?
+            <div class="answer-box" data-answer-name="remember">That we love and care about people</div>
+</label>
+<label>
+            Anything else we should know about Sheldon, BetterBodies, or the
+            future of the brand?
+            <div class="answer-box" data-answer-name="anything_else">Everything looks and sounds good</div>
+</label>
+</section>
+<div class="actions"><div class="wrap"><div class="readonly-actions"><a class="button-link secondary" href="./">Back to Feedback Hub</a><a class="button-link" href="./brand-website-direction.html">Open Live Form</a></div><p class="fineprint">This is a static read-only review copy of the submitted feedback. The live survey remains available separately.</p></div></div>
+</form>
+
+</main>
+</body>
+</html>
