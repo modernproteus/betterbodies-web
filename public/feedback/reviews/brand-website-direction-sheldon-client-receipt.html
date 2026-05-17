@@ -336,6 +336,76 @@
         margin-top: 12px;
       }
 
+      .confirm-form {
+        display: grid;
+        gap: 14px;
+        margin-top: 16px;
+      }
+
+      .confirm-field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .confirm-field label {
+        font-weight: 900;
+        color: #111827;
+      }
+
+      .confirm-field textarea,
+      .confirm-field input,
+      .confirm-field select {
+        width: 100%;
+        border: 1px solid #cfd2da;
+        border-radius: 14px;
+        padding: 12px 13px;
+        font: inherit;
+        background: #fff;
+      }
+
+      .confirm-field textarea {
+        min-height: 105px;
+        resize: vertical;
+      }
+
+      .confirmation-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid #e5e7eb;
+        padding-top: 16px;
+        margin-top: 4px;
+      }
+
+      .submit-button {
+        border: 0;
+        border-radius: 999px;
+        min-height: 48px;
+        padding: 12px 18px;
+        background: var(--bb-red);
+        color: #fff;
+        font-weight: 900;
+        cursor: pointer;
+        font: inherit;
+      }
+
+      .submit-button:hover {
+        background: var(--bb-red-dark);
+      }
+
+      .submit-button:disabled {
+        opacity: 0.65;
+        cursor: not-allowed;
+      }
+
+      .form-status {
+        color: var(--bb-muted);
+        font-size: 0.92rem;
+        margin: 0;
+      }
+
       @media (max-width: 720px) {
         .summary-grid {
           grid-template-columns: 1fr;
@@ -604,48 +674,206 @@
         <h2>A Few Things to Confirm</h2>
         <p>
           These are the only remaining items where a little clarification would
-          help before I finalize the next round of updates.
+          help before I finalize the next round of updates. You can answer them
+          directly here and submit this short follow-up.
         </p>
 
-        <div class="question-list">
-          <div class="question-item">
-            <strong>Financial Wellness Resource</strong>
-            <p>
-              You preferred “Financial Wellness Resource” and selected a simple
-              third-party disclosure. Are you comfortable with this wording?
-            </p>
-            <p>
-              <em>
-                “This is a third-party resource and separate from BetterBodies
-                training services.”
-              </em>
-            </p>
+        <form
+          class="confirm-form"
+          data-google-sheet-form
+          data-form-type="brand_website_direction"
+        >
+          <input
+            type="hidden"
+            name="form_type"
+            value="brand_website_direction"
+          />
+          <input
+            type="hidden"
+            name="form_title"
+            value="Brand + Website Direction Follow-up Confirmation"
+          />
+          <input
+            type="hidden"
+            name="_subject"
+            value="BetterBodies brand feedback follow-up submitted"
+          />
+          <input type="hidden" name="_template" value="table" />
+          <input
+            type="hidden"
+            name="project_key"
+            value="betterbodies-feedback-2026"
+          />
+          <input type="hidden" name="submitted_by" value="Sheldon Williams" />
+          <input
+            type="hidden"
+            name="feedback_receipt_type"
+            value="sheldon_brand_feedback_review_confirmation"
+          />
+
+          <div class="question-list">
+            <div class="question-item">
+              <strong>Financial Wellness Resource</strong>
+              <p>
+                You preferred “Financial Wellness Resource” and selected a
+                simple third-party disclosure. Are you comfortable with this
+                wording?
+              </p>
+              <p>
+                <em>
+                  “This is a third-party resource and separate from BetterBodies
+                  training services.”
+                </em>
+              </p>
+              <div class="confirm-field">
+                <label for="financial_wellness_confirmation">Your answer</label>
+                <select
+                  id="financial_wellness_confirmation"
+                  name="financial_wellness_confirmation"
+                >
+                  <option value="">Select one</option>
+                  <option value="Yes, this wording works">
+                    Yes, this wording works
+                  </option>
+                  <option value="Mostly, but adjust the wording">
+                    Mostly, but adjust the wording
+                  </option>
+                  <option value="Hold this resource for later">
+                    Hold this resource for later
+                  </option>
+                  <option value="Not sure yet">Not sure yet</option>
+                </select>
+              </div>
+              <div class="confirm-field">
+                <label for="financial_wellness_notes">
+                  Notes / wording changes
+                </label>
+                <textarea
+                  id="financial_wellness_notes"
+                  name="financial_wellness_notes"
+                  placeholder="Anything you want changed about how this resource is presented?"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="question-item">
+              <strong>Certifications</strong>
+              <p>
+                Which certifications, logos, or exact credential names are
+                approved to show publicly on the homepage?
+              </p>
+              <div class="confirm-field">
+                <label for="certifications_public">
+                  Certifications / credentials I can mention
+                </label>
+                <textarea
+                  id="certifications_public"
+                  name="certifications_public"
+                  placeholder="Example: AHA CPR, BLS, AED, First Aid, instructor credentials, approved badge/logo names..."
+                ></textarea>
+              </div>
+              <div class="confirm-field">
+                <label for="certification_logo_notes">Logo / badge notes</label>
+                <textarea
+                  id="certification_logo_notes"
+                  name="certification_logo_notes"
+                  placeholder="Any notes about what logos or badge images I can or cannot use?"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="question-item">
+              <strong>Reviews / comments</strong>
+              <p>
+                Do you have Google reviews, testimonials, screenshots, text
+                messages, or comments I can use publicly?
+              </p>
+              <div class="confirm-field">
+                <label for="reviews_available">Your answer</label>
+                <select id="reviews_available" name="reviews_available">
+                  <option value="">Select one</option>
+                  <option value="Yes, I have reviews/comments to share">
+                    Yes, I have reviews/comments to share
+                  </option>
+                  <option value="Maybe, I need to gather them">
+                    Maybe, I need to gather them
+                  </option>
+                  <option value="Use Google reviews if available">
+                    Use Google reviews if available
+                  </option>
+                  <option value="Not yet">Not yet</option>
+                </select>
+              </div>
+              <div class="confirm-field">
+                <label for="reviews_notes">Review / testimonial notes</label>
+                <textarea
+                  id="reviews_notes"
+                  name="reviews_notes"
+                  placeholder="Where should I look, or what reviews/comments should I use?"
+                ></textarea>
+              </div>
+            </div>
+
+            <div class="question-item">
+              <strong>Partnerships</strong>
+              <p>
+                Which organizations from your list are okay to mention publicly
+                on the website?
+              </p>
+              <div class="confirm-field">
+                <label for="public_partnerships">
+                  Organizations approved to mention publicly
+                </label>
+                <textarea
+                  id="public_partnerships"
+                  name="public_partnerships"
+                  placeholder="Example: Austin Urban League, Child Inc, Boys & Girls Clubs, Manor ISD..."
+                ></textarea>
+              </div>
+              <div class="confirm-field">
+                <label for="partnership_wording_preference">
+                  Wording preference
+                </label>
+                <select
+                  id="partnership_wording_preference"
+                  name="partnership_wording_preference"
+                >
+                  <option value="">Select one</option>
+                  <option value="Mention organization names publicly">
+                    Mention organization names publicly
+                  </option>
+                  <option value="Use general wording only for now">
+                    Use general wording only for now
+                  </option>
+                  <option value="Ask me before listing each one">
+                    Ask me before listing each one
+                  </option>
+                  <option value="Not sure yet">Not sure yet</option>
+                </select>
+              </div>
+            </div>
           </div>
 
-          <div class="question-item">
-            <strong>Certifications</strong>
-            <p>
-              Which certifications, logos, or exact credential names are
-              approved to show publicly on the homepage?
-            </p>
+          <div class="confirm-field">
+            <label for="followup_anything_else">
+              Anything else I should know before I make the next update?
+            </label>
+            <textarea
+              id="followup_anything_else"
+              name="followup_anything_else"
+            ></textarea>
           </div>
 
-          <div class="question-item">
-            <strong>Reviews / comments</strong>
-            <p>
-              Do you have Google reviews, testimonials, screenshots, text
-              messages, or comments I can use publicly?
+          <div class="confirmation-actions">
+            <p class="form-status" data-form-status>
+              These answers will be saved with the rest of the BetterBodies
+              feedback.
             </p>
+            <button class="submit-button" type="submit">
+              Submit Follow-up Answers
+            </button>
           </div>
-
-          <div class="question-item">
-            <strong>Partnerships</strong>
-            <p>
-              Which organizations from your list are okay to mention publicly on
-              the website?
-            </p>
-          </div>
-        </div>
+        </form>
       </section>
 
       <section class="card">
@@ -669,5 +897,6 @@
         </div>
       </section>
     </main>
+    <script src="../../assets/js/google-sheet-submit.js" defer></script>
   </body>
 </html>
