@@ -1,643 +1,673 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Sheldon’s BetterBodies Feedback Review</title>
-  <style>
-    :root {
-      --bb-red: #d71920;
-      --bb-red-dark: #a90f16;
-      --bb-black: #0b0b0f;
-      --bb-charcoal: #1a1b22;
-      --bb-gray: #f4f4f5;
-      --bb-border: #dedee3;
-      --bb-white: #ffffff;
-      --bb-muted: #64646d;
-      --bb-soft-red: #fff5f5;
-      --bb-soft-gray: #f9fafb;
-      --radius: 20px;
-      --shadow: 0 18px 45px rgba(11, 11, 15, 0.12);
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bb-gray);
-      color: var(--bb-black);
-      line-height: 1.55;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .hero {
-      background:
-        radial-gradient(circle at top right, rgba(215, 25, 32, 0.35), transparent 30rem),
-        linear-gradient(135deg, var(--bb-black), var(--bb-charcoal));
-      color: #fff;
-      padding: 36px 18px 42px;
-    }
-
-    .wrap {
-      width: min(980px, calc(100% - 36px));
-      margin: 0 auto;
-    }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 24px;
-      color: #fff;
-      font-weight: 850;
-      text-decoration: none;
-      border-bottom: 2px solid var(--bb-red);
-    }
-
-    .eyebrow {
-      color: #ffd6d8;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-size: 0.78rem;
-      font-weight: 900;
-    }
-
-    h1 {
-      margin: 10px 0 14px;
-      max-width: 820px;
-      font-size: clamp(2.1rem, 6vw, 4.3rem);
-      line-height: 0.98;
-      letter-spacing: -0.04em;
-    }
-
-    .lead {
-      max-width: 780px;
-      color: #eef0f4;
-      font-size: 1.08rem;
-    }
-
-    main {
-      padding: 26px 0 70px;
-    }
-
-    .card {
-      background: #fff;
-      border: 1px solid var(--bb-border);
-      border-radius: var(--radius);
-      padding: 24px;
-      margin: 18px 0;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-    }
-
-    .card.hero-card {
-      margin-top: -38px;
-      position: relative;
-      z-index: 2;
-      box-shadow: var(--shadow);
-    }
-
-    h2 {
-      margin: 0 0 14px;
-      font-size: 1.45rem;
-      line-height: 1.15;
-      border-left: 6px solid var(--bb-red);
-      padding-left: 12px;
-    }
-
-    h3 {
-      margin: 20px 0 8px;
-      font-size: 1.08rem;
-    }
-
-    p {
-      margin: 0 0 12px;
-    }
-
-    ul {
-      margin: 10px 0 0;
-      padding-left: 22px;
-    }
-
-    li {
-      margin: 7px 0;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      border-radius: 999px;
-      padding: 9px 13px;
-      background: var(--bb-soft-gray);
-      border: 1px solid #e5e7eb;
-      font-size: 0.9rem;
-      font-weight: 800;
-      color: #374151;
-    }
-
-    .pill.red {
-      background: var(--bb-soft-red);
-      border-color: #ffd5d7;
-      color: #7f1218;
-    }
-
-    .summary-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-      margin-top: 16px;
-    }
-
-    .mini-card {
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 16px;
-      background: #fafafa;
-    }
-
-    .mini-card strong {
-      display: block;
-      margin-bottom: 6px;
-      color: #111827;
-    }
-
-    .mini-card p {
-      color: #4b5563;
-      font-size: 0.95rem;
-      margin: 0;
-    }
-
-    .quote-box {
-      border-left: 5px solid var(--bb-red);
-      background: var(--bb-soft-red);
-      border-radius: 14px;
-      padding: 15px 16px;
-      color: #4b1114;
-      margin: 14px 0;
-      font-weight: 750;
-    }
-
-    .answer-block {
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      overflow: hidden;
-      margin: 14px 0;
-      background: #fff;
-    }
-
-    .answer-block .label {
-      background: #f8fafc;
-      padding: 11px 14px;
-      border-bottom: 1px solid #e5e7eb;
-      font-size: 0.82rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: #64748b;
-    }
-
-    .answer-block .content {
-      padding: 14px;
-      color: #111827;
-    }
-
-    .action-note {
-      background: #0f172a;
-      color: #fff;
-      border-radius: 18px;
-      padding: 18px;
-      margin-top: 14px;
-    }
-
-    .action-note strong {
-      color: #ffd6d8;
-    }
-
-    .hero-options {
-      display: grid;
-      gap: 10px;
-      margin-top: 12px;
-    }
-
-    .hero-option {
-      border: 1px solid #ffd5d7;
-      background: #fffafa;
-      border-radius: 14px;
-      padding: 13px 14px;
-      font-weight: 850;
-    }
-
-    .hero-option.recommended {
-      border-color: var(--bb-red);
-      background: #fff0f1;
-    }
-
-    .question-list {
-      counter-reset: q;
-      display: grid;
-      gap: 12px;
-      margin-top: 14px;
-    }
-
-    .question-item {
-      counter-increment: q;
-      border: 1px solid #e5e7eb;
-      background: #fff;
-      border-radius: 16px;
-      padding: 16px;
-      display: grid;
-      gap: 7px;
-    }
-
-    .question-item::before {
-      content: counter(q);
-      display: inline-grid;
-      place-items: center;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      background: var(--bb-red);
-      color: #fff;
-      font-weight: 900;
-    }
-
-    .question-item strong {
-      font-size: 1rem;
-    }
-
-    .question-item p {
-      color: #4b5563;
-      margin: 0;
-    }
-
-    .resolved {
-      display: grid;
-      gap: 10px;
-      margin-top: 14px;
-    }
-
-    .resolved-item {
-      border-radius: 14px;
-      background: #f0fdf4;
-      border: 1px solid #bbf7d0;
-      padding: 13px 14px;
-      color: #14532d;
-      font-weight: 750;
-    }
-
-    .button-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 20px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 48px;
-      padding: 12px 18px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 900;
-    }
-
-    .btn-primary {
-      background: var(--bb-red);
-      color: #fff;
-    }
-
-    .btn-secondary {
-      background: var(--bb-black);
-      color: #fff;
-    }
-
-    .fineprint {
-      color: var(--bb-muted);
-      font-size: 0.9rem;
-      margin-top: 12px;
-    }
-
-    @media (max-width: 720px) {
-      .summary-grid {
-        grid-template-columns: 1fr;
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sheldon’s BetterBodies Feedback Review</title>
+    <style>
+      :root {
+        --bb-red: #d71920;
+        --bb-red-dark: #a90f16;
+        --bb-black: #0b0b0f;
+        --bb-charcoal: #1a1b22;
+        --bb-gray: #f4f4f5;
+        --bb-border: #dedee3;
+        --bb-white: #ffffff;
+        --bb-muted: #64646d;
+        --bb-soft-red: #fff5f5;
+        --bb-soft-gray: #f9fafb;
+        --radius: 20px;
+        --shadow: 0 18px 45px rgba(11, 11, 15, 0.12);
       }
 
-      .button-row .btn {
-        width: 100%;
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        background: var(--bb-gray);
+        color: var(--bb-black);
+        line-height: 1.55;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .hero {
+        background: radial-gradient(
+            circle at top right,
+            rgba(215, 25, 32, 0.35),
+            transparent 30rem
+          ),
+          linear-gradient(135deg, var(--bb-black), var(--bb-charcoal));
+        color: #fff;
+        padding: 36px 18px 42px;
+      }
+
+      .wrap {
+        width: min(980px, calc(100% - 36px));
+        margin: 0 auto;
+      }
+
+      .back-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 24px;
+        color: #fff;
+        font-weight: 850;
+        text-decoration: none;
+        border-bottom: 2px solid var(--bb-red);
+      }
+
+      .eyebrow {
+        color: #ffd6d8;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        font-size: 0.78rem;
+        font-weight: 900;
+      }
+
+      h1 {
+        margin: 10px 0 14px;
+        max-width: 820px;
+        font-size: clamp(2.1rem, 6vw, 4.3rem);
+        line-height: 0.98;
+        letter-spacing: -0.04em;
+      }
+
+      .lead {
+        max-width: 780px;
+        color: #eef0f4;
+        font-size: 1.08rem;
+      }
+
+      main {
+        padding: 26px 0 70px;
       }
 
       .card {
-        padding: 20px;
+        background: #fff;
+        border: 1px solid var(--bb-border);
+        border-radius: var(--radius);
+        padding: 24px;
+        margin: 18px 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
       }
-    }
-  </style>
-</head>
-<body>
-  <header class="hero">
-    <div class="wrap">
-      <a class="back-link" href="../">← Back to Feedback Hub</a>
-      <div class="eyebrow">BetterBodies TX Review Summary</div>
-      <h1>Sheldon’s Brand Feedback Review</h1>
-      <p class="lead">
-        Thank you for the thoughtful feedback. This page reflects what we heard
-        from the Brand + Website Direction survey and how we plan to translate
-        it into the BetterBodies website and brand updates.
-      </p>
-    </div>
-  </header>
 
-  <main class="wrap">
-    <section class="card hero-card">
-      <h2>Quick Read</h2>
-      <p>
-        The broader BetterBodies direction is confirmed. CPR + BLS should still
-        lead the site, while the brand should also communicate heart, community,
-        diversity, positivity, crisis readiness, and practical safety training.
-      </p>
+      .card.hero-card {
+        margin-top: -38px;
+        position: relative;
+        z-index: 2;
+        box-shadow: var(--shadow);
+      }
 
-      <div class="pill-row">
-        <span class="pill red">CPR + BLS lead the site</span>
-        <span class="pill red">Add de-escalation</span>
-        <span class="pill">Diversity + unity</span>
-        <span class="pill">Positive energy</span>
-        <span class="pill">25+ years</span>
-        <span class="pill">Certifications + reviews</span>
+      h2 {
+        margin: 0 0 14px;
+        font-size: 1.45rem;
+        line-height: 1.15;
+        border-left: 6px solid var(--bb-red);
+        padding-left: 12px;
+      }
+
+      h3 {
+        margin: 20px 0 8px;
+        font-size: 1.08rem;
+      }
+
+      p {
+        margin: 0 0 12px;
+      }
+
+      ul {
+        margin: 10px 0 0;
+        padding-left: 22px;
+      }
+
+      li {
+        margin: 7px 0;
+      }
+
+      .pill-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        border-radius: 999px;
+        padding: 9px 13px;
+        background: var(--bb-soft-gray);
+        border: 1px solid #e5e7eb;
+        font-size: 0.9rem;
+        font-weight: 800;
+        color: #374151;
+      }
+
+      .pill.red {
+        background: var(--bb-soft-red);
+        border-color: #ffd5d7;
+        color: #7f1218;
+      }
+
+      .summary-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 16px;
+      }
+
+      .mini-card {
+        border: 1px solid #e5e7eb;
+        border-radius: 16px;
+        padding: 16px;
+        background: #fafafa;
+      }
+
+      .mini-card strong {
+        display: block;
+        margin-bottom: 6px;
+        color: #111827;
+      }
+
+      .mini-card p {
+        color: #4b5563;
+        font-size: 0.95rem;
+        margin: 0;
+      }
+
+      .quote-box {
+        border-left: 5px solid var(--bb-red);
+        background: var(--bb-soft-red);
+        border-radius: 14px;
+        padding: 15px 16px;
+        color: #4b1114;
+        margin: 14px 0;
+        font-weight: 750;
+      }
+
+      .answer-block {
+        border: 1px solid #e5e7eb;
+        border-radius: 16px;
+        overflow: hidden;
+        margin: 14px 0;
+        background: #fff;
+      }
+
+      .answer-block .label {
+        background: #f8fafc;
+        padding: 11px 14px;
+        border-bottom: 1px solid #e5e7eb;
+        font-size: 0.82rem;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #64748b;
+      }
+
+      .answer-block .content {
+        padding: 14px;
+        color: #111827;
+      }
+
+      .action-note {
+        background: #0f172a;
+        color: #fff;
+        border-radius: 18px;
+        padding: 18px;
+        margin-top: 14px;
+      }
+
+      .action-note strong {
+        color: #ffd6d8;
+      }
+
+      .hero-options {
+        display: grid;
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .hero-option {
+        border: 1px solid #ffd5d7;
+        background: #fffafa;
+        border-radius: 14px;
+        padding: 13px 14px;
+        font-weight: 850;
+      }
+
+      .hero-option.recommended {
+        border-color: var(--bb-red);
+        background: #fff0f1;
+      }
+
+      .question-list {
+        counter-reset: q;
+        display: grid;
+        gap: 12px;
+        margin-top: 14px;
+      }
+
+      .question-item {
+        counter-increment: q;
+        border: 1px solid #e5e7eb;
+        background: #fff;
+        border-radius: 16px;
+        padding: 16px;
+        display: grid;
+        gap: 7px;
+      }
+
+      .question-item::before {
+        content: counter(q);
+        display: inline-grid;
+        place-items: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: var(--bb-red);
+        color: #fff;
+        font-weight: 900;
+      }
+
+      .question-item strong {
+        font-size: 1rem;
+      }
+
+      .question-item p {
+        color: #4b5563;
+        margin: 0;
+      }
+
+      .resolved {
+        display: grid;
+        gap: 10px;
+        margin-top: 14px;
+      }
+
+      .resolved-item {
+        border-radius: 14px;
+        background: #f0fdf4;
+        border: 1px solid #bbf7d0;
+        padding: 13px 14px;
+        color: #14532d;
+        font-weight: 750;
+      }
+
+      .button-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 12px 18px;
+        border-radius: 999px;
+        text-decoration: none;
+        font-weight: 900;
+      }
+
+      .btn-primary {
+        background: var(--bb-red);
+        color: #fff;
+      }
+
+      .btn-secondary {
+        background: var(--bb-black);
+        color: #fff;
+      }
+
+      .fineprint {
+        color: var(--bb-muted);
+        font-size: 0.9rem;
+        margin-top: 12px;
+      }
+
+      @media (max-width: 720px) {
+        .summary-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .button-row .btn {
+          width: 100%;
+        }
+
+        .card {
+          padding: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="hero">
+      <div class="wrap">
+        <a class="back-link" href="../">← Back to Feedback Hub</a>
+        <div class="eyebrow">BetterBodies TX Review Summary</div>
+        <h1>Sheldon’s Brand Feedback Review</h1>
+        <p class="lead">
+          Thank you for the thoughtful feedback. This page reflects what I heard
+          from the Brand + Website Direction survey and how I plan to translate
+          it into the BetterBodies website and brand updates.
+        </p>
       </div>
-    </section>
+    </header>
 
-    <section class="card">
-      <h2>What We Heard</h2>
+    <main class="wrap">
+      <section class="card hero-card">
+        <h2>Quick Read</h2>
+        <p>
+          The broader BetterBodies direction is confirmed. CPR + BLS should
+          still lead the site, while I’ll make sure the brand also communicates
+          heart, community, diversity, positivity, crisis readiness, and
+          practical safety training.
+        </p>
 
-      <div class="summary-grid">
-        <div class="mini-card">
-          <strong>BetterBodies is personal.</strong>
-          <p>
-            This is a calling, not just a business. The site should make people
-            feel that BetterBodies genuinely loves and cares about the people it serves.
-          </p>
+        <div class="pill-row">
+          <span class="pill red">CPR + BLS lead the site</span>
+          <span class="pill red">Add de-escalation</span>
+          <span class="pill">Diversity + unity</span>
+          <span class="pill">Positive energy</span>
+          <span class="pill">25+ years</span>
+          <span class="pill">Certifications + reviews</span>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>What I Heard</h2>
+
+        <div class="summary-grid">
+          <div class="mini-card">
+            <strong>BetterBodies is personal.</strong>
+            <p>
+              This is a calling, not just a business. The site should make
+              people feel that BetterBodies genuinely loves and cares about the
+              people it serves.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <strong>CPR + BLS should lead.</strong>
+            <p>
+              The broader brand direction feels right, but CPR and BLS should
+              stay clear, visible, and easy to act on.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <strong>The visuals should feel positive and diverse.</strong>
+            <p>
+              Show unity, real people, all races, and community energy. Avoid
+              intimidating, mean-looking, or overly polished model-style
+              imagery.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <strong>De-escalation belongs in Crisis Readiness.</strong>
+            <p>
+              De-escalation should be added into the Crisis Readiness language
+              rather than treated as a separate service track for now.
+            </p>
+          </div>
         </div>
 
-        <div class="mini-card">
-          <strong>CPR + BLS should lead.</strong>
-          <p>
-            The broader brand direction feels right, but CPR and BLS should stay
-            clear, visible, and easy to act on.
-          </p>
+        <div class="quote-box">
+          Core message I captured from the feedback: BetterBodies should feel
+          like it is built from the heart — personal, positive,
+          community-rooted, and focused on helping people protect the people and
+          places they care about.
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Direction Confirmed</h2>
+
+        <div class="answer-block">
+          <div class="label">Brand direction</div>
+          <div class="content">
+            <strong>Answer:</strong>
+            “Yes, this feels right.”
+            <br />
+            <strong>How I understand it:</strong>
+            BetterBodies can be positioned as a broader readiness training
+            brand, while keeping CPR + BLS as the clearest front-facing service
+            priority.
+          </div>
         </div>
 
-        <div class="mini-card">
-          <strong>The visuals should feel positive and diverse.</strong>
-          <p>
-            Show unity, real people, all races, and community energy. Avoid
-            intimidating, mean-looking, or overly polished model-style imagery.
-          </p>
+        <div class="answer-block">
+          <div class="label">Service tracks</div>
+          <div class="content">
+            <strong>Answer:</strong>
+            “Yes, this structure feels right.”
+            <br />
+            <strong>How I understand it:</strong>
+            Emergency Response, Crisis Readiness, Personal Safety, and Group
+            Training still make sense as the working brand structure.
+          </div>
         </div>
 
-        <div class="mini-card">
-          <strong>De-escalation belongs in Crisis Readiness.</strong>
-          <p>
-            De-escalation should be added into the Crisis Readiness language
-            rather than treated as a separate service track for now.
-          </p>
-        </div>
-      </div>
-
-      <div class="quote-box">
-        Core message captured from the feedback: BetterBodies should feel like
-        it is built from the heart — personal, positive, community-rooted, and
-        focused on helping people protect the people and places they care about.
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>Direction Confirmed</h2>
-
-      <div class="answer-block">
-        <div class="label">Brand direction</div>
-        <div class="content">
-          <strong>Answer:</strong> “Yes, this feels right.”<br />
-          <strong>How we understand it:</strong> BetterBodies can be positioned
-          as a broader readiness training brand, while keeping CPR + BLS as the
-          clearest front-facing service priority.
-        </div>
-      </div>
-
-      <div class="answer-block">
-        <div class="label">Service tracks</div>
-        <div class="content">
-          <strong>Answer:</strong> “Yes, this structure feels right.”<br />
-          <strong>How we understand it:</strong> Emergency Response, Crisis
-          Readiness, Personal Safety, and Group Training still make sense as the
-          working brand structure.
-        </div>
-      </div>
-
-      <div class="answer-block">
-        <div class="label">Homepage priority</div>
-        <div class="content">
-          <strong>Answer:</strong> CPR + BLS Certification.<br />
-          <strong>How we understand it:</strong> The homepage should keep CPR
-          and BLS highly visible, especially in the services, schedule, and
-          future dedicated service page.
-        </div>
-      </div>
-
-      <div class="answer-block">
-        <div class="label">Trust signals</div>
-        <div class="content">
-          <strong>Answer:</strong> Certifications, positive comments/remarks,
-          25+ years, and community experience should help build trust.<br />
-          <strong>How we understand it:</strong> The site should make proof and
-          credibility easier to find.
-        </div>
-      </div>
-    </section>
-
-    <section class="card">
-      <h2>Updates We’ll Make</h2>
-
-      <h3>Hero message</h3>
-      <p>
-        You suggested adding the idea of
-        <strong>“protect your loved ones and your community.”</strong>
-      </p>
-
-      <div class="action-note">
-        <strong>How we’ll use this:</strong>
-        We’ll revise the hero direction to incorporate the “protect your loved
-        ones and your community” idea so the message feels more personal,
-        emotional, and true to the heart behind BetterBodies.
-      </div>
-
-      <p class="fineprint">Hero directions we’ll explore:</p>
-
-      <div class="hero-options">
-        <div class="hero-option">
-          Train your body. Prepare your mind. Protect your loved ones and your community.
-        </div>
-        <div class="hero-option recommended">
-          Recommended working direction: Train your body. Prepare your mind. Protect what matters.
-        </div>
-        <div class="hero-option">
-          Be ready for the people who count on you.
-        </div>
-        <div class="hero-option">
-          Train with heart. Respond with confidence. Protect your community.
-        </div>
-        <div class="hero-option">
-          Confidence to care. Skills to protect.
-        </div>
-      </div>
-
-      <h3>Supporting copy</h3>
-      <div class="answer-block">
-        <div class="label">Working subhead direction</div>
-        <div class="content">
-          Founder-led CPR, BLS, first aid, de-escalation, crisis readiness, and
-          personal safety training for individuals, teams, and communities
-          across Central Texas.
-        </div>
-      </div>
-
-      <h3>Services</h3>
-      <ul>
-        <li>Keep CPR + BLS as the clearest service priority.</li>
-        <li>Add de-escalation into the Crisis Readiness language.</li>
-        <li>Plan the first dedicated service page as combined CPR + BLS Certification.</li>
-      </ul>
-
-      <h3>Visual direction</h3>
-      <p>
-        The current preview is intentionally light on final imagery while the
-        brand foundation is being finalized. The next feedback forms, especially
-        Photo + Content Inventory, Logo Review, and Voice + Messaging, will help
-        add stronger visual presence using real BetterBodies photos, approved
-        concepts, stock placeholders where needed, and custom branded graphics.
-      </p>
-
-      <div class="summary-grid">
-        <div class="mini-card">
-          <strong>Visual concepts to prioritize</strong>
-          <p>
-            Sheldon teaching, coaching, smiling, and encouraging; diverse groups
-            training together; real students and real body types; hands-on
-            CPR/BLS practice; community settings; positive group energy.
-          </p>
+        <div class="answer-block">
+          <div class="label">Homepage priority</div>
+          <div class="content">
+            <strong>Answer:</strong>
+            CPR + BLS Certification.
+            <br />
+            <strong>How I understand it:</strong>
+            The homepage should keep CPR and BLS highly visible, especially in
+            the services, schedule, and future dedicated service page.
+          </div>
         </div>
 
-        <div class="mini-card">
-          <strong>Visuals to avoid</strong>
-          <p>
-            Intimidating solo “tough guy” shots, aggressive/tactical posing,
-            overly perfect fitness-model imagery, scary/unapproachable visuals,
-            or imagery that lacks racial/body-type diversity.
-          </p>
+        <div class="answer-block">
+          <div class="label">Trust signals</div>
+          <div class="content">
+            <strong>Answer:</strong>
+            Certifications, positive comments/remarks, 25+ years, and community
+            experience should help build trust.
+            <br />
+            <strong>How I understand it:</strong>
+            The site should make proof and credibility easier to find.
+          </div>
         </div>
-      </div>
+      </section>
 
-      <h3>About / story</h3>
-      <ul>
-        <li>Bring forward that BetterBodies is a calling, not just a business.</li>
-        <li>Highlight 25+ years of community-based training.</li>
-        <li>Make the care, heart, and personal approach clearer.</li>
-        <li>Represent the teaching style as energetic, personal, honest, practical, and high-energy.</li>
-      </ul>
-    </section>
+      <section class="card">
+        <h2>Updates I’ll Make</h2>
 
-    <section class="card">
-      <h2>Confirmed Decisions</h2>
-      <div class="resolved">
-        <div class="resolved-item">
-          De-escalation will be listed as part of Crisis Readiness, not as a separate service track for now.
-        </div>
-        <div class="resolved-item">
-          The first dedicated service page should be combined CPR + BLS Certification.
-        </div>
-      </div>
-    </section>
+        <h3>Hero message</h3>
+        <p>
+          You suggested adding the idea of
+          <strong>“protect your loved ones and your community.”</strong>
+        </p>
 
-    <section class="card">
-      <h2>A Few Things to Confirm</h2>
-      <p>
-        These are the only remaining items where a little clarification would
-        help before we finalize the next round of updates.
-      </p>
-
-      <div class="question-list">
-        <div class="question-item">
-          <strong>Financial Wellness Resource</strong>
-          <p>
-            You preferred “Financial Wellness Resource” and selected a simple
-            third-party disclosure. Are you comfortable with this wording?
-          </p>
-          <p>
-            <em>“This is a third-party resource and separate from BetterBodies training services.”</em>
-          </p>
+        <div class="action-note">
+          <strong>How I’ll use this:</strong>
+          I’ll revise the hero direction to incorporate the “protect your loved
+          ones and your community” idea so the message feels more personal,
+          emotional, and true to the heart behind BetterBodies.
         </div>
 
-        <div class="question-item">
-          <strong>Certifications</strong>
-          <p>
-            Which certifications, logos, or exact credential names are approved
-            to show publicly on the homepage?
-          </p>
+        <p class="fineprint">Hero directions I’ll explore:</p>
+
+        <div class="hero-options">
+          <div class="hero-option">
+            Train your body. Prepare your mind. Protect your loved ones and your
+            community.
+          </div>
+          <div class="hero-option recommended">
+            Recommended working direction: Train your body. Prepare your mind.
+            Protect what matters.
+          </div>
+          <div class="hero-option">
+            Be ready for the people who count on you.
+          </div>
+          <div class="hero-option">
+            Train with heart. Respond with confidence. Protect your community.
+          </div>
+          <div class="hero-option">Confidence to care. Skills to protect.</div>
         </div>
 
-        <div class="question-item">
-          <strong>Reviews / comments</strong>
-          <p>
-            Do you have Google reviews, testimonials, screenshots, text messages,
-            or comments we can use publicly?
-          </p>
+        <h3>Supporting copy</h3>
+        <div class="answer-block">
+          <div class="label">Working subhead direction</div>
+          <div class="content">
+            Founder-led CPR, BLS, first aid, de-escalation, crisis readiness,
+            and personal safety training for individuals, teams, and communities
+            across Central Texas.
+          </div>
         </div>
 
-        <div class="question-item">
-          <strong>Partnerships</strong>
-          <p>
-            Which organizations from your list are okay to mention publicly on
-            the website?
-          </p>
+        <h3>Services</h3>
+        <ul>
+          <li>Keep CPR + BLS as the clearest service priority.</li>
+          <li>Add de-escalation into the Crisis Readiness language.</li>
+          <li>
+            Plan the first dedicated service page as combined CPR + BLS
+            Certification.
+          </li>
+        </ul>
+
+        <h3>Visual direction</h3>
+        <p>
+          The current preview is intentionally light on final imagery while the
+          brand foundation is being finalized. The next feedback forms,
+          especially Photo + Content Inventory, Logo Review, and Voice +
+          Messaging, will help add stronger visual presence using real
+          BetterBodies photos, approved concepts, stock placeholders where
+          needed, and custom branded graphics.
+        </p>
+
+        <div class="summary-grid">
+          <div class="mini-card">
+            <strong>Visual concepts to prioritize</strong>
+            <p>
+              Sheldon teaching, coaching, smiling, and encouraging; diverse
+              groups training together; real students and real body types;
+              hands-on CPR/BLS practice; community settings; positive group
+              energy.
+            </p>
+          </div>
+
+          <div class="mini-card">
+            <strong>Visuals to avoid</strong>
+            <p>
+              Intimidating solo “tough guy” shots, aggressive/tactical posing,
+              overly perfect fitness-model imagery, scary/unapproachable
+              visuals, or imagery that lacks racial/body-type diversity.
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
 
-    <section class="card">
-      <h2>Optional Next Feedback</h2>
-      <p>
-        The Brand + Website Direction form gave us the core direction. The next
-        most helpful form would be the Booking / Operations Workflow form,
-        because it helps shape how class requests, scheduling, group training,
-        and follow-up should work.
-      </p>
-      <p>
-        The other forms are optional, but they can help refine the logo,
-        imagery, content inventory, and voice/messaging when there is time.
-      </p>
+        <h3>About / story</h3>
+        <ul>
+          <li>
+            Bring forward that BetterBodies is a calling, not just a business.
+          </li>
+          <li>Highlight 25+ years of community-based training.</li>
+          <li>Make the care, heart, and personal approach clearer.</li>
+          <li>
+            Represent the teaching style as energetic, personal, honest,
+            practical, and high-energy.
+          </li>
+        </ul>
+      </section>
 
-      <div class="button-row">
-        <a class="btn btn-primary" href="../operations-booking-workflow.html">
-          Open Booking / Operations Form
-        </a>
-        <a class="btn btn-secondary" href="../">
-          Back to Feedback Hub
-        </a>
-      </div>
-    </section>
-  </main>
-</body>
+      <section class="card">
+        <h2>Confirmed Decisions</h2>
+        <div class="resolved">
+          <div class="resolved-item">
+            De-escalation will be listed as part of Crisis Readiness, not as a
+            separate service track for now.
+          </div>
+          <div class="resolved-item">
+            The first dedicated service page should be combined CPR + BLS
+            Certification.
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>A Few Things to Confirm</h2>
+        <p>
+          These are the only remaining items where a little clarification would
+          help before I finalize the next round of updates.
+        </p>
+
+        <div class="question-list">
+          <div class="question-item">
+            <strong>Financial Wellness Resource</strong>
+            <p>
+              You preferred “Financial Wellness Resource” and selected a simple
+              third-party disclosure. Are you comfortable with this wording?
+            </p>
+            <p>
+              <em>
+                “This is a third-party resource and separate from BetterBodies
+                training services.”
+              </em>
+            </p>
+          </div>
+
+          <div class="question-item">
+            <strong>Certifications</strong>
+            <p>
+              Which certifications, logos, or exact credential names are
+              approved to show publicly on the homepage?
+            </p>
+          </div>
+
+          <div class="question-item">
+            <strong>Reviews / comments</strong>
+            <p>
+              Do you have Google reviews, testimonials, screenshots, text
+              messages, or comments I can use publicly?
+            </p>
+          </div>
+
+          <div class="question-item">
+            <strong>Partnerships</strong>
+            <p>
+              Which organizations from your list are okay to mention publicly on
+              the website?
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Optional Next Feedback</h2>
+        <p>
+          The Brand + Website Direction form gave us the core direction. The
+          next most helpful form would be the Booking / Operations Workflow
+          form, because it helps shape how class requests, scheduling, group
+          training, and follow-up should work.
+        </p>
+        <p>
+          The other forms are optional, but they can help refine the logo,
+          imagery, content inventory, and voice/messaging when there is time.
+        </p>
+
+        <div class="button-row">
+          <a class="btn btn-primary" href="../operations-booking-workflow.html">
+            Open Booking / Operations Form
+          </a>
+          <a class="btn btn-secondary" href="../">Back to Feedback Hub</a>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
